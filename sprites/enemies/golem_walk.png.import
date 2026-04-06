@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtg0aj3uqxlrr"
-path="res://.godot/imported/rock.png-df3db6a52b5550609cfe72347aaf985f.ctex"
+uid="uid://dxt8atchbydwx"
+path="res://.godot/imported/golem_walk.png-d70793d9d10a3fc8e94dae62cadc3be3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/rock.png"
-dest_files=["res://.godot/imported/rock.png-df3db6a52b5550609cfe72347aaf985f.ctex"]
+source_file="res://sprites/enemies/golem_walk.png"
+dest_files=["res://.godot/imported/golem_walk.png-d70793d9d10a3fc8e94dae62cadc3be3.ctex"]
 
 [params]
 

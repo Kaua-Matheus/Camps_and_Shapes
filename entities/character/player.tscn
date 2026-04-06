@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dm0p1dppqlhej"]
 
 [ext_resource type="Script" uid="uid://c1wcorcbq5uyt" path="res://scripts/character/player.gd" id="1_1o8m5"]
-[ext_resource type="Texture2D" uid="uid://b4jibtu13frqs" path="res://sprites/slime_boboca.png" id="1_g8tvb"]
+[ext_resource type="Texture2D" uid="uid://b4jibtu13frqs" path="res://sprites/character/player/slime_boboca.png" id="1_g8tvb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1o8m5"]
 radius = 19.006578
@@ -10,6 +10,8 @@ radius = 19.006578
 script = ExtResource("1_1o8m5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=777931992]
+light_mask = 2
+visibility_layer = 5
 position = Vector2(0, 13.5)
 shape = SubResource("CircleShape2D_1o8m5")
 

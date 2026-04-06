@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Camps And Shapes"
-run/main_scene="uid://drk5hbytqe3pm"
+run/main_scene="uid://bsxxrwdegd0sm"
 config/features=PackedStringArray("4.6", "Forward Plus")
 <<<<<<<HEADrun/main_scene="uid://drk5hbytqe3pm"
 
@@ -19,6 +19,12 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 window/size/viewport_width=768
 window/size/viewport_height=384
+
+[layer_names]
+
+2d_render/layer_1="terrain"
+2d_render/layer_2="player"
+2d_render/layer_3="enemies"
 
 [physics]
 

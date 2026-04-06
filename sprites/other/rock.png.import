@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4jibtu13frqs"
-path="res://.godot/imported/slime_boboca.png-9fd687de5091019d88d3a0fe8fc05bfb.ctex"
+uid="uid://dtg0aj3uqxlrr"
+path="res://.godot/imported/rock.png-181d6878a856f3392791a6363a340691.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/slime_boboca.png"
-dest_files=["res://.godot/imported/slime_boboca.png-9fd687de5091019d88d3a0fe8fc05bfb.ctex"]
+source_file="res://sprites/other/rock.png"
+dest_files=["res://.godot/imported/rock.png-181d6878a856f3392791a6363a340691.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

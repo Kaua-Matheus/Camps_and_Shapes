@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cahknoag41kx2"]
 
 [ext_resource type="Script" uid="uid://ejpqa74qsu25" path="res://scripts/enemies/golem.gd" id="1_iv3j2"]
-[ext_resource type="Texture2D" uid="uid://t8osetvlbsri" path="res://sprites/golem.png" id="1_vpmfc"]
+[ext_resource type="Texture2D" uid="uid://t8osetvlbsri" path="res://sprites/enemies/golem.png" id="1_vpmfc"]
+[ext_resource type="Texture2D" uid="uid://dxt8atchbydwx" path="res://sprites/enemies/golem_walk.png" id="3_xpmmt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iv3j2"]
 atlas = ExtResource("1_vpmfc")
@@ -16,6 +17,14 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xpmmt")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yag7t"]
@@ -24,11 +33,11 @@ size = Vector2(44, 56)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fpmxe"]
 size = Vector2(44, 56)
 
-[node name="Golem" type="CharacterBody2D" unique_id=1402557020]
+[node name="Golem" type="CharacterBody2D" unique_id=1402557020 groups=["Enemies"]]
 collision_layer = 4
 script = ExtResource("1_iv3j2")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2064383030]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=816877684]
 sprite_frames = SubResource("SpriteFrames_xpmmt")
 animation = &"idle"
 flip_h = true
