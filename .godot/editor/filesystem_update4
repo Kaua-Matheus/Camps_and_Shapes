@@ -4,3 +4,6 @@ res://entities/enemies/golem.tscn
 res://entities/other/rock.tscn
 res://scripts/enemies/golem.gd
 res://scene/main.tscn
+res://scripts/character/player.gd
+res://scenes/maps/main.tscn
+res://scripts/main_menu.gd
