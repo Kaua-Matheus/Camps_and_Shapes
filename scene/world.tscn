@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bsxxrwdegd0sm"]
+
+[ext_resource type="Script" uid="uid://bvhivan33urlw" path="res://scripts/world/world_background.gd" id="1_bg"]
+[ext_resource type="PackedScene" uid="uid://dm0p1dppqlhej" path="res://entities/character/player.tscn" id="2_player"]
+
+[sub_resource type="RectangleShape2D" id="RectShape_top"]
+size = Vector2(3840, 80)
+
+[sub_resource type="RectangleShape2D" id="RectShape_bottom"]
+size = Vector2(3840, 80)
+
+[sub_resource type="RectangleShape2D" id="RectShape_left"]
+size = Vector2(16, 384)
+
+[sub_resource type="RectangleShape2D" id="RectShape_right"]
+size = Vector2(16, 384)
+
+[node name="World" type="Node2D" unique_id=748532902]
+
+[node name="Background" type="Node2D" parent="." unique_id=917535190]
+script = ExtResource("1_bg")
+
+[node name="TreeWallTop" type="StaticBody2D" parent="." unique_id=1007722586]
+position = Vector2(1920, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TreeWallTop" unique_id=411440959]
+shape = SubResource("RectShape_top")
+
+[node name="TreeWallBottom" type="StaticBody2D" parent="." unique_id=1676406213]
+position = Vector2(1920, 344)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TreeWallBottom" unique_id=936372626]
+shape = SubResource("RectShape_bottom")
+
+[node name="BoundaryLeft" type="StaticBody2D" parent="." unique_id=1645534611]
+position = Vector2(-8, 192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryLeft" unique_id=244443899]
+shape = SubResource("RectShape_left")
+
+[node name="BoundaryRight" type="StaticBody2D" parent="." unique_id=1995969400]
+position = Vector2(3848, 192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryRight" unique_id=311341081]
+shape = SubResource("RectShape_right")
+
+[node name="Entities" type="Node2D" parent="." unique_id=1846764086]
+
+[node name="Player" parent="Entities" unique_id=545086066 instance=ExtResource("2_player")]
+position = Vector2(100, 192)
