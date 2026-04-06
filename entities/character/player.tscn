@@ -17,3 +17,9 @@ shape = SubResource("CircleShape2D_1o8m5")
 texture_filter = 1
 texture_repeat = 1
 texture = ExtResource("1_g8tvb")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2045110001]
+limit_left = 0
+limit_top = 0
+limit_right = 3840
+limit_bottom = 384
