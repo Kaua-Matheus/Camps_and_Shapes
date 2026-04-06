@@ -1,4 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
+<<<<<<< HEAD
 ::res://::1775514753
 ::res://assets/::1775406673
 ::res://assets/font/::1775407846
@@ -22,3 +23,23 @@ golem.png::CompressedTexture2D::1402594917609195306::1775514073::1775514073::1::
 rock.png::CompressedTexture2D::8506754788441120823::1775515448::1775515448::1::::<><><>0<>0<>67482a9f235f3fa1f50ca979f6e44cc5<>res://.godot/imported/rock.png-df3db6a52b5550609cfe72347aaf985f.ctex::
 slime_boboca.png::CompressedTexture2D::4440965100777311006::1775401140::1775407846::1::::<><><>0<>0<>859760429a7600f3eaad07c71f59f87e<>res://.godot/imported/slime_boboca.png-9fd687de5091019d88d3a0fe8fc05bfb.ctex::
 ::res://tiles/::1775513898
+=======
+::res://::1775516039
+::res://assets/::1775513660
+::res://assets/font/::1775514328
+upheavtt.ttf::FontFile::2763096761284765711::1775513660::1775514328::1::::<><><>0<>0<>f7023f5e70caadf2dfc40f4484d202aa<>res://.godot/imported/upheavtt.ttf-749877710024991bd0b79099678f94c2.fontdata::
+::res://entities/::1775513660
+::res://entities/character/::1775513660
+player.tscn::PackedScene::8054094985565680421::1775513660::0::1::::<><><>0<>0<><>::uid://c1wcorcbq5uyt::::res://scripts/player.gd<>uid://b4jibtu13frqs::::res://sprites/slime_boboca.png
+::res://scenes/::1775515832
+game_over.tscn::PackedScene::2577844231306522221::1775515832::0::1::::<><><>0<>0<><>::res://scripts/game_over.gd<>uid://bfmp2g024dovf::::res://assets/font/upheavtt.ttf
+loading_screen.tscn::PackedScene::1689044330819988739::1775515893::0::1::::<><><>0<>0<><>::uid://dn3pqxkr7mhte::::res://scripts/loading_screen.gd<>uid://bfmp2g024dovf::::res://assets/font/upheavtt.ttf<>uid://b4jibtu13frqs::::res://sprites/slime_boboca.png
+main_menu.tscn::PackedScene::8374950271290280314::1775514140::0::1::::<><><>0<>0<><>::uid://cqw7f8xmbp2nj::::res://scripts/main_menu.gd<>uid://bfmp2g024dovf::::res://assets/font/upheavtt.ttf
+::res://scripts/::1775515744
+game_over.gd::GDScript::2927309637036358606::1775514738::0::1::::<>Control<><>0<>0<><>::
+loading_screen.gd::GDScript::8130460147382116006::1775515740::0::1::::<>Control<><>0<>0<><>::
+main_menu.gd::GDScript::5943232818270325623::1775514114::0::1::::<>Control<><>0<>0<><>::
+player.gd::GDScript::6643314943719141795::1775514765::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://sprites/::1775514328
+slime_boboca.png::CompressedTexture2D::4440965100777311006::1775513660::1775514328::1::::<><><>0<>0<>859760429a7600f3eaad07c71f59f87e<>res://.godot/imported/slime_boboca.png-9fd687de5091019d88d3a0fe8fc05bfb.ctex::
+>>>>>>> a0bb9b2614953e437815ae8f112966e23a2a1abc

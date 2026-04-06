@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://ycgkwifddbp0"]
+
+[ext_resource type="Script" uid="uid://dn3pqxkr7mhte" path="res://scripts/loading_screen.gd" id="1_lsscr"]
+[ext_resource type="FontFile" uid="uid://bfmp2g024dovf" path="res://assets/font/upheavtt.ttf" id="2_font"]
+[ext_resource type="Texture2D" uid="uid://b4jibtu13frqs" path="res://sprites/slime_boboca.png" id="3_slime"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_bg"]
+bg_color = Color(0.06, 0.04, 0.1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.55, 0.45, 0.18, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+content_margin_left = 3.0
+content_margin_right = 3.0
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_fill"]
+bg_color = Color(0.85, 0.62, 0.08, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+shadow_color = Color(1.0, 0.75, 0.0, 0.45)
+shadow_size = 4
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_lsscr")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.06, 0.04, 0.12, 1)
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = -220.0
+offset_right = 220.0
+offset_top = 28.0
+offset_bottom = 80.0
+text = "Camps and Shapes"
+horizontal_alignment = 1
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(0.98, 0.88, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0.35, 0.15, 0.0, 0.85)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+
+[node name="SlimeContainer" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = -40.0
+offset_right = 40.0
+offset_top = 96.0
+offset_bottom = 176.0
+
+[node name="SlimeSprite" type="TextureRect" parent="SlimeContainer"]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture_filter = 1
+texture = ExtResource("3_slime")
+stretch_mode = 5
+
+[node name="LoadingLabel" type="Label" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = -250.0
+offset_right = 250.0
+offset_top = 200.0
+offset_bottom = 220.0
+text = "Carregando Veldora."
+horizontal_alignment = 1
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.62, 0.52, 0.32, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = -250.0
+offset_right = 250.0
+offset_top = 226.0
+offset_bottom = 258.0
+max_value = 100.0
+value = 0.0
+show_percentage = false
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bar_fill")
+
+[node name="PercentLabel" type="Label" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = 206.0
+offset_right = 260.0
+offset_top = 262.0
+offset_bottom = 278.0
+text = "0%"
+horizontal_alignment = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.55, 0.48, 0.3, 1)
+
+[node name="TipLabel" type="Label" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = -260.0
+offset_right = 260.0
+offset_top = 308.0
+offset_bottom = 330.0
+text = "Dica: ..."
+horizontal_alignment = 1
+autowrap_mode = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.45, 0.38, 0.25, 1)
+
+[node name="VersionLabel" type="Label" parent="."]
+layout_mode = 1
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = 110.0
+offset_top = -20.0
+offset_bottom = -6.0
+text = "v0.1.0"
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 10
+theme_override_colors/font_color = Color(0.28, 0.24, 0.18, 1)
