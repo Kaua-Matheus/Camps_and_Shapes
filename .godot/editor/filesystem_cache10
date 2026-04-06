@@ -1,0 +1,13 @@
+63f7b34db8d8cdea90c76aacccf841ec
+::res://::1775407844
+::res://assets/::1775406673
+::res://assets/font/::1775406688
+upheavtt.ttf::FontFile::2763096761284765711::1775406688::1775407846::1::::<><><>0<>0<>f7023f5e70caadf2dfc40f4484d202aa<>res://.godot/imported/upheavtt.ttf-749877710024991bd0b79099678f94c2.fontdata::
+::res://Camps_and_Shapes/::1775407814
+::res://entities/::1775401588
+::res://entities/character/::1775402503
+player.tscn::PackedScene::8054094985565680421::1775402503::0::1::::<><><>0<>0<><>::uid://c1wcorcbq5uyt::::res://scripts/player.gd<>uid://b4jibtu13frqs::::res://sprites/slime_boboca.png
+::res://scripts/::1775402503
+player.gd::GDScript::6643314943719141795::1775402503::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://sprites/::1775401564
+slime_boboca.png::CompressedTexture2D::4440965100777311006::1775401140::1775407846::1::::<><><>0<>0<>859760429a7600f3eaad07c71f59f87e<>res://.godot/imported/slime_boboca.png-9fd687de5091019d88d3a0fe8fc05bfb.ctex::
