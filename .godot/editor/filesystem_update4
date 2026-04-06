@@ -1,0 +1,6 @@
+res://entities/character/player.tscn
+res://entities/enemies/skeleton.tscn
+res://entities/enemies/golem.tscn
+res://entities/other/rock.tscn
+res://scripts/enemies/golem.gd
+res://scene/main.tscn

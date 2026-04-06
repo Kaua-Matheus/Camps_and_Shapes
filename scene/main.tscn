@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dbty6l62kqahu"]
+
+[ext_resource type="PackedScene" uid="uid://cahknoag41kx2" path="res://entities/enemies/golem.tscn" id="1_v0l8b"]
+[ext_resource type="PackedScene" uid="uid://dm0p1dppqlhej" path="res://entities/character/player.tscn" id="2_wp4xf"]
+
+[node name="Main" type="Node2D" unique_id=286134481]
+
+[node name="Golem" parent="." unique_id=1402557020 instance=ExtResource("1_v0l8b")]
+position = Vector2(476, 104)
+
+[node name="Player" parent="Golem" unique_id=1449680644 instance=ExtResource("2_wp4xf")]
+position = Vector2(-268, 30)
