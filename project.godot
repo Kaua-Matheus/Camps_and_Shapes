@@ -11,12 +11,9 @@ config_version=5
 [application]
 
 config/name="Camps And Shapes"
-<<<<<<< HEAD
 run/main_scene="uid://drk5hbytqe3pm"
-=======
-run/main_scene="res://scene/world.tscn"
->>>>>>> 5b3cf708671fa2ed53ab22064b8a530cba8b3993
 config/features=PackedStringArray("4.6", "Forward Plus")
+<<<<<<<HEADrun/main_scene="uid://drk5hbytqe3pm"
 
 [display]
 

@@ -1,7 +1,7 @@
 extends Control
 
 const SAVE_FILE := "user://save.dat"
-const GAME_SCENE := "res://scenes/maps/main.tscn"
+const GAME_SCENE := "res://scenes/maps/world.tscn"
 
 func _ready() -> void:
 	$MenuButtons/BtnContinue.disabled = not FileAccess.file_exists(SAVE_FILE)
