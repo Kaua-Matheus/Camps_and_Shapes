@@ -1,4 +1,3 @@
-res://scenes/maps/world.tscn
+res://entities/enemies/golem.tscn
 res://scripts/enemies/golem.gd
 res://entities/character/player.tscn
-res://entities/enemies/golem.tscn

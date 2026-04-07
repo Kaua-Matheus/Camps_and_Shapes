@@ -1,11 +1,21 @@
 [gd_scene format=3 uid="uid://b6tgl8mkre3l2"]
 
 [ext_resource type="Script" uid="uid://rr00168t4ku6" path="res://scripts/other/rock.gd" id="1_rrxwn"]
+[ext_resource type="Texture2D" uid="uid://dtg0aj3uqxlrr" path="res://sprites/other/rock.png" id="2_rrxwn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_njpw1"]
 radius = 6.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5i4rv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rrxwn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Rock" type="Area2D" unique_id=1545920186 groups=["LethalArea"]]
 collision_layer = 16

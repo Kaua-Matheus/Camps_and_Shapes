@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1775519628
+::res://::1775522831
 ::res://assets/::1775518201
 ::res://assets/font/::1775407846
 upheavtt.ttf::FontFile::2763096761284765711::1775406688::1775407846::1::::<><><>0<>0<>f7023f5e70caadf2dfc40f4484d202aa<>res://.godot/imported/upheavtt.ttf-749877710024991bd0b79099678f94c2.fontdata::
@@ -8,10 +8,10 @@ Game Of Thrones Theme (Sega Genesis 16-bit Remix) [KvRi_6ZVQaQ].mp3::AudioStream
 ::res://entities/::1775514671
 ::res://entities/character/::1775519612
 player.tscn::PackedScene::8054094985565680421::1775519612::0::1::::<><><>0<>0<><>::uid://c1wcorcbq5uyt::::res://scripts/character/player.gd<>uid://b4jibtu13frqs::::res://sprites/character/player/slime_boboca.png
-::res://entities/enemies/::1775519627
-golem.tscn::PackedScene::4787923132552351409::1775519627::0::1::::<><><>0<>0<><>::uid://ejpqa74qsu25::::res://scripts/enemies/golem.gd<>uid://t8osetvlbsri::::res://sprites/enemies/golem.png
-::res://entities/other/::1775518454
-rock.tscn::PackedScene::4601883711774263025::1775518454::0::1::::<><><>0<>0<><>::uid://rr00168t4ku6::::res://scripts/other/rock.gd
+::res://entities/enemies/::1775522770
+golem.tscn::PackedScene::4787923132552351409::1775522770::0::1::::<><><>0<>0<><>::uid://ejpqa74qsu25::::res://scripts/enemies/golem.gd<>uid://t8osetvlbsri::::res://sprites/enemies/golem.png<>uid://dxt8atchbydwx::::res://sprites/enemies/golem_walk.png
+::res://entities/other/::1775521555
+rock.tscn::PackedScene::4601883711774263025::1775521555::0::1::::<><><>0<>0<><>::uid://rr00168t4ku6::::res://scripts/other/rock.gd<>uid://dtg0aj3uqxlrr::::res://sprites/other/rock.png
 ::res://scenes/::1775518335
 ::res://scenes/interface/::1775519612
 game_over.tscn::PackedScene::2577844231306522221::1775516237::0::1::::<><><>0<>0<><>::res://scripts/game_over.gd<>uid://bfmp2g024dovf::::res://assets/font/upheavtt.ttf
@@ -25,8 +25,8 @@ loading_screen.gd::GDScript::8130460147382116006::1775516237::0::1::::<>Control<
 main_menu.gd::GDScript::5943232818270325623::1775518051::0::1::::<>Control<><>0<>0<><>::
 ::res://scripts/character/::1775516237
 player.gd::GDScript::6643314943719141795::1775516237::0::1::::<>CharacterBody2D<><>0<>0<><>::
-::res://scripts/enemies/::1775519166
-golem.gd::GDScript::300274152706124340::1775519166::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://scripts/enemies/::1775522822
+golem.gd::GDScript::300274152706124340::1775522822::0::1::::<>CharacterBody2D<><>0<>0<><>::
 ::res://scripts/other/::1775514753
 rock.gd::GDScript::1229868748354302823::1775514741::0::1::::<>Area2D<><>0<>0<><>::
 ::res://scripts/world/::1775517882
@@ -35,7 +35,7 @@ world_background.gd::GDScript::3875360303377206896::1775517882::0::1::::<>Node2D
 ::res://sprites/character/::1775519612
 ::res://sprites/character/player/::1775519612
 slime_boboca.png::CompressedTexture2D::4440965100777311006::1775401140::1775519612::1::::<><><>0<>0<>6152bebb3a78269aa6cba879980ede49<>res://.godot/imported/slime_boboca.png-7bf06f7dd37e51d4e94e96bda5dd7aa8.ctex::
-::res://sprites/enemies/::1775519627
+::res://sprites/enemies/::1775519628
 golem.png::CompressedTexture2D::1402594917609195306::1775514073::1775519628::1::::<><><>0<>0<>84d99f20fd53a317c26847e5afd800b1<>res://.godot/imported/golem.png-4a22b628c9feca7a1ab1df7d80650002.ctex::
 golem_walk.png::CompressedTexture2D::8814833294196070463::1775519580::1775519628::1::::<><><>0<>0<>f7abc1d7da27ab9c87570c7e8cf7875c<>res://.godot/imported/golem_walk.png-d70793d9d10a3fc8e94dae62cadc3be3.ctex::
 ::res://sprites/other/::1775519590
