@@ -6,3 +6,4 @@ res://scenes/interface/options.tscn
 res://scripts/main_menu.gd
 res://scenes/background_music.tscn
 res://scripts/options.gd
+res://scenes/interface/loading_screen.tscn
