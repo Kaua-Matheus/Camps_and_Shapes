@@ -2,6 +2,8 @@ extends Area2D
 
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 
+@export var damage_percent: float = 20.0
+
 var speed = 110
 var direction: int
 
@@ -20,11 +22,13 @@ func _on_self_destruct_timer_timeout() -> void:
 	queue_free()
 
 
-# Bone Exclusion by Collision Player
+# Bone Exclusion by Collision Area
 func _on_area_entered(_area: Area2D) -> void:
 	queue_free()
-	
-	
-# Bone Exclusion by Collision Wall
-func _on_body_entered(_body: Node2D) -> void:
+
+
+# Bone Exclusion by Collision Body (Player or Wall)
+func _on_body_entered(body: Node2D) -> void:
+	if body.has_method("take_damage_percent"):
+		body.take_damage_percent(damage_percent)
 	queue_free()

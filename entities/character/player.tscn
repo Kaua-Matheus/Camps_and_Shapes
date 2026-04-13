@@ -25,3 +25,14 @@ limit_left = 0
 limit_top = 0
 limit_right = 3840
 limit_bottom = 384
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1123456781]
+
+[node name="HealthBar" type="ProgressBar" parent="HUD" unique_id=1123456782]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 168.0
+offset_bottom = 24.0
+max_value = 100.0
+value = 100.0
+show_percentage = false

@@ -20,6 +20,11 @@ enum GolemState {
 	#dead
 }
 const SPEED = 100
+const MELEE_RANGE: float = 40.0
+
+@export var damage_percent: float = 20.0
+var damage_cooldown: float = 1.5
+var damage_timer: float = 0.0
 
 var status: GolemState
 
@@ -29,19 +34,24 @@ var can_throw = true
 	#go_to_walk_state()
 
 func _physics_process(delta: float) -> void:
+	damage_timer -= delta
+
 	if player_ref != null:
 		var distance: Vector2 = player_ref.global_position - global_position
 		var direction: Vector2 = distance.normalized()
 		var distance_length: float = distance.length()
-		
-		if distance_length <= 5:
+
+		if distance_length <= MELEE_RANGE:
 			velocity = Vector2.ZERO
+			if damage_timer <= 0.0:
+				player_ref.take_damage_percent(damage_percent)
+				damage_timer = damage_cooldown
 		else:
 			velocity = SPEED * direction
-			
+
 	else:
 		pass
-		
+
 	#match status:
 		#GolemState.idle:
 			#idle_state(delta)
