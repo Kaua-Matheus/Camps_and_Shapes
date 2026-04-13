@@ -15,6 +15,14 @@ run/main_scene="uid://bsxxrwdegd0sm"
 config/features=PackedStringArray("4.6", "Forward Plus")
 <<<<<<<HEADrun/main_scene="uid://drk5hbytqe3pm"
 
+[audio]
+
+buses/default_bus_layout="uid://ctmj8otwenia4"
+
+[autoload]
+
+BackgroundMusic="*uid://djkk5cjf3igeg"
+
 [display]
 
 window/size/viewport_width=768

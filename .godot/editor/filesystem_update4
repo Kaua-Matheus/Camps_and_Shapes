@@ -1,3 +1,8 @@
-res://entities/enemies/golem.tscn
-res://scripts/enemies/golem.gd
-res://entities/character/player.tscn
+res://default_bus_layout.tres
+res://scripts/volume_changer.gd
+res://scenes/interface/main_menu.tscn
+res://scenes/maps/world.tscn
+res://scenes/interface/options.tscn
+res://scripts/main_menu.gd
+res://scenes/background_music.tscn
+res://scripts/options.gd
