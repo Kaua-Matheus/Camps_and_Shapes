@@ -21,8 +21,8 @@ func _physics_process(_delta: float) -> void:
 
 func move() -> void:
 	var direction_vector: Vector2 = Vector2(
-		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
-		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+		Input.get_action_strength("Right") - Input.get_action_strength("Left"),
+		Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	).normalized()
 
 	velocity = direction_vector * speed

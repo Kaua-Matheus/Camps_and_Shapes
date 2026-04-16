@@ -30,13 +30,14 @@ var status: GolemState
 
 var can_throw = true
 
-#func _ready() -> void:
+#func _ready() -> void:d
 	#go_to_walk_state()
 
 func _physics_process(delta: float) -> void:
-	damage_timer -= delta
+	damage_timer -= delta * damage_cooldown
 
 	if player_ref != null:
+		go_to_walk_state()
 		var distance: Vector2 = player_ref.global_position - global_position
 		var direction: Vector2 = distance.normalized()
 		var distance_length: float = distance.length()
@@ -50,7 +51,8 @@ func _physics_process(delta: float) -> void:
 			velocity = SPEED * direction
 
 	else:
-		pass
+		velocity = Vector2.ZERO
+		go_to_idle_state()
 
 	#match status:
 		#GolemState.idle:
@@ -65,14 +67,14 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	
-#func go_to_idle_state():
-	#status = GolemState.idle
-	#animation.play("idle")
-	#
-#func go_to_walk_state():
-	#status = GolemState.walk
-	#animation.play("walk")
-	#
+func go_to_idle_state():
+	status = GolemState.idle
+	animation.play("idle")
+	
+func go_to_walk_state():
+	status = GolemState.walk
+	animation.play("walk")
+	
 #func go_to_attack_state():
 	#status = GolemState.attack
 	##animation.play("attack")
@@ -86,8 +88,8 @@ func _physics_process(delta: float) -> void:
 	#hitbox.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	
-#func idle_state(_delta):
-	#pass
+func idle_state(_delta):
+	pass
 	
 #func walk_state(_delta):
 	#velocity.x = SPEED * direction

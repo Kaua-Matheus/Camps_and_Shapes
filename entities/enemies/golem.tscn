@@ -12,7 +12,7 @@ region = Rect2(0, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iv3j2")
+"texture": ExtResource("3_xpmmt")
 }],
 "loop": true,
 "name": &"idle",
@@ -20,7 +20,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_xpmmt")
+"texture": SubResource("AtlasTexture_iv3j2")
 }],
 "loop": true,
 "name": &"walk",
