@@ -31,7 +31,7 @@ var status: GolemState
 
 var can_throw = true
 
-#func _ready() -> void:d
+#func _ready() -> void:
 	#go_to_walk_state()
 
 func _physics_process(delta: float) -> void:

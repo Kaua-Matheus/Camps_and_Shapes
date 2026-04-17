@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://dm0p1dppqlhej"]
 
 [ext_resource type="Script" uid="uid://c1wcorcbq5uyt" path="res://scripts/character/player.gd" id="1_1o8m5"]
-[ext_resource type="Texture2D" uid="uid://b6v2583b47kh2" path="res://sprites/character/player/idle/slime_idle1.png" id="2_3ekpe"]
-[ext_resource type="Texture2D" uid="uid://jp451m6nbgd6" path="res://sprites/character/player/idle/slime_idle2.png" id="3_rlso7"]
-[ext_resource type="Texture2D" uid="uid://3hkicw1jpb5n" path="res://sprites/character/player/idle/slime_idle3.png" id="4_bmyq4"]
-[ext_resource type="Texture2D" uid="uid://mtefdwivmwo1" path="res://sprites/character/player/idle/slime_idle4.png" id="5_5n6yr"]
+[ext_resource type="Texture2D" uid="uid://bqgdw3b3m2msj" path="res://sprites/character/player/idle/slime_idle1.png" id="2_3ekpe"]
+[ext_resource type="Texture2D" uid="uid://g7eh3a47oxrq" path="res://sprites/character/player/attack/slime_attack1.png" id="2_gcpck"]
+[ext_resource type="Texture2D" uid="uid://ccpk0u1u14pgq" path="res://sprites/character/player/attack/slime_attack2.png" id="3_0xsky"]
+[ext_resource type="Texture2D" uid="uid://6kgq6jdnori8" path="res://sprites/character/player/idle/slime_idle2.png" id="3_rlso7"]
+[ext_resource type="Texture2D" uid="uid://55aoy2be4ijn" path="res://sprites/character/player/idle/slime_idle3.png" id="4_bmyq4"]
+[ext_resource type="Texture2D" uid="uid://bdxwntxa40xb8" path="res://sprites/character/player/attack/slime_attack3.png" id="4_ri2uq"]
+[ext_resource type="Texture2D" uid="uid://o3vfbpk4te0o" path="res://sprites/character/player/idle/slime_idle4.png" id="5_5n6yr"]
+[ext_resource type="Texture2D" uid="uid://cqnk5m37r0xtp" path="res://sprites/character/player/attack/slime_attack4.png" id="5_cyjs5"]
 [ext_resource type="Texture2D" uid="uid://7h36vmntka7g" path="res://sprites/character/player/walk/slime_walk_right1.png" id="6_h7vl7"]
 [ext_resource type="Texture2D" uid="uid://b5hsepjon8s3h" path="res://sprites/character/player/walk/slime_walk_right2.png" id="7_w04y5"]
 [ext_resource type="Texture2D" uid="uid://dycyu7ouors2s" path="res://sprites/character/player/walk/slime_walk_right3.png" id="8_g7m1y"]
@@ -12,6 +16,23 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h7vl7"]
 animations = [{
+"frames": [{
+"duration": 1.2,
+"texture": ExtResource("2_gcpck")
+}, {
+"duration": 0.4,
+"texture": ExtResource("3_0xsky")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_ri2uq")
+}, {
+"duration": 0.6,
+"texture": ExtResource("5_cyjs5")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_3ekpe")
@@ -53,15 +74,13 @@ height = 34.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1449680644 groups=["Player"]]
 script = ExtResource("1_1o8m5")
-speed = null
-max_hp = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=218026251]
 position = Vector2(0, 13)
 sprite_frames = SubResource("SpriteFrames_h7vl7")
-animation = &"walk"
+animation = &"attack"
 autoplay = "idle"
-frame_progress = 0.33550915
+frame_progress = 0.35425237
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=777931992]
 light_mask = 2

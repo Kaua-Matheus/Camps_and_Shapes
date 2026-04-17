@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4jibtu13frqs"
-path="res://.godot/imported/slime_boboca.png-7bf06f7dd37e51d4e94e96bda5dd7aa8.ctex"
+uid="uid://ccpk0u1u14pgq"
+path="res://.godot/imported/slime_attack2.png-d2703dead770fb44aaf12a6691a9677b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/character/player/slime_boboca.png"
-dest_files=["res://.godot/imported/slime_boboca.png-7bf06f7dd37e51d4e94e96bda5dd7aa8.ctex"]
+source_file="res://sprites/character/player/attack/slime_attack2.png"
+dest_files=["res://.godot/imported/slime_attack2.png-d2703dead770fb44aaf12a6691a9677b.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
