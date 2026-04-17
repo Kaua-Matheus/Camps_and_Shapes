@@ -19,6 +19,7 @@ enum GolemState {
 	attack,
 	#dead
 }
+
 const SPEED = 100
 const MELEE_RANGE: float = 40.0
 
