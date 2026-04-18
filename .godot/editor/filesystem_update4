@@ -1,11 +1,4 @@
-res://scripts/main_menu.gd
-res://scripts/character/player.gd
-res://scripts/enemies/golem.gd
-res://scripts/other/rock.gd
-res://entities/character/player.tscn
-res://scenes/maps/world.tscn
-res://scenes/maps/debug_map.tscn
 res://entities/enemies/golem.tscn
-res://entities/other/player_attack.tscn
-res://scripts/other/attack_manager.gd
-res://scripts/other/player_attack.gd
+res://scripts/character/player.gd
+res://entities/character/player.tscn
+res://entities/other/rock.tscn

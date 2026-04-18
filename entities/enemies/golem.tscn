@@ -58,14 +58,6 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_fpmxe")
 debug_color = Color(0.9077461, 0.00012321472, 0.74074787, 0.41960785)
 
-[node name="WallDetector" type="RayCast2D" parent="." unique_id=172513186]
-position = Vector2(0, 12)
-target_position = Vector2(17, 0)
-
-[node name="GroundDetector" type="RayCast2D" parent="." unique_id=1310968618]
-position = Vector2(12, 0)
-target_position = Vector2(0, 26)
-
 [node name="RockStartPosition" type="Node2D" parent="." unique_id=1814895168]
 position = Vector2(12, -2)
 

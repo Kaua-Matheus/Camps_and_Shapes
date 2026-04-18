@@ -13,25 +13,26 @@
 [ext_resource type="Texture2D" uid="uid://b5hsepjon8s3h" path="res://sprites/character/player/walk/slime_walk_right2.png" id="7_w04y5"]
 [ext_resource type="Texture2D" uid="uid://dycyu7ouors2s" path="res://sprites/character/player/walk/slime_walk_right3.png" id="8_g7m1y"]
 [ext_resource type="Texture2D" uid="uid://igf1rqq7r2ca" path="res://sprites/character/player/walk/slime_walk_right4.png" id="9_4g463"]
+[ext_resource type="AudioStream" uid="uid://ds44kfu1wot6b" path="res://assets/audio/whoosh.wav" id="14_0xsky"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h7vl7"]
 animations = [{
 "frames": [{
-"duration": 1.2,
+"duration": 1.0,
 "texture": ExtResource("2_gcpck")
 }, {
-"duration": 0.4,
+"duration": 1.0,
 "texture": ExtResource("3_0xsky")
 }, {
 "duration": 0.5,
 "texture": ExtResource("4_ri2uq")
 }, {
-"duration": 0.6,
+"duration": 1.0,
 "texture": ExtResource("5_cyjs5")
 }],
 "loop": true,
 "name": &"attack",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -72,20 +73,20 @@ animations = [{
 radius = 17.0
 height = 34.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xsky"]
+
 [node name="Player" type="CharacterBody2D" unique_id=1449680644 groups=["Player"]]
 script = ExtResource("1_1o8m5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=218026251]
-position = Vector2(0, 13)
 sprite_frames = SubResource("SpriteFrames_h7vl7")
 animation = &"attack"
 autoplay = "idle"
-frame_progress = 0.35425237
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=777931992]
 light_mask = 2
 visibility_layer = 5
-position = Vector2(0, 15)
 shape = SubResource("CapsuleShape2D_3ekpe")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2045110001]
@@ -93,6 +94,17 @@ limit_left = 0
 limit_top = 0
 limit_right = 3840
 limit_bottom = 384
+
+[node name="SwingAttack" type="AudioStreamPlayer2D" parent="." unique_id=1922437779]
+stream = ExtResource("14_0xsky")
+pitch_scale = 3.0
+
+[node name="AttackHitBox" type="Area2D" parent="." unique_id=1543295464]
+position = Vector2(24, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitBox" unique_id=979029013]
+shape = SubResource("RectangleShape2D_0xsky")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1123456781]
 
@@ -103,3 +115,5 @@ offset_right = 168.0
 offset_bottom = 24.0
 value = 100.0
 show_percentage = false
+
+[connection signal="body_entered" from="AttackHitBox" to="." method="_on_attack_hit_box_body_entered"]
