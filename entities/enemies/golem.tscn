@@ -27,13 +27,13 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpmmt"]
+size = Vector2(80, 112)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_xpmmt"]
 radius = 244.01845
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fpmxe"]
-size = Vector2(44, 56)
-
-[node name="Golem" type="CharacterBody2D" unique_id=1402557020 groups=["Enemies"]]
+[node name="Golem" type="CharacterBody2D" unique_id=1402557020 groups=["Enemy"]]
 collision_layer = 4
 script = ExtResource("1_iv3j2")
 
@@ -43,23 +43,18 @@ sprite_frames = SubResource("SpriteFrames_xpmmt")
 animation = &"idle"
 flip_h = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=671908114]
+light_mask = 4
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_xpmmt")
+
 [node name="DetectionArea" type="Area2D" parent="." unique_id=980153562]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1007859439]
 shape = SubResource("CircleShape2D_xpmmt")
 
-[node name="HitBox" type="Area2D" parent="." unique_id=2046780695 groups=["Enemies"]]
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=807454526]
-position = Vector2(-3, 8)
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_fpmxe")
-debug_color = Color(0.9077461, 0.00012321472, 0.74074787, 0.41960785)
-
 [node name="RockStartPosition" type="Node2D" parent="." unique_id=1814895168]
-position = Vector2(12, -2)
+position = Vector2(40, 0)
 
 [connection signal="body_entered" from="DetectionArea" to="." method="on_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="on_body_exited"]

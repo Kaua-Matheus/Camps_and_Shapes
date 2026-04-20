@@ -74,8 +74,10 @@ radius = 17.0
 height = 34.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xsky"]
+size = Vector2(10, 12)
 
 [node name="Player" type="CharacterBody2D" unique_id=1449680644 groups=["Player"]]
+collision_layer = 2
 script = ExtResource("1_1o8m5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=218026251]
@@ -85,15 +87,9 @@ autoplay = "idle"
 frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=777931992]
-light_mask = 2
-visibility_layer = 5
+light_mask = 4
+visibility_layer = 2
 shape = SubResource("CapsuleShape2D_3ekpe")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2045110001]
-limit_left = 0
-limit_top = 0
-limit_right = 3840
-limit_bottom = 384
 
 [node name="SwingAttack" type="AudioStreamPlayer2D" parent="." unique_id=1922437779]
 stream = ExtResource("14_0xsky")
@@ -101,9 +97,8 @@ pitch_scale = 3.0
 
 [node name="AttackHitBox" type="Area2D" parent="." unique_id=1543295464]
 position = Vector2(24, 0)
-metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitBox" unique_id=979029013]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitBox" unique_id=813196229]
 shape = SubResource("RectangleShape2D_0xsky")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1123456781]

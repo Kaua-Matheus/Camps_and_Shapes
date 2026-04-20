@@ -1,8 +1,8 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1776463129
+::res://::1776720044
 default_bus_layout.tres::AudioBusLayout::-1::1776346096::0::1::::<><><>0<>0<><>::
 ::res://assets/::1776466083
-::res://assets/audio/::1776466797
+::res://assets/audio/::1776466818
 whoosh.mp3::AudioStreamMP3::4822052481178476327::1776466687::1776466818::1::::<><><>0<>0<>7a012c6e2827e760295f0206b08345da<>res://.godot/imported/whoosh.mp3-33bfd9136bcf84a1dafba8007139a962.mp3str::
 whoosh.wav::AudioStreamWAV::8484307136885028731::1776466783::1776466818::1::::<><><>0<>0<>e31a578358258bb8b87c15d497a5bb3a<>res://.godot/imported/whoosh.wav-2141150448f9d7735080932a9eca4095.sample::
 ::res://assets/font/::1775407846
@@ -10,12 +10,13 @@ upheavtt.ttf::FontFile::2763096761284765711::1775406688::1775407846::1::::<><><>
 ::res://assets/musics/::1775518240
 Game Of Thrones Theme (Sega Genesis 16-bit Remix) [KvRi_6ZVQaQ].mp3::AudioStreamMP3::1945610855744815163::1775518239::1775518240::1::::<><><>0<>0<>578e7da938b22374d483af95113b9bfc<>res://.godot/imported/Game Of Thrones Theme (Sega Genesis 16-bit Remix) [KvRi_6ZVQaQ].mp3-aa600a465cbd757ac985e098531fcab7.mp3str::
 ::res://entities/::1775514671
-::res://entities/character/::1776466545
-player.tscn::PackedScene::8054094985565680421::1776466545::0::1::::<><><>0<>0<><>::uid://c1wcorcbq5uyt::::res://scripts/character/player.gd<>uid://bqgdw3b3m2msj::::res://sprites/character/player/idle/slime_idle1.png<>uid://g7eh3a47oxrq::::res://sprites/character/player/attack/slime_attack1.png<>uid://ccpk0u1u14pgq::::res://sprites/character/player/attack/slime_attack2.png<>uid://6kgq6jdnori8::::res://sprites/character/player/idle/slime_idle2.png<>uid://55aoy2be4ijn::::res://sprites/character/player/idle/slime_idle3.png<>uid://bdxwntxa40xb8::::res://sprites/character/player/attack/slime_attack3.png<>uid://o3vfbpk4te0o::::res://sprites/character/player/idle/slime_idle4.png<>uid://cqnk5m37r0xtp::::res://sprites/character/player/attack/slime_attack4.png<>uid://7h36vmntka7g::::res://sprites/character/player/walk/slime_walk_right1.png<>uid://b5hsepjon8s3h::::res://sprites/character/player/walk/slime_walk_right2.png<>uid://dycyu7ouors2s::::res://sprites/character/player/walk/slime_walk_right3.png<>uid://igf1rqq7r2ca::::res://sprites/character/player/walk/slime_walk_right4.png
-::res://entities/enemies/::1776465071
-golem.tscn::PackedScene::4787923132552351409::1776465071::0::1::::<><><>0<>0<><>::uid://ejpqa74qsu25::::res://scripts/enemies/golem.gd<>uid://t8osetvlbsri::::res://sprites/enemies/golem.png<>uid://dxt8atchbydwx::::res://sprites/enemies/golem_walk.png
-::res://entities/other/::1776375237
-rock.tscn::PackedScene::4601883711774263025::1775521555::0::1::::<><><>0<>0<><>::uid://rr00168t4ku6::::res://scripts/other/rock.gd<>uid://dtg0aj3uqxlrr::::res://sprites/other/rock.png
+::res://entities/character/::1776719881
+player.tscn::PackedScene::8054094985565680421::1776719881::0::1::::<><><>0<>0<><>::uid://c1wcorcbq5uyt::::res://scripts/character/player.gd<>uid://bqgdw3b3m2msj::::res://sprites/character/player/idle/slime_idle1.png<>uid://g7eh3a47oxrq::::res://sprites/character/player/attack/slime_attack1.png<>uid://ccpk0u1u14pgq::::res://sprites/character/player/attack/slime_attack2.png<>uid://6kgq6jdnori8::::res://sprites/character/player/idle/slime_idle2.png<>uid://55aoy2be4ijn::::res://sprites/character/player/idle/slime_idle3.png<>uid://bdxwntxa40xb8::::res://sprites/character/player/attack/slime_attack3.png<>uid://o3vfbpk4te0o::::res://sprites/character/player/idle/slime_idle4.png<>uid://cqnk5m37r0xtp::::res://sprites/character/player/attack/slime_attack4.png<>uid://7h36vmntka7g::::res://sprites/character/player/walk/slime_walk_right1.png<>uid://b5hsepjon8s3h::::res://sprites/character/player/walk/slime_walk_right2.png<>uid://dycyu7ouors2s::::res://sprites/character/player/walk/slime_walk_right3.png<>uid://igf1rqq7r2ca::::res://sprites/character/player/walk/slime_walk_right4.png<>uid://ds44kfu1wot6b::::res://assets/audio/whoosh.wav
+::res://entities/enemies/::1776719710
+golem.tscn::PackedScene::4787923132552351409::1776719710::0::1::::<><><>0<>0<><>::uid://ejpqa74qsu25::::res://scripts/enemies/golem.gd<>uid://t8osetvlbsri::::res://sprites/enemies/golem.png<>uid://dxt8atchbydwx::::res://sprites/enemies/golem_walk.png
+::res://entities/other/::1776719979
+camera.tscn::PackedScene::4324007838741890200::1776719979::0::1::::<><><>0<>0<><>::uid://c3wubbf4ed1nt::::res://scripts/other/camera.gd
+rock.tscn::PackedScene::4601883711774263025::1776470903::0::1::::<><><>0<>0<><>::uid://rr00168t4ku6::::res://scripts/other/rock.gd<>uid://dtg0aj3uqxlrr::::res://sprites/other/rock.png
 ::res://scenes/::1776346096
 background_music.tscn::PackedScene::-1::1776346096::0::1::::<><><>0<>0<><>::
 ::res://scenes/interface/::1776346096
@@ -23,20 +24,21 @@ game_over.tscn::PackedScene::2577844231306522221::1775516237::0::1::::<><><>0<>0
 loading_screen.tscn::PackedScene::1689044330819988739::1776346087::0::1::::<><><>0<>0<><>::uid://dn3pqxkr7mhte::::res://scripts/loading_screen.gd<>uid://bfmp2g024dovf::::res://assets/font/upheavtt.ttf<>uid://b4jibtu13frqs::::res://sprites/character/player/slime_boboca.png
 main_menu.tscn::PackedScene::8374950271290280314::1776346087::0::1::::<><><>0<>0<><>::uid://cqw7f8xmbp2nj::::res://scripts/main_menu.gd<>uid://bfmp2g024dovf::::res://assets/font/upheavtt.ttf<>uid://2yp6rcuq8iat::::res://assets/musics/Game Of Thrones Theme (Sega Genesis 16-bit Remix) [KvRi_6ZVQaQ].mp3
 options.tscn::PackedScene::-1::1776346096::0::1::::<><><>0<>0<><>::
-::res://scenes/maps/::1776375234
+::res://scenes/maps/::1776719903
 debug_map.tscn::PackedScene::774612900746034465::1776375234::0::1::::<><><>0<>0<><>::uid://dm0p1dppqlhej::::res://entities/character/player.tscn
-world.tscn::PackedScene::3698728567189094284::1776366270::0::1::::<><><>0<>0<><>::uid://bvhivan33urlw::::res://scripts/world/world_background.gd<>uid://dm0p1dppqlhej::::res://entities/character/player.tscn<>uid://2yp6rcuq8iat::::res://assets/musics/Game Of Thrones Theme (Sega Genesis 16-bit Remix) [KvRi_6ZVQaQ].mp3<>uid://cahknoag41kx2::::res://entities/enemies/golem.tscn
+world.tscn::PackedScene::3698728567189094284::1776719903::0::1::::<><><>0<>0<><>::uid://bvhivan33urlw::::res://scripts/world/world_background.gd<>uid://dm0p1dppqlhej::::res://entities/character/player.tscn<>uid://2yp6rcuq8iat::::res://assets/musics/Game Of Thrones Theme (Sega Genesis 16-bit Remix) [KvRi_6ZVQaQ].mp3<>uid://cahknoag41kx2::::res://entities/enemies/golem.tscn
 ::res://scripts/::1776346087
 game_over.gd::GDScript::2927309637036358606::1776346087::0::1::::<>Control<><>0<>0<><>::
 loading_screen.gd::GDScript::8130460147382116006::1775516237::0::1::::<>Control<><>0<>0<><>::
 main_menu.gd::GDScript::5943232818270325623::1776346087::0::1::::<>Control<><>0<>0<><>::
 options.gd::GDScript::-1::1776346087::0::1::::<>Control<><>0<>0<><>::
 volume_changer.gd::GDScript::-1::1776346087::0::1::::<>HSlider<><>0<>0<><>::
-::res://scripts/character/::1776465053
-player.gd::GDScript::6643314943719141795::1776465053::0::1::::<>CharacterBody2D<><>0<>0<><>::
-::res://scripts/enemies/::1776390621
-golem.gd::GDScript::300274152706124340::1776390621::0::1::::<>CharacterBody2D<><>0<>0<><>::
-::res://scripts/other/::1776375237
+::res://scripts/character/::1776719867
+player.gd::GDScript::6643314943719141795::1776719867::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://scripts/enemies/::1776719881
+golem.gd::GDScript::300274152706124340::1776719881::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://scripts/other/::1776720037
+camera.gd::GDScript::6784761487060151405::1776720037::0::1::::<>Camera2D<><>0<>0<><>::
 rock.gd::GDScript::1229868748354302823::1776346087::0::1::::<>Area2D<><>0<>0<><>::
 ::res://scripts/world/::1775517882
 world_background.gd::GDScript::3875360303377206896::1775517882::0::1::::<>Node2D<><>0<>0<><>::

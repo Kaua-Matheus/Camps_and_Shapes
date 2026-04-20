@@ -9,9 +9,13 @@ var player_ref = null
 @onready var wall_detector: RayCast2D = $WallDetector
 @onready var ground_detector: RayCast2D = $GroundDetector
 
-# Bone
+# Rock
 const ROCK = preload("uid://b6tgl8mkre3l2")
 @onready var rock_start_position: Node2D = $RockStartPosition
+
+@export var max_hp: int = 100
+var current_hp: int
+var is_dead: bool = false
 
 enum GolemState {
 	idle,
@@ -31,8 +35,13 @@ var status: GolemState
 
 var can_throw = true
 
-#func _ready() -> void:
-	#go_to_walk_state()
+func _ready() -> void:
+	
+	# Hp
+	current_hp = max_hp
+	
+	go_to_idle_state()
+
 
 func _physics_process(delta: float) -> void:
 	damage_timer -= delta * damage_cooldown
@@ -116,16 +125,21 @@ func idle_state(_delta):
 #func throw_rock():
 	#var new_rock = ROCK.instantiate()
 	#add_sibling(new_rock)
-	#new_rock.position = rock_start_position.global_position
+	#new_rock.position = roddddck_start_position.global_position
 	#new_rock.set_direction(self.direction)
 #
 #func _on_animated_sprite_2d_animation_finished() -> void:
 	#if animation.animation == "attack":
 		#go_to_walk_state()
 		#return
+		
+func die() -> void:
+	is_dead = true
+	queue_free()
 
 func on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
+		print("Detectei o player") # Is colliding
 		player_ref = body
 
 func on_body_exited(body: Node2D) -> void:

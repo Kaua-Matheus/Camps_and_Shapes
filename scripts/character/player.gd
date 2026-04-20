@@ -43,6 +43,7 @@ func _ready() -> void:
 	# Initialise hitbox offset
 	hitbox_offset = attack_hit_box.position
 	
+	
 	#music.play()
 	go_to_idle_state()
 
@@ -68,14 +69,17 @@ func _physics_process(delta: float) -> void:
 
 ## Go To ##
 func go_to_idle_state():
+	attack_hit_box.monitoring = false
 	status = PlayerState.idle
 	animation.play("idle")
 	
 func go_to_walk_state():
+	attack_hit_box.monitoring = false
 	status = PlayerState.walk
 	animation.play("walk")
 	
 func go_to_attack_state():
+	attack_hit_box.monitoring = true
 	status = PlayerState.attack
 	animation.play("attack")
 	velocity = Vector2.ZERO
@@ -106,6 +110,7 @@ func walk_state(_delta) -> void:
 
 func attack_state(_delta) -> void:
 	update_hitbox_offset()
+	
 	swing_attack.play() # Fix: Too long
 	
 	if animation.frame == 3:
@@ -121,10 +126,11 @@ func move(_delta: float):
 func update_direction():
 	update_hitbox_offset()
 	
-	if direction_vector[0] > 0:
-		animation.flip_h = false
-	elif direction_vector[0] < 0:
-		animation.flip_h = true
+	match  direction_vector:
+		Vector2.LEFT:
+			animation.flip_h = true
+		Vector2.RIGHT:
+			animation.flip_h = false
 
 
 func update_hitbox_offset() -> void:
@@ -173,5 +179,6 @@ func _style_health_bar() -> void:
 
 
 func _on_attack_hit_box_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Enemies"):
+	print(body.get_groups())
+	if body.is_in_group("Enemy"):
 		print("Hit")
