@@ -179,8 +179,6 @@ func _style_health_bar() -> void:
 
 # Attack the enemy
 func attack_body_entered(body: Node2D) -> void:
-	print("ataque body: {body}".format({"body": body}))
-
-# Receive an attack
-func hitbox_area_entered(body: Node2D) -> void:
-	print("hitbox body: {body}".format({"body": body}))
+	print(body.get_groups())
+	if body.is_in_group("Enemy"):
+		print("Hit")

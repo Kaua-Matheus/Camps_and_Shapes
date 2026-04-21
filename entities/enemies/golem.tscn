@@ -1,119 +1,11 @@
 [gd_scene format=3 uid="uid://so3e6gikuxc3"]
 
 [ext_resource type="Texture2D" uid="uid://dxt8atchbydwx" path="res://sprites/enemies/golem_idle.png" id="1_iv3j2"]
+[ext_resource type="Script" uid="uid://ch2otu2xqdpl7" path="res://scripts/enemies/golem.gd" id="1_xpmmt"]
 [ext_resource type="Texture2D" uid="uid://t8osetvlbsri" path="res://sprites/enemies/golem_walk.png" id="3_xpmmt"]
 
-[sub_resource type="GDScript" id="GDScript_aolpt"]
-script/source = "extends CharacterBody2D
-
-var player_ref = null
-
-@onready var animation: AnimatedSprite2D = $AnimatedSprite2D
-@onready var hitbox: Area2D = $Hitbox
-
-@export var max_hp: int = 100
-var current_hp: int
-var is_dead: bool = false
-
-enum GolemState {
-	idle,
-	walk,
-	attack,
-	#dead
-}
-
-const SPEED = 100
-const MELEE_RANGE: float = 40.0
-
-@export var damage_percent: float = 20.0
-var damage_cooldown: float = 1.5
-var damage_timer: float = 0.0
-
-var status: GolemState
-
-func _ready() -> void:
-	
-	# Hp
-	current_hp = max_hp
-	
-	go_to_idle_state()
-
-
-func _physics_process(delta: float) -> void:
-	damage_timer -= delta * damage_cooldown
-
-	if player_ref != null:
-		go_to_walk_state()
-		var distance: Vector2 = player_ref.global_position - global_position
-		var direction: Vector2 = distance.normalized()
-		var distance_length: float = distance.length()
-
-		if distance_length <= MELEE_RANGE:
-			velocity = Vector2.ZERO
-			if damage_timer <= 0.0:
-				player_ref.take_damage_percent(damage_percent)
-				damage_timer = damage_cooldown
-		else:
-			velocity = SPEED * direction
-
-	else:
-		velocity = Vector2.ZERO
-		go_to_idle_state()
-
-	#match status:
-		#GolemState.idle:
-			#idle_state(delta)
-		#GolemState.walk:
-			#walk_state(delta)
-		#GolemState.attack:
-			#attack_state(delta)
-		##GolemState.dead:
-			##dead_state(delta)
-
-	move_and_slide()
-	
-	
-func go_to_idle_state():
-	status = GolemState.idle
-	animation.play(\"idle\")
-	
-func go_to_walk_state():
-	status = GolemState.walk
-	animation.play(\"walk\")
-	
-#func go_to_attack_state():
-	#status = GolemState.attack
-	##animation.play(\"attack\")
-	#velocity = Vector2.ZERO
-	#can_throw = true
-	
-#func go_to_dead_state():
-	#status = GolemState.dead
-	#animation.play(\"dead\")
-	#velocity = Vector2.ZERO
-	#hitbox.process_mode = Node.PROCESS_MODE_DISABLED
-	
-	
-func idle_state(_delta):
-	pass
-	
-		
-func die() -> void:
-	is_dead = true
-	queue_free()
-
-
-func detection_area_entered(body: Node2D) -> void:
-	print(body.get_groups())
-	if body.is_in_group(\"Player\"):
-		player_ref = body
-
-func detection_area_exited(body: Node2D) -> void:
-	if body.is_in_group(\"Player\"):
-		player_ref = null
-"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpmmt"]
+size = Vector2(32, 56)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xpmmt"]
 animations = [{
@@ -134,34 +26,27 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iv3j2"]
-size = Vector2(32, 57)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_iv3j2"]
 radius = 96.0
 
 [node name="Golem" type="CharacterBody2D" unique_id=508143637 groups=["Enemy"]]
 collision_layer = 4
-script = SubResource("GDScript_aolpt")
+script = ExtResource("1_xpmmt")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=808002455]
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=808002455]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_xpmmt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=771735434]
 sprite_frames = SubResource("SpriteFrames_xpmmt")
 animation = &"walk"
 
-[node name="Hitbox" type="Area2D" parent="." unique_id=191144546]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1299002921]
-position = Vector2(0, 4.5)
-shape = SubResource("RectangleShape2D_iv3j2")
-debug_color = Color(0.9630814, 2.5027991e-06, 0.50363874, 0.41960785)
-
 [node name="DetectionArea" type="Area2D" parent="." unique_id=21715889]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1270918345]
 shape = SubResource("CircleShape2D_iv3j2")
 
-[connection signal="body_entered" from="DetectionArea" to="." method="detection_area_entered"]
-[connection signal="body_exited" from="DetectionArea" to="." method="detection_area_exited"]
+[connection signal="body_entered" from="DetectionArea" to="." method="player_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="player_body_exited"]

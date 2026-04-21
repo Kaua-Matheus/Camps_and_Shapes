@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://b8l13qct5qh87"]
+
+[ext_resource type="Script" uid="uid://c2qvsslh3nw7i" path="res://scripts/enemies/dummy.gd" id="1_uqg7a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vvrwi"]
+radius = 64.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvrwi"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqg7a"]
+size = Vector2(26, 42)
+
+[node name="Dummy" type="CharacterBody2D" unique_id=980164282 groups=["Enemy"]]
+collision_layer = 4
+script = ExtResource("1_uqg7a")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1839264187]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=594653067]
+shape = SubResource("CircleShape2D_vvrwi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1398375361]
+visible = false
+shape = SubResource("RectangleShape2D_vvrwi")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=874593035]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=884286451]
+shape = SubResource("RectangleShape2D_uqg7a")
+debug_color = Color(0.9379269, 1.6845763e-05, 0.62801564, 0.41960785)
+
+[connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

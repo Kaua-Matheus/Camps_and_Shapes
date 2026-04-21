@@ -1,8 +1,16 @@
 [gd_scene format=3 uid="uid://lbh05cirib3v"]
 
 [ext_resource type="PackedScene" uid="uid://dm0p1dppqlhej" path="res://entities/character/player.tscn" id="1_ariq3"]
+[ext_resource type="PackedScene" uid="uid://so3e6gikuxc3" path="res://entities/enemies/golem.tscn" id="2_vpw4t"]
+[ext_resource type="PackedScene" uid="uid://b8l13qct5qh87" path="res://entities/enemies/dummy.tscn" id="3_3gh0d"]
 
 [node name="DebugMap" type="Node2D" unique_id=1513895053]
 
 [node name="Player" parent="." unique_id=1449680644 instance=ExtResource("1_ariq3")]
-position = Vector2(576, 256)
+position = Vector2(256, 192)
+
+[node name="Golem" parent="." unique_id=508143637 instance=ExtResource("2_vpw4t")]
+position = Vector2(448, 248)
+
+[node name="Dummy" parent="." unique_id=980164282 instance=ExtResource("3_3gh0d")]
+position = Vector2(448, 88)
