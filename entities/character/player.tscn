@@ -76,6 +76,9 @@ height = 34.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xsky"]
 size = Vector2(10, 12)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ri2uq"]
+size = Vector2(34, 34)
+
 [node name="Player" type="CharacterBody2D" unique_id=1449680644 groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_1o8m5")
@@ -87,6 +90,7 @@ autoplay = "idle"
 frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=777931992]
+visible = false
 light_mask = 4
 visibility_layer = 2
 shape = SubResource("CapsuleShape2D_3ekpe")
@@ -101,6 +105,12 @@ position = Vector2(24, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitBox" unique_id=813196229]
 shape = SubResource("RectangleShape2D_0xsky")
 
+[node name="Hitbox" type="Area2D" parent="." unique_id=1783376620]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=191116982]
+shape = SubResource("RectangleShape2D_ri2uq")
+debug_color = Color(0.94502884, 6.4495207e-06, 0.596629, 0.41960785)
+
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1123456781]
 
 [node name="HealthBar" type="ProgressBar" parent="HUD" unique_id=1123456782]
@@ -111,4 +121,5 @@ offset_bottom = 24.0
 value = 100.0
 show_percentage = false
 
-[connection signal="body_entered" from="AttackHitBox" to="." method="_on_attack_hit_box_body_entered"]
+[connection signal="body_entered" from="AttackHitBox" to="." method="attack_body_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="hitbox_area_entered"]

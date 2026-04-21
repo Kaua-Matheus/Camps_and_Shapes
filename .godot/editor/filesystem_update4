@@ -1,6 +1,0 @@
-res://entities/other/camera.tscn
-res://scripts/other/camera.gd
-res://entities/character/player.tscn
-res://scenes/maps/world.tscn
-res://entities/enemies/golem.tscn
-res://scripts/enemies/golem.gd

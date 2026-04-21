@@ -177,8 +177,10 @@ func _style_health_bar() -> void:
 	bg.set_corner_radius_all(3)
 	health_bar.add_theme_stylebox_override("background", bg)
 
+# Attack the enemy
+func attack_body_entered(body: Node2D) -> void:
+	print("ataque body: {body}".format({"body": body}))
 
-func _on_attack_hit_box_body_entered(body: Node2D) -> void:
-	print(body.get_groups())
-	if body.is_in_group("Enemy"):
-		print("Hit")
+# Receive an attack
+func hitbox_area_entered(body: Node2D) -> void:
+	print("hitbox body: {body}".format({"body": body}))

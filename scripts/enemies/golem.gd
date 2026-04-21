@@ -1,147 +1,25 @@
 extends CharacterBody2D
 
-var player_ref = null
 
-@onready var animation: AnimatedSprite2D = $AnimatedSprite2D
-@onready var hitbox: Area2D = $HitBox
-
-# Raycast
-@onready var wall_detector: RayCast2D = $WallDetector
-@onready var ground_detector: RayCast2D = $GroundDetector
-
-# Rock
-const ROCK = preload("uid://b6tgl8mkre3l2")
-@onready var rock_start_position: Node2D = $RockStartPosition
-
-@export var max_hp: int = 100
-var current_hp: int
-var is_dead: bool = false
-
-enum GolemState {
-	idle,
-	walk,
-	attack,
-	#dead
-}
-
-const SPEED = 100
-const MELEE_RANGE: float = 40.0
-
-@export var damage_percent: float = 20.0
-var damage_cooldown: float = 1.5
-var damage_timer: float = 0.0
-
-var status: GolemState
-
-var can_throw = true
-
-func _ready() -> void:
-	
-	# Hp
-	current_hp = max_hp
-	
-	go_to_idle_state()
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
 
 
 func _physics_process(delta: float) -> void:
-	damage_timer -= delta * damage_cooldown
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 
-	if player_ref != null:
-		go_to_walk_state()
-		var distance: Vector2 = player_ref.global_position - global_position
-		var direction: Vector2 = distance.normalized()
-		var distance_length: float = distance.length()
+	# Handle jump.
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
 
-		if distance_length <= MELEE_RANGE:
-			velocity = Vector2.ZERO
-			if damage_timer <= 0.0:
-				player_ref.take_damage_percent(damage_percent)
-				damage_timer = damage_cooldown
-		else:
-			velocity = SPEED * direction
-
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction := Input.get_axis("ui_left", "ui_right")
+	if direction:
+		velocity.x = direction * SPEED
 	else:
-		velocity = Vector2.ZERO
-		go_to_idle_state()
-
-	#match status:
-		#GolemState.idle:
-			#idle_state(delta)
-		#GolemState.walk:
-			#walk_state(delta)
-		#GolemState.attack:
-			#attack_state(delta)
-		##GolemState.dead:
-			##dead_state(delta)
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-	
-	
-func go_to_idle_state():
-	status = GolemState.idle
-	animation.play("idle")
-	
-func go_to_walk_state():
-	status = GolemState.walk
-	animation.play("walk")
-	
-#func go_to_attack_state():
-	#status = GolemState.attack
-	##animation.play("attack")
-	#velocity = Vector2.ZERO
-	#can_throw = true
-	
-#func go_to_dead_state():
-	#status = GolemState.dead
-	#animation.play("dead")
-	#velocity = Vector2.ZERO
-	#hitbox.process_mode = Node.PROCESS_MODE_DISABLED
-	
-	
-func idle_state(_delta):
-	pass
-	
-#func walk_state(_delta):
-	#velocity.x = SPEED * direction
-	#
-	#if wall_detector.is_colliding():
-		#scale.x *= -1
-		#direction *= -1
-		
-	#if not ground_detector.is_colliding():
-		#scale.x *= -1
-		#direction *= -1
-	
-#func dead_state(_delta):
-	#pass
-#
-#func attack_state(_delta):
-	#throw_rock()
-	#can_throw = false
-#
-#func take_damage():
-	#go_to_dead_state()
-#
-#func throw_rock():
-	#var new_rock = ROCK.instantiate()
-	#add_sibling(new_rock)
-	#new_rock.position = roddddck_start_position.global_position
-	#new_rock.set_direction(self.direction)
-#
-#func _on_animated_sprite_2d_animation_finished() -> void:
-	#if animation.animation == "attack":
-		#go_to_walk_state()
-		#return
-		
-func die() -> void:
-	is_dead = true
-	queue_free()
-
-func on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		print("Detectei o player") # Is colliding
-		player_ref = body
-
-func on_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		player_ref = null
