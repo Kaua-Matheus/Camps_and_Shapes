@@ -212,7 +212,6 @@ text = "Sair do Jogo"
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1132684967]
 stream = ExtResource("3_bvgs0")
 volume_db = -20.0
-bus = &"backgroudMusic"
 
 [connection signal="pressed" from="MenuButtons/BtnNewGame" to="." method="_on_btn_new_game_pressed"]
 [connection signal="pressed" from="MenuButtons/BtnContinue" to="." method="_on_btn_continue_pressed"]

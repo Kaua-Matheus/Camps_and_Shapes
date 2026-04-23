@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://djkk5cjf3igeg"]
 
 [ext_resource type="AudioStream" uid="uid://2yp6rcuq8iat" path="res://assets/musics/Game Of Thrones Theme (Sega Genesis 16-bit Remix) [KvRi_6ZVQaQ].mp3" id="1_4m5bw"]
+[ext_resource type="Script" uid="uid://d4c2ypscdgqte" path="res://scenes/background_music.gd" id="1_83psx"]
 
 [node name="BackgroundMusic" type="Control" unique_id=1556299785]
 layout_mode = 3
@@ -9,8 +10,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_83psx")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1863086354]
 stream = ExtResource("1_4m5bw")
 autoplay = true
-bus = &"backgroudMusic"
+bus = &"backgroundMusic"
