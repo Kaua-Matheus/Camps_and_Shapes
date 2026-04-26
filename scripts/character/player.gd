@@ -29,6 +29,7 @@ var dash_cooldown_timer := 0.0
 # Attack
 @onready var attack_hit_box: Area2D = $AttackHitBox
 @onready var swing_attack: AudioStreamPlayer2D = $SwingAttack
+@export var damage_percent: float = 20.0
 
 
 # State Machine
@@ -219,4 +220,4 @@ func _style_health_bar() -> void:
 func attack_body_entered(body: Node2D) -> void:
 	print(body.get_groups())
 	if body.is_in_group("Enemy"):
-		print("Hit")
+		body.take_damage_percent(damage_percent)
