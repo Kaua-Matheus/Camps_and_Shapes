@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dam03qkh05kp3"]
 
-[ext_resource type="PackedScene" uid="uid://x6udxlrd668g" path="res://scenes/base_terrain.tscn" id="1_w7c3h"]
-[ext_resource type="PackedScene" uid="uid://dy6dcwlb0up7f" path="res://scenes/decoration_base_terrain.tscn" id="2_mx8sn"]
+[ext_resource type="PackedScene" uid="uid://x6udxlrd668g" path="res://scenes/maps/base_terrain.tscn" id="1_w7c3h"]
+[ext_resource type="PackedScene" uid="uid://dy6dcwlb0up7f" path="res://scenes/maps/decoration_base_terrain.tscn" id="2_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://dm0p1dppqlhej" path="res://entities/character/player.tscn" id="2_w8frs"]
-[ext_resource type="PackedScene" uid="uid://kbkc7xi7o6gh" path="res://scenes/trees.tscn" id="3_mx8sn"]
+[ext_resource type="PackedScene" uid="uid://kbkc7xi7o6gh" path="res://scenes/maps/trees.tscn" id="3_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://so3e6gikuxc3" path="res://entities/enemies/golem.tscn" id="5_ppgk2"]
 [ext_resource type="PackedScene" uid="uid://b2ut1ovkk3oc3" path="res://entities/other/camera.tscn" id="6_2r41h"]
 

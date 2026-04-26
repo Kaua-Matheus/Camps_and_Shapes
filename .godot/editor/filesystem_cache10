@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1777241915
+::res://::1777242357
 default_bus_layout.tres::AudioBusLayout::6131808079374925285::1777239665::0::1::::<><><>0<>0<><>::
 ::res://assets/::1777239665
 ::res://assets/audio/::1776466818
@@ -58,28 +58,29 @@ player.tscn::PackedScene::8054094985565680421::1776814723::0::1::::<><><>0<>0<><
 ::res://entities/enemies/::1776818764
 dummy.tscn::PackedScene::4726990167451304798::1776814578::0::1::::<><><>0<>0<><>::uid://c2qvsslh3nw7i::::res://scripts/enemies/dummy.gd
 golem.tscn::PackedScene::1294009330884840828::1776818764::0::1::::<><><>0<>0<><>::uid://dxt8atchbydwx::::res://sprites/enemies/golem_idle.png<>uid://ch2otu2xqdpl7::::res://scripts/enemies/golem.gd<>uid://t8osetvlbsri::::res://sprites/enemies/golem_walk.png
-::res://entities/other/::1776720144
-camera.tscn::PackedScene::4324007838741890200::1776720144::0::1::::<><><>0<>0<><>::uid://c3wubbf4ed1nt::::res://scripts/other/camera.gd
+::res://entities/other/::1777242297
+camera.tscn::PackedScene::4324007838741890200::1777242297::0::1::::<><><>0<>0<><>::uid://c3wubbf4ed1nt::::res://scripts/other/camera.gd
 rock.tscn::PackedScene::4601883711774263025::1776470903::0::1::::<><><>0<>0<><>::uid://rr00168t4ku6::::res://scripts/other/rock.gd<>uid://dtg0aj3uqxlrr::::res://sprites/other/rock.png
-::res://scenes/::1777241915
+::res://scenes/::1777242357
 background_music.gd::GDScript::9200550305700640362::1777239665::0::1::::<>Control<><>0<>0<><>::
-background_music.tscn::PackedScene::7812266284321859974::1777239665::0::1::::<><><>0<>0<><>::uid://2yp6rcuq8iat::::res://assets/musics/Game Of Thrones Theme (Sega Genesis 16-bit Remix) [KvRi_6ZVQaQ].mp3<>uid://d4c2ypscdgqte::::res://scenes/background_music.gd
-base_terrain.tscn::PackedScene::1679560037095210348::1777239665::0::1::::<><><>0<>0<><>::uid://bsopj6ippgqae::::res://assets/tilesets/grass.png<>uid://b2xeycxpskipl::::res://assets/tilesets/plains.png
-decoration_base_terrain.tscn::PackedScene::8907976903920242705::1777239665::0::1::::<><><>0<>0<><>::uid://ugffe4ljt35d::::res://assets/tilesets/decor_16x16.png
-level.tscn::PackedScene::7185603367350813218::1777241561::0::1::::<><><>0<>0<><>::uid://x6udxlrd668g::::res://scenes/base_terrain.tscn<>uid://dy6dcwlb0up7f::::res://scenes/decoration_base_terrain.tscn<>uid://dm0p1dppqlhej::::res://entities/character/player.tscn<>uid://kbkc7xi7o6gh::::res://scenes/trees.tscn<>uid://so3e6gikuxc3::::res://entities/enemies/golem.tscn<>uid://b2ut1ovkk3oc3::::res://entities/other/camera.tscn
-trees.tscn::PackedScene::704565272334396671::1777239665::0::1::::<><><>0<>0<><>::uid://dlx1a7h7oixwr::::res://assets/objects/objects.png
-::res://scenes/interface/::1777239665
+background_music.tscn::PackedScene::7812266284321859974::1777242376::0::1::::<><><>0<>0<><>::uid://2yp6rcuq8iat::::res://assets/musics/Game Of Thrones Theme (Sega Genesis 16-bit Remix) [KvRi_6ZVQaQ].mp3<>uid://d4c2ypscdgqte::::res://scenes/maps/background_music.gd
+::res://scenes/interface/::1777242275
 game_over.tscn::PackedScene::2577844231306522221::1775516237::0::1::::<><><>0<>0<><>::res://scripts/game_over.gd<>uid://bfmp2g024dovf::::res://assets/font/upheavtt.ttf
 loading_screen.tscn::PackedScene::1689044330819988739::1776346087::0::1::::<><><>0<>0<><>::uid://dn3pqxkr7mhte::::res://scripts/loading_screen.gd<>uid://bfmp2g024dovf::::res://assets/font/upheavtt.ttf<>uid://b4jibtu13frqs::::res://sprites/character/player/slime_boboca.png
 main_menu.tscn::PackedScene::8374950271290280314::1777239665::0::1::::<><><>0<>0<><>::uid://cqw7f8xmbp2nj::::res://scripts/main_menu.gd<>uid://bfmp2g024dovf::::res://assets/font/upheavtt.ttf<>uid://2yp6rcuq8iat::::res://assets/musics/Game Of Thrones Theme (Sega Genesis 16-bit Remix) [KvRi_6ZVQaQ].mp3
 options.tscn::PackedScene::263449756439024676::1776346096::0::1::::<><><>0<>0<><>::uid://ickv6vt0xbqb::::res://scripts/options.gd<>uid://bfmp2g024dovf::::res://assets/font/upheavtt.ttf<>uid://bsiued1jhrc2w::::res://scripts/volume_changer.gd
-::res://scenes/maps/::1777241915
+::res://scenes/maps/::1777242360
+base_terrain.tscn::PackedScene::1679560037095210348::1777239665::0::1::::<><><>0<>0<><>::uid://bsopj6ippgqae::::res://assets/tilesets/grass.png<>uid://b2xeycxpskipl::::res://assets/tilesets/plains.png
+decoration_base_terrain.tscn::PackedScene::8907976903920242705::1777239665::0::1::::<><><>0<>0<><>::uid://ugffe4ljt35d::::res://assets/tilesets/decor_16x16.png
+level.tscn::PackedScene::7185603367350813218::1777242360::0::1::::<><><>0<>0<><>::uid://x6udxlrd668g::::res://scenes/maps/base_terrain.tscn<>uid://dy6dcwlb0up7f::::res://scenes/maps/decoration_base_terrain.tscn<>uid://dm0p1dppqlhej::::res://entities/character/player.tscn<>uid://kbkc7xi7o6gh::::res://scenes/maps/trees.tscn<>uid://so3e6gikuxc3::::res://entities/enemies/golem.tscn<>uid://b2ut1ovkk3oc3::::res://entities/other/camera.tscn
+trees.tscn::PackedScene::704565272334396671::1777239665::0::1::::<><><>0<>0<><>::uid://dlx1a7h7oixwr::::res://assets/objects/objects.png
+::res://scenes/maps/test/::1777242288
 debug_map.tscn::PackedScene::774612900746034465::1777241222::0::1::::<><><>0<>0<><>::uid://dm0p1dppqlhej::::res://entities/character/player.tscn<>uid://so3e6gikuxc3::::res://entities/enemies/golem.tscn<>uid://b8l13qct5qh87::::res://entities/enemies/dummy.tscn
 world.tscn::PackedScene::3698728567189094284::1777240166::0::1::::<><><>0<>0<><>::uid://bvhivan33urlw::::res://scripts/world/world_background.gd<>uid://dm0p1dppqlhej::::res://entities/character/player.tscn<>uid://2yp6rcuq8iat::::res://assets/musics/Game Of Thrones Theme (Sega Genesis 16-bit Remix) [KvRi_6ZVQaQ].mp3<>uid://so3e6gikuxc3::::res://entities/enemies/golem.tscn<>uid://b2ut1ovkk3oc3::::res://entities/other/camera.tscn
 ::res://scripts/::1777239665
 game_over.gd::GDScript::2927309637036358606::1776346087::0::1::::<>Control<><>0<>0<><>::
 loading_screen.gd::GDScript::8130460147382116006::1775516237::0::1::::<>Control<><>0<>0<><>::
-main_menu.gd::GDScript::5943232818270325623::1776346087::0::1::::<>Control<><>0<>0<><>::
+main_menu.gd::GDScript::5943232818270325623::1777242376::0::1::::<>Control<><>0<>0<><>::
 options.gd::GDScript::566285837774380429::1776346087::0::1::::<>Control<><>0<>0<><>::
 volume_changer.gd::GDScript::3667556572395020876::1777239665::0::1::::<>HSlider<><>0<>0<><>::
 ::res://scripts/character/::1777241258

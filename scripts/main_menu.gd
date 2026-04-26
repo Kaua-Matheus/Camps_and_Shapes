@@ -1,7 +1,7 @@
 extends Control
 
 const SAVE_FILE := "user://save.dat"
-const GAME_SCENE := "res://scenes/maps/world.tscn"
+const GAME_SCENE := "res://scenes/maps/level.tscn"
 const OPTION_SCENE := "res://scenes/interface/options.tscn"
 
 func _ready() -> void:
