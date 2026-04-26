@@ -4,8 +4,9 @@ var player_ref = null
 
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 
-@export var max_hp: int = 100
+@export var max_hp: int = 20
 var current_hp: int
+
 var is_dead: bool = false
 
 enum GolemState {
@@ -94,6 +95,17 @@ func idle_state(_delta):
 func die() -> void:
 	is_dead = true
 	queue_free()
+	
+	
+func take_damage(amount: int) -> void:
+	if is_dead:
+		return
+	current_hp = max(current_hp - amount, 0)
+	if current_hp <= 0:
+		die()
+
+func take_damage_percent(percent: float) -> void:
+	take_damage(int(max_hp * percent / 20.0))
 
 
 func player_body_entered(body: Node2D) -> void:
