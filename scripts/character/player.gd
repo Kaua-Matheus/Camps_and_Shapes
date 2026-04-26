@@ -64,6 +64,11 @@ func _physics_process(delta: float) -> void:
 		Input.get_action_strength("Right") - Input.get_action_strength("Left"),
 		Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	).normalized()
+	
+	#if Input.is_action_just_pressed("Menu"):
+		#get_tree().paused = true
+	#else:
+		#get_tree().paused = false
 
 	handle_dash_input()
 	handle_dash(delta)

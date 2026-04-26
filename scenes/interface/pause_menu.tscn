@@ -1,0 +1,216 @@
+[gd_scene format=3 uid="uid://citfy7u7hy227"]
+
+[ext_resource type="Script" uid="uid://c8xopwb20m2p6" path="res://scripts/pause_menu.gd" id="1_mj702"]
+[ext_resource type="FontFile" uid="uid://bfmp2g024dovf" path="res://assets/font/upheavtt.ttf" id="1_pqqti"]
+[ext_resource type="AudioStream" uid="uid://2yp6rcuq8iat" path="res://assets/musics/Game Of Thrones Theme (Sega Genesis 16-bit Remix) [KvRi_6ZVQaQ].mp3" id="2_mj702"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wt7b"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.1, 0.07, 0.2, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.5, 0.2, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_35s3h"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.06, 0.04, 0.12, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.5, 0.2, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t20f4"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.2, 0.14, 0.35, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.8, 0.3, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7b6p"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.08, 0.08, 0.1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.3, 0.3, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n31g7"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.8, 0.3, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="Pause_Menu" type="Control" unique_id=344887031]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mj702")
+
+[node name="Background" type="ColorRect" parent="." unique_id=380786793]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06, 0.04, 0.12, 1)
+
+[node name="TitleLabel" type="Label" parent="." unique_id=52369915]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 48.0
+offset_right = 240.0
+offset_bottom = 108.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.98, 0.88, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0.35, 0.15, 0, 0.85)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("1_pqqti")
+theme_override_font_sizes/font_size = 44
+text = "Camps and Shapes"
+horizontal_alignment = 1
+
+[node name="TaglineLabel" type="Label" parent="." unique_id=307743719]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -220.0
+offset_top = 114.0
+offset_right = 220.0
+offset_bottom = 140.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.65, 0.55, 0.35, 1)
+theme_override_fonts/font = ExtResource("1_pqqti")
+theme_override_font_sizes/font_size = 14
+text = "Um slime em busca de suas memórias..."
+horizontal_alignment = 1
+
+[node name="MenuButtons" type="VBoxContainer" parent="." unique_id=1047282]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -20.0
+offset_right = 110.0
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="BtnContinue" type="Button" parent="MenuButtons" unique_id=1523433528]
+custom_minimum_size = Vector2(220, 38)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.88, 0.4, 1)
+theme_override_colors/font_pressed_color = Color(0.75, 0.65, 0.28, 1)
+theme_override_colors/font_hover_color = Color(1, 0.97, 0.65, 1)
+theme_override_colors/font_disabled_color = Color(0.38, 0.38, 0.38, 1)
+theme_override_fonts/font = ExtResource("1_pqqti")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_6wt7b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_35s3h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t20f4")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_o7b6p")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n31g7")
+text = "Continuar"
+
+[node name="BtnCarregarSave" type="Button" parent="MenuButtons" unique_id=31289959]
+custom_minimum_size = Vector2(220, 38)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.88, 0.4, 1)
+theme_override_colors/font_pressed_color = Color(0.75, 0.65, 0.28, 1)
+theme_override_colors/font_hover_color = Color(1, 0.97, 0.65, 1)
+theme_override_colors/font_disabled_color = Color(0.38, 0.38, 0.38, 1)
+theme_override_fonts/font = ExtResource("1_pqqti")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_6wt7b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_35s3h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t20f4")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_o7b6p")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n31g7")
+text = "CARREGAR SAVE"
+
+[node name="BtnNewGame" type="Button" parent="MenuButtons" unique_id=131993104]
+custom_minimum_size = Vector2(220, 38)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.88, 0.4, 1)
+theme_override_colors/font_pressed_color = Color(0.75, 0.65, 0.28, 1)
+theme_override_colors/font_hover_color = Color(1, 0.97, 0.65, 1)
+theme_override_fonts/font = ExtResource("1_pqqti")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_6wt7b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_35s3h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t20f4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n31g7")
+text = "Novo Jogo"
+
+[node name="BtnQuit" type="Button" parent="MenuButtons" unique_id=893343174]
+custom_minimum_size = Vector2(220, 38)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.88, 0.4, 1)
+theme_override_colors/font_pressed_color = Color(0.75, 0.65, 0.28, 1)
+theme_override_colors/font_hover_color = Color(1, 0.97, 0.65, 1)
+theme_override_fonts/font = ExtResource("1_pqqti")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_6wt7b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_35s3h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t20f4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_n31g7")
+text = "Sair do Jogo"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1238137903]
+stream = ExtResource("2_mj702")
+volume_db = -20.0
+
+[connection signal="pressed" from="MenuButtons/BtnContinue" to="." method="_on_btn_continue_pressed"]
+[connection signal="pressed" from="MenuButtons/BtnQuit" to="." method="_on_btn_quit_pressed"]
