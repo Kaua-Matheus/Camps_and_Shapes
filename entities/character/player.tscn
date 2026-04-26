@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dycyu7ouors2s" path="res://sprites/character/player/walk/slime_walk_right3.png" id="8_g7m1y"]
 [ext_resource type="Texture2D" uid="uid://igf1rqq7r2ca" path="res://sprites/character/player/walk/slime_walk_right4.png" id="9_4g463"]
 [ext_resource type="AudioStream" uid="uid://ds44kfu1wot6b" path="res://assets/audio/whoosh.wav" id="14_0xsky"]
+[ext_resource type="PackedScene" uid="uid://citfy7u7hy227" path="res://scenes/interface/pause_menu.tscn" id="15_ri2uq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h7vl7"]
 animations = [{
@@ -104,6 +105,8 @@ collision_mask = 4
 shape = SubResource("RectangleShape2D_0xsky")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1123456781]
+
+[node name="Pause_Menu" parent="HUD" unique_id=344887031 instance=ExtResource("15_ri2uq")]
 
 [node name="HealthBar" type="ProgressBar" parent="HUD" unique_id=1123456782]
 offset_left = 8.0
