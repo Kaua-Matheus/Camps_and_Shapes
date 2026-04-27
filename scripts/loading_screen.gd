@@ -1,6 +1,6 @@
 extends Control
 
-const NEXT_SCENE := "res://scenes/main_menu.tscn"
+const NEXT_SCENE := "res://scenes/interface/main_menu.tscn"
 const MIN_LOAD_TIME := 2.0
 
 const TIPS: Array[String] = [

@@ -1,7 +1,7 @@
 extends Control
 
 const MAIN_MENU_SCENE := "res://scenes/interface/main_menu.tscn"
-const GAME_SCENE := "res://scenes/maps/world.tscn"
+const GAME_SCENE := "res://scenes/maps/level.tscn"
 
 func _on_btn_continue_pressed() -> void:
 	get_tree().change_scene_to_file(GAME_SCENE)

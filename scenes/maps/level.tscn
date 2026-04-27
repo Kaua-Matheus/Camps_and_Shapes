@@ -37,6 +37,15 @@ position = Vector2(100, 192)
 [node name="Golem" parent="Entities" unique_id=1402557020 instance=ExtResource("5_ppgk2")]
 position = Vector2(541, 195)
 
+[node name="Golem2" parent="Entities" unique_id=508143637 instance=ExtResource("5_ppgk2")]
+position = Vector2(640, 117)
+
+[node name="Golem3" parent="Entities" unique_id=1689362957 instance=ExtResource("5_ppgk2")]
+position = Vector2(369, 283)
+
+[node name="Golem4" parent="Entities" unique_id=2004344807 instance=ExtResource("5_ppgk2")]
+position = Vector2(381, 93)
+
 [node name="Camera" parent="." unique_id=708719624 instance=ExtResource("6_2r41h")]
 position = Vector2(384, 192)
 limit_left = 0
