@@ -6,10 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://kbkc7xi7o6gh" path="res://scenes/maps/trees.tscn" id="3_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://so3e6gikuxc3" path="res://entities/enemies/golem.tscn" id="5_ppgk2"]
 [ext_resource type="PackedScene" uid="uid://b2ut1ovkk3oc3" path="res://entities/other/camera.tscn" id="6_2r41h"]
+[ext_resource type="PackedScene" uid="uid://citfy7u7hy227" path="res://scenes/interface/pause_menu.tscn" id="7_fcvth"]
 
 [node name="Level" type="Node2D" unique_id=2029175643]
 metadata/_edit_vertical_guides_ = [0.0, 2304.0]
 metadata/_edit_horizontal_guides_ = [384.0]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1846879957]
+
+[node name="Pause_Menu" parent="CanvasLayer" unique_id=344887031 instance=ExtResource("7_fcvth")]
+visible = false
 
 [node name="Terrain" type="Node2D" parent="." unique_id=612078401]
 

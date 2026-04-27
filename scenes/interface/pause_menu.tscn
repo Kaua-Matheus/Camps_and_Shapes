@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c8xopwb20m2p6" path="res://scripts/pause_menu.gd" id="1_mj702"]
 [ext_resource type="FontFile" uid="uid://bfmp2g024dovf" path="res://assets/font/upheavtt.ttf" id="1_pqqti"]
-[ext_resource type="AudioStream" uid="uid://2yp6rcuq8iat" path="res://assets/musics/Game Of Thrones Theme (Sega Genesis 16-bit Remix) [KvRi_6ZVQaQ].mp3" id="2_mj702"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wt7b"]
 content_margin_left = 12.0
@@ -81,6 +80,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [node name="Pause_Menu" type="Control" unique_id=344887031]
+z_index = 10
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -207,10 +207,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_35s3h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_t20f4")
 theme_override_styles/focus = SubResource("StyleBoxFlat_n31g7")
 text = "Sair do Jogo"
-
-[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1238137903]
-stream = ExtResource("2_mj702")
-volume_db = -20.0
 
 [connection signal="pressed" from="MenuButtons/BtnContinue" to="." method="_on_btn_continue_pressed"]
 [connection signal="pressed" from="MenuButtons/BtnQuit" to="." method="_on_btn_quit_pressed"]

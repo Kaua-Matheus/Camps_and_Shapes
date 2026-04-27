@@ -26,9 +26,6 @@ var dash_cooldown_timer := 0.0
 # Health Bar
 @onready var health_bar: ProgressBar = $HUD/HealthBar
 
-# Pause Menu
-@onready var pause_menu: Control = $HUD/Pause_Menu
-
 # Attack
 @onready var attack_hit_box: Area2D = $AttackHitBox
 @onready var swing_attack: AudioStreamPlayer2D = $SwingAttack
@@ -57,9 +54,6 @@ func _ready() -> void:
 	# Initialise hitbox offset
 	hitbox_offset = attack_hit_box.position
 	
-	# Pause Menu
-	pause_menu.visible = false
-	
 	#music.play()
 	go_to_idle_state()
 
@@ -70,8 +64,6 @@ func _physics_process(delta: float) -> void:
 		Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	).normalized()
 	
-	if Input.is_action_just_pressed("Menu"):
-		toggle_pause()
 
 	handle_dash_input()
 	handle_dash(delta)
@@ -229,20 +221,3 @@ func attack_body_entered(body: Node2D) -> void:
 	print(body.get_groups())
 	if body.is_in_group("Enemy"):
 		body.take_damage_percent(damage_percent)
-
-
-## --- HUD --- ###
-# Pause
-func toggle_pause():
-	if get_tree().paused:
-		pause_game()
-	else:
-		resume_game()
-	
-func pause_game():
-	get_tree().paused = true
-	pause_menu.visible = true
-
-func resume_game():
-	get_tree().paused = false
-	pause_menu.visible = false
