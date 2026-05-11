@@ -36,7 +36,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	damage_timer -= delta * damage_cooldown
 
-	if player_ref != null:
+	if is_instance_valid(player_ref):
 		go_to_walk_state()
 		var distance: Vector2 = player_ref.global_position - global_position
 		var direction: Vector2 = distance.normalized()
@@ -114,6 +114,5 @@ func player_body_entered(body: Node2D) -> void:
 		player_ref = body
 
 
-func player_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		player_ref = null
+func player_body_exited(_body: Node2D) -> void:
+	pass
