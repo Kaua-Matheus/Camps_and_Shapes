@@ -6,7 +6,6 @@ const GAME_OVER_SCENE := "res://scenes/interface/game_over.tscn"
 @export var max_hp: int = 100
 @export var dash_speed: int = 700
 @export var dash_time: float = 0.2
-@export var dash_cooldown: float = 0.5
 
 var current_hp: int
 var is_dead: bool = false
@@ -18,7 +17,20 @@ var last_dash_input_time := 0.0
 var is_dashing := false
 var dash_timer := 0.0
 var dash_direction := Vector2.ZERO
-var dash_cooldown_timer := 0.0
+const DASH_CD: float = 5.0
+const HEAL_CD: float = 8.0
+const HEAL_AMOUNT: int = 30
+const DAMAGE_CD: float = 12.0
+const DAMAGE_BOOST_DURATION: float = 4.0
+const DAMAGE_BOOST_MULTIPLIER: float = 2.0
+
+var _dash_cd: float = 0.0
+var _heal_cd: float = 0.0
+var _damage_cd: float = 0.0
+var _damage_boost_remaining: float = 0.0
+var _damage_boosted: bool = false
+var _skill_overlays: Array = []
+var _skill_labels: Array = []
 
 # Animation
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
@@ -53,6 +65,7 @@ func _ready() -> void:
 
 	if SaveManager.is_continuing:
 		_apply_save_data()
+	_setup_skill_hud()
 
 func _apply_save_data() -> void:
 	var data := SaveManager.load_save()
@@ -75,6 +88,7 @@ func _physics_process(delta: float) -> void:
 
 	handle_dash_input()
 	handle_dash(delta)
+	_handle_skills(delta)
 
 	match status:
 		PlayerState.idle:
@@ -94,22 +108,19 @@ func handle_dash_input():
 			start_dash(direction_vector)
 			
 func start_dash(dir: Vector2):
-	if is_dashing or dash_cooldown_timer > 0:
+	if is_dashing or _dash_cd > 0.0:
 		return
 	is_dashing = true
 	dash_timer = dash_time
 	dash_direction = dir
 
 func handle_dash(delta):
-	if dash_cooldown_timer > 0:
-		dash_cooldown_timer -= delta
-
 	if is_dashing:
 		velocity = dash_direction * dash_speed
 		dash_timer -= delta
 		if dash_timer <= 0:
 			is_dashing = false
-			dash_cooldown_timer = dash_cooldown
+			_dash_cd = DASH_CD
 			velocity = Vector2.ZERO
 
 ## Go To ##
@@ -228,4 +239,103 @@ func _style_health_bar() -> void:
 func attack_body_entered(body: Node2D) -> void:
 	print(body.get_groups())
 	if body.is_in_group("Enemy"):
-		body.take_damage_percent(damage_percent)
+		var dmg := damage_percent * (DAMAGE_BOOST_MULTIPLIER if _damage_boosted else 1.0)
+		body.take_damage_percent(dmg)
+
+# ─── Skills ────────────────────────────────────────────────────
+
+func _handle_skills(delta: float) -> void:
+	_dash_cd = max(_dash_cd - delta, 0.0)
+	_heal_cd = max(_heal_cd - delta, 0.0)
+	_damage_cd = max(_damage_cd - delta, 0.0)
+	_damage_boost_remaining = max(_damage_boost_remaining - delta, 0.0)
+
+	if _damage_boosted and _damage_boost_remaining <= 0.0:
+		_damage_boosted = false
+		animation.modulate = Color.WHITE
+
+	if Input.is_action_just_pressed("Skill_Heal") and _heal_cd <= 0.0:
+		_use_heal()
+
+	if Input.is_action_just_pressed("Skill_Damage") and _damage_cd <= 0.0:
+		_use_damage_boost()
+
+	_update_skill_hud()
+
+func _use_heal() -> void:
+	current_hp = min(current_hp + HEAL_AMOUNT, max_hp)
+	health_bar.value = current_hp
+	_heal_cd = HEAL_CD
+
+func _use_damage_boost() -> void:
+	_damage_boosted = true
+	_damage_boost_remaining = DAMAGE_BOOST_DURATION
+	_damage_cd = DAMAGE_CD
+	animation.modulate = Color(1.4, 0.7, 0.2)
+
+# ─── Skill HUD ─────────────────────────────────────────────────
+
+func _setup_skill_hud() -> void:
+	var hud: CanvasLayer = $HUD
+	var colors := [Color(0.2, 0.5, 1.0, 0.9), Color(0.2, 0.78, 0.3, 0.9), Color(0.9, 0.3, 0.2, 0.9)]
+	var ready_texts := ["DASH", "HEAL", "DMG+"]
+	var key_hints := ["RMB", "[ 1 ]", "[ 2 ]"]
+	var icon_size := 40
+	var gap := 4
+	var start_x := 8
+	var start_y := 28
+
+	for i in range(3):
+		var x := start_x + i * (icon_size + gap)
+
+		var bg := ColorRect.new()
+		bg.position = Vector2(x, start_y)
+		bg.size = Vector2(icon_size, icon_size)
+		bg.color = colors[i]
+		hud.add_child(bg)
+
+		var overlay := ColorRect.new()
+		overlay.position = Vector2(x, start_y)
+		overlay.size = Vector2(icon_size, 0.0)
+		overlay.color = Color(0.0, 0.0, 0.0, 0.78)
+		hud.add_child(overlay)
+		_skill_overlays.append(overlay)
+
+		var hint := Label.new()
+		hint.position = Vector2(x, start_y + icon_size - 12)
+		hint.size = Vector2(icon_size, 12)
+		hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		hint.add_theme_color_override("font_color", Color(1, 1, 1, 0.7))
+		hint.add_theme_font_size_override("font_size", 7)
+		hint.text = key_hints[i]
+		hud.add_child(hint)
+
+		var lbl := Label.new()
+		lbl.position = Vector2(x, start_y)
+		lbl.size = Vector2(icon_size, icon_size - 12)
+		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		lbl.add_theme_color_override("font_color", Color.WHITE)
+		lbl.add_theme_font_size_override("font_size", 9)
+		lbl.text = ready_texts[i]
+		hud.add_child(lbl)
+		_skill_labels.append(lbl)
+
+func _update_skill_hud() -> void:
+	if _skill_overlays.is_empty():
+		return
+	var timers := [_dash_cd, _heal_cd, _damage_cd]
+	var max_cds := [DASH_CD, HEAL_CD, DAMAGE_CD]
+	var ready_texts := ["DASH", "HEAL", "DMG+"]
+	var icon_size := 40.0
+
+	for i in range(3):
+		var t: float = timers[i]
+		var overlay: ColorRect = _skill_overlays[i]
+		var lbl: Label = _skill_labels[i]
+		if t > 0.0:
+			overlay.size.y = (t / max_cds[i]) * icon_size
+			lbl.text = str(ceili(t))
+		else:
+			overlay.size.y = 0.0
+			lbl.text = ready_texts[i]
