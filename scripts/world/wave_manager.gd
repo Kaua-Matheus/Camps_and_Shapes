@@ -26,11 +26,17 @@ func _process(delta: float) -> void:
 		player_ref = get_tree().get_first_node_in_group("Player")
 		if player_ref == null:
 			return
-		# Jogador encontrado — inicia primeira onda imediatamente
-		current_wave = 0
-		wave_timer = 0.0
 		_last_countdown = -1
-		_spawn_wave()
+		if SaveManager.is_continuing:
+			var data := SaveManager.load_save()
+			var wd: Dictionary = data.get("wave", {})
+			current_wave = int(wd.get("current_wave", 0))
+			wave_timer = float(wd.get("wave_timer", 0.0))
+			SaveManager.is_continuing = false
+		else:
+			current_wave = 0
+			wave_timer = 0.0
+			_spawn_wave()
 		return
 
 	wave_timer += delta

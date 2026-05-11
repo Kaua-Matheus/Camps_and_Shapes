@@ -28,6 +28,7 @@ func _on_btn_continue_pressed() -> void:
 	resume()
 
 func _on_btn_quit_pressed() -> void:
+	SaveManager.save_game()
 	get_tree().quit()
 
 func _process(_delta: float) -> void:

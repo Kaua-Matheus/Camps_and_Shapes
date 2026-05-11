@@ -22,6 +22,7 @@ buses/default_bus_layout="uid://ctmj8otwenia4"
 
 BackgroundMusic="*uid://djkk5cjf3igeg"
 WaveManager="*res://scripts/world/wave_manager.gd"
+SaveManager="*res://scripts/world/save_manager.gd"
 
 [display]
 

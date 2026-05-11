@@ -44,18 +44,26 @@ var status: PlayerState
 #var music := BackgroundMusic.get_node_or_null("AudioStreamPlayer2D")
 
 func _ready() -> void:
-	
-	# Hp
 	current_hp = max_hp
 	health_bar.max_value = max_hp
 	health_bar.value = current_hp
 	_style_health_bar()
-	
-	# Initialise hitbox offset
 	hitbox_offset = attack_hit_box.position
-	
-	#music.play()
 	go_to_idle_state()
+
+	if SaveManager.is_continuing:
+		_apply_save_data()
+
+func _apply_save_data() -> void:
+	var data := SaveManager.load_save()
+	if data.is_empty():
+		return
+	var p: Dictionary = data.get("player", {})
+	if p.has("pos_x") and p.has("pos_y"):
+		global_position = Vector2(float(p["pos_x"]), float(p["pos_y"]))
+	if p.has("current_hp"):
+		current_hp = int(p["current_hp"])
+		health_bar.value = current_hp
 
 func _physics_process(delta: float) -> void:
 		
