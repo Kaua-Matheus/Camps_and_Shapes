@@ -13,7 +13,6 @@ config_version=5
 config/name="Camps And Shapes"
 run/main_scene="uid://ycgkwifddbp0"
 config/features=PackedStringArray("4.6", "Forward Plus")
-<<<<<<<HEADrun/main_scene="uid://drk5hbytqe3pm"
 
 [audio]
 
@@ -22,6 +21,7 @@ buses/default_bus_layout="uid://ctmj8otwenia4"
 [autoload]
 
 BackgroundMusic="*uid://djkk5cjf3igeg"
+WaveManager="*res://scripts/world/wave_manager.gd"
 
 [display]
 

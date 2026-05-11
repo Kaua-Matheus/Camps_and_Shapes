@@ -16,8 +16,8 @@ enum GolemState {
 	#dead
 }
 
-const SPEED = 100
-const MELEE_RANGE: float = 40.0
+@export var speed: int = 100
+@export var melee_range: float = 40.0
 
 @export var damage_percent: float = 20.0
 var damage_cooldown: float = 1.5
@@ -42,13 +42,13 @@ func _physics_process(delta: float) -> void:
 		var direction: Vector2 = distance.normalized()
 		var distance_length: float = distance.length()
 
-		if distance_length <= MELEE_RANGE:
+		if distance_length <= melee_range:
 			velocity = Vector2.ZERO
 			if damage_timer <= 0.0:
 				player_ref.take_damage_percent(damage_percent)
 				damage_timer = damage_cooldown
 		else:
-			velocity = SPEED * direction
+			velocity = speed * direction
 
 	else:
 		velocity = Vector2.ZERO
