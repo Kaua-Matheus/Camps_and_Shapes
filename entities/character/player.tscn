@@ -74,7 +74,6 @@ radius = 17.0
 height = 34.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xsky"]
-size = Vector2(10, 12)
 
 [node name="Player" type="CharacterBody2D" unique_id=1449680644 groups=["Player"]]
 collision_layer = 2
@@ -96,7 +95,7 @@ stream = ExtResource("14_0xsky")
 pitch_scale = 3.0
 
 [node name="AttackHitBox" type="Area2D" parent="." unique_id=1543295464]
-position = Vector2(24, 0)
+position = Vector2(29, 0)
 collision_layer = 2
 collision_mask = 4
 
