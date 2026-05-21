@@ -36,6 +36,7 @@ func _process(delta: float) -> void:
 		else:
 			current_wave = 0
 			wave_timer = 0.0
+			BossManager.reset()
 			_spawn_wave()
 		return
 
