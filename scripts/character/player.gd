@@ -9,18 +9,26 @@ const GAME_OVER_SCENE := "res://scenes/interface/game_over.tscn"
 
 var current_hp: int
 var is_dead: bool = false
+
+# Hitbox Var
 var hitbox_offset: Vector2
+
+# Direction Vector
 var direction_vector: Vector2
 
+# Dash
 var last_dash_direction := Vector2.ZERO
 var last_dash_input_time := 0.0
 var is_dashing := false
 var dash_timer := 0.0
 var dash_direction := Vector2.ZERO
+
+# Cooldowns
 const DASH_CD: float = 5.0
 const HEAL_CD: float = 8.0
-const HEAL_AMOUNT: int = 30
 const DAMAGE_CD: float = 12.0
+
+const HEAL_AMOUNT: int = 30
 const DAMAGE_BOOST_DURATION: float = 4.0
 const DAMAGE_BOOST_MULTIPLIER: float = 2.0
 
@@ -46,14 +54,18 @@ var _skill_labels: Array = []
 
 # State Machine
 enum PlayerState {
+	# Player Inflicts
 	idle,
 	walk,
 	attack,
-	#dead
+	dash,
+	
+	# Player Inflicted
+	attacked,
+	dead,
 }
 
 var status: PlayerState
-#var music := BackgroundMusic.get_node_or_null("AudioStreamPlayer2D")
 
 func _ready() -> void:
 	current_hp = max_hp
@@ -78,6 +90,7 @@ func _apply_save_data() -> void:
 		current_hp = int(p["current_hp"])
 		health_bar.value = current_hp
 
+# Main Process
 func _physics_process(delta: float) -> void:
 		
 	direction_vector = Vector2(
@@ -91,14 +104,25 @@ func _physics_process(delta: float) -> void:
 	_handle_skills(delta)
 
 	match status:
+		# Movement
 		PlayerState.idle:
 			idle_state(delta)
 		PlayerState.walk:
 			walk_state(delta)
+		PlayerState.dash:
+			dash_state(delta)
+			
+		# Attack
 		PlayerState.attack:
 			attack_state(delta)
-		#PlayerState.dead:
-			#dead_state(delta)
+		
+		# Attacked
+		PlayerState.attacked:
+			attacked_state(delta)
+		
+		# Death
+		PlayerState.dead:
+			dead_state(delta)
 
 	move_and_slide()
 
@@ -134,6 +158,9 @@ func go_to_walk_state():
 	status = PlayerState.walk
 	animation.play("walk")
 
+func go_to_dash_state():
+	pass
+
 func go_to_attack_state():
 	attack_hit_box.monitoring = true
 	status = PlayerState.attack
@@ -149,8 +176,13 @@ func idle_state(_delta):
 		go_to_walk_state()
 		return
 		
+	if Input.get_action_strength("Dash"):
+		go_to_dash_state()
+		return
+		
 	if Input.get_action_strength("Attack"):
 		go_to_attack_state()
+		return
 
 
 func walk_state(_delta) -> void:
@@ -160,22 +192,37 @@ func walk_state(_delta) -> void:
 		go_to_idle_state()
 		return
 		
+	if Input.get_action_strength("Dash"):
+		go_to_dash_state()
+		return
+		
 	if Input.get_action_strength("Attack"):
 		go_to_attack_state()
 
+func dash_state(_delta):
+	pass
 
 func attack_state(_delta) -> void:
 	update_hitbox_offset()
 	
 	swing_attack.play() # Fix: Too long
 	
+	# return to idle when animation finished
 	if animation.frame == 3:
 		go_to_idle_state()
+		return
+
+func attacked_state(_delta):
+	pass
+
+func dead_state(_delta):
+	pass
 
 
 func move(_delta: float):
 	if is_dashing:
 		return
+		
 	update_direction()
 	
 	velocity = direction_vector * speed
@@ -191,7 +238,10 @@ func update_direction():
 			animation.flip_h = false
 
 
+# Player Attack Hitbox
 func update_hitbox_offset() -> void:
+	# Change the hitbox depending on player direction
+	
 	var x := hitbox_offset.x
 	var y := hitbox_offset.y
 
@@ -206,6 +256,7 @@ func update_hitbox_offset() -> void:
 			attack_hit_box.position = Vector2(-y, x)
 
 
+# ─── Player Take Damage ─────────────────────────────────────────────────
 
 func take_damage(amount: int) -> void:
 	if is_dead:
@@ -220,9 +271,10 @@ func take_damage_percent(percent: float) -> void:
 
 func die() -> void:
 	is_dead = true
-	#if music:
-		#music.stop()
 	get_tree().change_scene_to_file.call_deferred(GAME_OVER_SCENE)
+
+
+# ─── Health HUD ─────────────────────────────────────────────────
 
 func _style_health_bar() -> void:
 	var fill := StyleBoxFlat.new()
