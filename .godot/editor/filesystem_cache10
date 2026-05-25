@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1779375775
+::res://::1779730487
 default_bus_layout.tres::AudioBusLayout::6131808079374925285::1778532410::0::1::::<><><>0<>0<><>::
 README.md::TextFile::-1::1778532410::0::1::::<><><>0<>0<><>::
 ::res://assets/::1778532410
@@ -86,16 +86,16 @@ main_menu.gd::GDScript::5943232818270325623::1778537142::0::1::::<>Control<><>0<
 options.gd::GDScript::566285837774380429::1776121076::0::1::::<>Control<><>0<>0<><>::
 pause_menu.gd::GDScript::7137431878911125401::1778540100::0::1::::<>Control<><>0<>0<><>::
 volume_changer.gd::GDScript::3667556572395020876::1778532410::0::1::::<>HSlider<><>0<>0<><>::
-::res://scripts/character/::1778540741
-player.gd::GDScript::6643314943719141795::1778540741::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://scripts/character/::1779730057
+player.gd::GDScript::6643314943719141795::1779730057::0::1::::<>CharacterBody2D<><>0<>0<><>::
 ::res://scripts/enemies/::1778540247
 dummy.gd::GDScript::6702278353585570792::1778532410::0::1::::<>CharacterBody2D<><>0<>0<><>::
 golem.gd::GDScript::5320786533438220170::1778540247::0::1::::<>CharacterBody2D<><>0<>0<><>::
 ::res://scripts/other/::1778532410
 camera.gd::GDScript::6784761487060151405::1778532410::0::1::::<>Camera2D<><>0<>0<><>::
 rock.gd::GDScript::1229868748354302823::1776121309::0::1::::<>Area2D<><>0<>0<><>::
-::res://scripts/world/::1779375751
-boss_manager.gd::GDScript::8265191934475726340::1779375751::0::1::::<>Node<><>0<>0<><>::
+::res://scripts/world/::1779730070
+boss_manager.gd::GDScript::8265191934475726340::1779730070::0::1::::<>Node<><>0<>0<><>::
 save_manager.gd::GDScript::8323533786174957087::1778539989::0::1::::<>Node<><>0<>0<><>::
 wave_manager.gd::GDScript::8381152438495246959::1779375035::0::1::::<>Node<><>0<>0<><>::
 world_background.gd::GDScript::3875360303377206896::1775517305::0::1::::<>Node2D<><>0<>0<><>::

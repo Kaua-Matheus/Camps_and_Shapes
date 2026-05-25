@@ -10,6 +10,7 @@ const BOSS_MELEE_RANGE: float = 100.0
 const BOSS_SCALE: float = 2.5
 
 var boss_spawned: bool = false
+var boss_defeated: bool = false
 var boss_ref = null
 var player_ref: Node2D = null
 
@@ -100,6 +101,9 @@ func _update_boss_hp_bar() -> void:
 			_boss_canvas.queue_free()
 		_boss_canvas = null
 		_boss_hp_bar = null
+		if not boss_defeated and is_instance_valid(player_ref):
+			boss_defeated = true
+			player_ref.unlock_heal()
 		return
 
 	if _boss_hp_bar != null:
@@ -107,6 +111,7 @@ func _update_boss_hp_bar() -> void:
 
 func reset() -> void:
 	boss_spawned = false
+	boss_defeated = false
 	boss_ref = null
 	player_ref = null
 	if _boss_canvas != null and is_instance_valid(_boss_canvas):

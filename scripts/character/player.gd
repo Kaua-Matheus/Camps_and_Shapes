@@ -32,6 +32,8 @@ const HEAL_AMOUNT: int = 30
 const DAMAGE_BOOST_DURATION: float = 4.0
 const DAMAGE_BOOST_MULTIPLIER: float = 2.0
 
+var heal_unlocked: bool = false
+
 var _dash_cd: float = 0.0
 var _heal_cd: float = 0.0
 var _damage_cd: float = 0.0
@@ -39,6 +41,8 @@ var _damage_boost_remaining: float = 0.0
 var _damage_boosted: bool = false
 var _skill_overlays: Array = []
 var _skill_labels: Array = []
+var _heal_lock_overlay: ColorRect = null
+var _heal_lock_label: Label = null
 
 # Animation
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
@@ -306,7 +310,7 @@ func _handle_skills(delta: float) -> void:
 		_damage_boosted = false
 		animation.modulate = Color.WHITE
 
-	if Input.is_action_just_pressed("Skill_Heal") and _heal_cd <= 0.0:
+	if Input.is_action_just_pressed("Skill_Heal") and _heal_cd <= 0.0 and heal_unlocked:
 		_use_heal()
 
 	if Input.is_action_just_pressed("Skill_Damage") and _damage_cd <= 0.0:
@@ -372,6 +376,32 @@ func _setup_skill_hud() -> void:
 		lbl.text = ready_texts[i]
 		hud.add_child(lbl)
 		_skill_labels.append(lbl)
+
+		if i == 1:
+			var lock_bg := ColorRect.new()
+			lock_bg.position = Vector2(x, start_y)
+			lock_bg.size = Vector2(icon_size, icon_size)
+			lock_bg.color = Color(0.0, 0.0, 0.0, 0.78)
+			hud.add_child(lock_bg)
+			_heal_lock_overlay = lock_bg
+
+			var lock_lbl := Label.new()
+			lock_lbl.position = Vector2(x, start_y)
+			lock_lbl.size = Vector2(icon_size, icon_size)
+			lock_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			lock_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+			lock_lbl.add_theme_color_override("font_color", Color.WHITE)
+			lock_lbl.add_theme_font_size_override("font_size", 9)
+			lock_lbl.text = "LOCK"
+			hud.add_child(lock_lbl)
+			_heal_lock_label = lock_lbl
+
+func unlock_heal() -> void:
+	heal_unlocked = true
+	if is_instance_valid(_heal_lock_overlay):
+		_heal_lock_overlay.visible = false
+	if is_instance_valid(_heal_lock_label):
+		_heal_lock_label.visible = false
 
 func _update_skill_hud() -> void:
 	if _skill_overlays.is_empty():
