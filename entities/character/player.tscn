@@ -10,9 +10,17 @@
 [ext_resource type="Texture2D" uid="uid://o3vfbpk4te0o" path="res://sprites/character/player/idle/slime_idle4.png" id="5_5n6yr"]
 [ext_resource type="Texture2D" uid="uid://cqnk5m37r0xtp" path="res://sprites/character/player/attack/slime_attack4.png" id="5_cyjs5"]
 [ext_resource type="Texture2D" uid="uid://7h36vmntka7g" path="res://sprites/character/player/walk/slime_walk_right1.png" id="6_h7vl7"]
+[ext_resource type="Texture2D" uid="uid://buct6yv6w6ddw" path="res://sprites/character/player/death/slime_idle1.png" id="6_qh313"]
 [ext_resource type="Texture2D" uid="uid://b5hsepjon8s3h" path="res://sprites/character/player/walk/slime_walk_right2.png" id="7_w04y5"]
+[ext_resource type="Texture2D" uid="uid://62gx8xohlf3d" path="res://sprites/character/player/death/slime_idle2.png" id="7_xtt1i"]
 [ext_resource type="Texture2D" uid="uid://dycyu7ouors2s" path="res://sprites/character/player/walk/slime_walk_right3.png" id="8_g7m1y"]
+[ext_resource type="Texture2D" uid="uid://ctakine2spvhg" path="res://sprites/character/player/death/slime_idle3.png" id="8_icf7y"]
 [ext_resource type="Texture2D" uid="uid://igf1rqq7r2ca" path="res://sprites/character/player/walk/slime_walk_right4.png" id="9_4g463"]
+[ext_resource type="Texture2D" uid="uid://0xkjl6aay4tn" path="res://sprites/character/player/death/slime_idle4.png" id="9_t53ry"]
+[ext_resource type="Texture2D" uid="uid://bhjjbgvj3w7qu" path="res://sprites/character/player/death/slime_idle5.png" id="10_v66hw"]
+[ext_resource type="Texture2D" uid="uid://dfhbvukdpermv" path="res://sprites/character/player/death/slime_idle6.png" id="11_gh1ad"]
+[ext_resource type="Texture2D" uid="uid://b673665bmfnat" path="res://sprites/character/player/death/slime_idle7.png" id="12_l5d3m"]
+[ext_resource type="Texture2D" uid="uid://dtptjntsl8wbt" path="res://sprites/character/player/death/slime_idle8.png" id="13_y3i1n"]
 [ext_resource type="AudioStream" uid="uid://ds44kfu1wot6b" path="res://assets/audio/whoosh.wav" id="14_0xsky"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h7vl7"]
@@ -33,6 +41,35 @@ animations = [{
 "loop": true,
 "name": &"attack",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_qh313")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xtt1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_icf7y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_t53ry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_v66hw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gh1ad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_l5d3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_y3i1n")
+}],
+"loop": false,
+"name": &"death",
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -81,9 +118,8 @@ script = ExtResource("1_1o8m5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=218026251]
 sprite_frames = SubResource("SpriteFrames_h7vl7")
-animation = &"attack"
+animation = &"death"
 autoplay = "idle"
-frame = 2
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=777931992]
 light_mask = 4

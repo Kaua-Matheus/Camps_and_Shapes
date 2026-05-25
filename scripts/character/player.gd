@@ -170,6 +170,11 @@ func go_to_attack_state():
 	status = PlayerState.attack
 	animation.play("attack")
 	velocity = Vector2.ZERO
+	
+func go_to_death_state():
+	attack_hit_box.monitoring = false
+	status = PlayerState.dead
+	animation.play("death")
 
 	
 ## State ##
@@ -180,9 +185,9 @@ func idle_state(_delta):
 		go_to_walk_state()
 		return
 		
-	if Input.get_action_strength("Dash"):
-		go_to_dash_state()
-		return
+	#if Input.get_action_sterength("Dash"):
+		#go_to_dash_state()
+		#return
 		
 	if Input.get_action_strength("Attack"):
 		go_to_attack_state()
@@ -196,9 +201,9 @@ func walk_state(_delta) -> void:
 		go_to_idle_state()
 		return
 		
-	if Input.get_action_strength("Dash"):
-		go_to_dash_state()
-		return
+	#if Input.get_action_strength("Dash"):
+		#go_to_dash_state()
+		#return
 		
 	if Input.get_action_strength("Attack"):
 		go_to_attack_state()
@@ -220,7 +225,11 @@ func attacked_state(_delta):
 	pass
 
 func dead_state(_delta):
-	pass
+	is_dead = true
+	
+	if animation.frame == 7:
+		get_tree().change_scene_to_file.call_deferred(GAME_OVER_SCENE)
+		return
 
 
 func move(_delta: float):
@@ -268,14 +277,14 @@ func take_damage(amount: int) -> void:
 	current_hp = max(current_hp - amount, 0)
 	health_bar.value = current_hp
 	if current_hp <= 0:
-		die()
+		go_to_death_state()
 
 func take_damage_percent(percent: float) -> void:
 	take_damage(int(max_hp * percent / 100.0))
 
-func die() -> void:
-	is_dead = true
-	get_tree().change_scene_to_file.call_deferred(GAME_OVER_SCENE)
+#func die() -> void:
+	#is_dead = true
+	#get_tree().change_scene_to_file.call_deferred(GAME_OVER_SCENE)
 
 
 # ─── Health HUD ─────────────────────────────────────────────────
