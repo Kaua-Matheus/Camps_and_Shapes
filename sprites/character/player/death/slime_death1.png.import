@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtptjntsl8wbt"
-path="res://.godot/imported/slime_idle8.png-d5be9352296d44e649f4e48917e98f80.ctex"
+uid="uid://buct6yv6w6ddw"
+path="res://.godot/imported/slime_death1.png-155f45d9ed4842efe4d18933d2cbd069.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/character/player/death/slime_idle8.png"
-dest_files=["res://.godot/imported/slime_idle8.png-d5be9352296d44e649f4e48917e98f80.ctex"]
+source_file="res://sprites/character/player/death/slime_death1.png"
+dest_files=["res://.godot/imported/slime_death1.png-155f45d9ed4842efe4d18933d2cbd069.ctex"]
 
 [params]
 
