@@ -7,14 +7,14 @@ const GAME_OVER_SCENE := "res://scenes/interface/game_over.tscn"
 @export var dash_speed: int = 700
 @export var dash_time: float = 0.2
 
-var current_hp: int
+var health: int
 var is_dead: bool = false
 
 # Hitbox Var
 var hitbox_offset: Vector2
 
 # Direction Vector
-var direction_vector: Vector2
+var move_direction: Vector2
 
 # Dash
 var last_dash_direction := Vector2.ZERO
@@ -53,10 +53,12 @@ var _heal_lock_label: Label = null
 # Attack
 @onready var attack_hit_box: Area2D = $AttackHitBox
 @onready var swing_attack: AudioStreamPlayer2D = $SwingAttack
-@export var damage_percent: float = 20.0
+@export var attack_damage_percent: float = 20.0
 
 
-# State Machine
+
+
+# ─── State Machine ─────────────────────────────────────────────────
 enum PlayerState {
 	# Player Inflicts
 	idle,
@@ -69,15 +71,15 @@ enum PlayerState {
 	dead,
 }
 
-var status: PlayerState
+var current_state: PlayerState
 
 func _ready() -> void:
-	current_hp = max_hp
+	health = max_hp
 	health_bar.max_value = max_hp
-	health_bar.value = current_hp
+	health_bar.value = health
 	_style_health_bar()
 	hitbox_offset = attack_hit_box.position
-	go_to_idle_state()
+	enter_idle_state()
 
 	if SaveManager.is_continuing:
 		_apply_save_data()
@@ -90,50 +92,26 @@ func _apply_save_data() -> void:
 	var p: Dictionary = data.get("player", {})
 	if p.has("pos_x") and p.has("pos_y"):
 		global_position = Vector2(float(p["pos_x"]), float(p["pos_y"]))
-	if p.has("current_hp"):
-		current_hp = int(p["current_hp"])
-		health_bar.value = current_hp
+	if p.has("health"):
+		health = int(p["health"])
+		health_bar.value = health
 
 # Main Process
 func _physics_process(delta: float) -> void:
-		
-	direction_vector = Vector2(
-		Input.get_action_strength("Right") - Input.get_action_strength("Left"),
-		Input.get_action_strength("Down") - Input.get_action_strength("Up")
-	).normalized()
-	
 
-	handle_dash_input()
-	handle_dash(delta)
-	_handle_skills(delta)
+	read_input()
 
-	match status:
-		# Movement
-		PlayerState.idle:
-			idle_state(delta)
-		PlayerState.walk:
-			walk_state(delta)
-		PlayerState.dash:
-			dash_state(delta)
-			
-		# Attack
-		PlayerState.attack:
-			attack_state(delta)
-		
-		# Attacked
-		PlayerState.attacked:
-			attacked_state(delta)
-		
-		# Death
-		PlayerState.dead:
-			dead_state(delta)
+	#update_cooldowns(delta)
+
+	update_state(delta)
 
 	move_and_slide()
 
+
 func handle_dash_input():
 	if Input.is_action_just_pressed("Dash"):
-		if direction_vector != Vector2.ZERO:
-			start_dash(direction_vector)
+		if move_direction != Vector2.ZERO:
+			start_dash(move_direction)
 			
 func start_dash(dir: Vector2):
 	if is_dashing or _dash_cd > 0.0:
@@ -152,28 +130,33 @@ func handle_dash(delta):
 			velocity = Vector2.ZERO
 
 ## Go To ##
-func go_to_idle_state():
+func enter_idle_state():
 	attack_hit_box.monitoring = false
-	status = PlayerState.idle
+	current_state = PlayerState.idle
 	animation.play("idle")
 
-func go_to_walk_state():
+func enter_walk_state():
 	attack_hit_box.monitoring = false
-	status = PlayerState.walk
+	current_state = PlayerState.walk
 	animation.play("walk")
 
-func go_to_dash_state():
-	pass
+func enter_dash_state():
+	current_state = PlayerState.dash
 
-func go_to_attack_state():
+	dash_direction = move_direction
+	dash_timer = dash_time
+
+	animation.play("dash")
+
+func enter_attack_state():
 	attack_hit_box.monitoring = true
-	status = PlayerState.attack
+	current_state = PlayerState.attack
 	animation.play("attack")
 	velocity = Vector2.ZERO
 	
-func go_to_death_state():
+func enter_death_state():
 	attack_hit_box.monitoring = false
-	status = PlayerState.dead
+	current_state = PlayerState.dead
 	animation.play("death")
 
 	
@@ -182,7 +165,7 @@ func idle_state(_delta):
 	move(_delta)
 	
 	if velocity != Vector2.ZERO:
-		go_to_walk_state()
+		enter_walk_state()
 		return
 		
 	#if Input.get_action_sterength("Dash"):
@@ -190,7 +173,7 @@ func idle_state(_delta):
 		#return
 		
 	if Input.get_action_strength("Attack"):
-		go_to_attack_state()
+		enter_attack_state()
 		return
 
 
@@ -198,7 +181,7 @@ func walk_state(_delta) -> void:
 	move(_delta)
 	
 	if velocity == Vector2.ZERO:
-		go_to_idle_state()
+		enter_idle_state()
 		return
 		
 	#if Input.get_action_strength("Dash"):
@@ -206,10 +189,20 @@ func walk_state(_delta) -> void:
 		#return
 		
 	if Input.get_action_strength("Attack"):
-		go_to_attack_state()
+		enter_attack_state()
 
-func dash_state(_delta):
-	pass
+func dash_state(delta):
+	velocity = dash_direction * dash_speed
+
+	dash_timer -= delta
+
+	if dash_timer <= 0:
+		_dash_cd = DASH_CD
+
+		if move_direction == Vector2.ZERO:
+			enter_idle_state()
+		else:
+			enter_walk_state()
 
 func attack_state(_delta) -> void:
 	update_hitbox_offset()
@@ -218,7 +211,7 @@ func attack_state(_delta) -> void:
 	
 	# return to idle when animation finished
 	if animation.frame == 3:
-		go_to_idle_state()
+		enter_idle_state()
 		return
 
 func attacked_state(_delta):
@@ -232,23 +225,51 @@ func dead_state(_delta):
 		return
 
 
+func read_input():
+	move_direction = Input.get_vector(
+		"Left",
+		"Right",
+		"Up",
+		"Down"
+	)
+
+func update_state(delta: float):
+
+	match current_state:
+
+		PlayerState.idle:
+			idle_state(delta)
+
+		PlayerState.walk:
+			walk_state(delta)
+
+		PlayerState.attack:
+			attack_state(delta)
+
+		PlayerState.dash:
+			dash_state(delta)
+
+		PlayerState.dead:
+			dead_state(delta)
+
+
 func move(_delta: float):
 	if is_dashing:
 		return
 		
 	update_direction()
 	
-	velocity = direction_vector * speed
+	velocity = move_direction * speed
 
 
 func update_direction():
 	update_hitbox_offset()
 	
-	match  direction_vector:
-		Vector2.LEFT:
-			animation.flip_h = true
-		Vector2.RIGHT:
-			animation.flip_h = false
+	if move_direction.x < 0:
+		animation.flip_h = true
+
+	elif move_direction.x > 0:
+		animation.flip_h = false
 
 
 # Player Attack Hitbox
@@ -258,7 +279,7 @@ func update_hitbox_offset() -> void:
 	var x := hitbox_offset.x
 	var y := hitbox_offset.y
 
-	match direction_vector:
+	match move_direction:
 		Vector2.LEFT:
 			attack_hit_box.position = Vector2(-x, y)
 		Vector2.RIGHT:
@@ -274,12 +295,12 @@ func update_hitbox_offset() -> void:
 func take_damage(amount: int) -> void:
 	if is_dead:
 		return
-	current_hp = max(current_hp - amount, 0)
-	health_bar.value = current_hp
-	if current_hp <= 0:
-		go_to_death_state()
+	health = max(health - amount, 0)
+	health_bar.value = health
+	if health <= 0:
+		enter_death_state()
 
-func take_damage_percent(percent: float) -> void:
+func take_attack_damage_percent(percent: float) -> void:
 	take_damage(int(max_hp * percent / 100.0))
 
 #func die() -> void:
@@ -304,8 +325,8 @@ func _style_health_bar() -> void:
 func attack_body_entered(body: Node2D) -> void:
 	print(body.get_groups())
 	if body.is_in_group("Enemy"):
-		var dmg := damage_percent * (DAMAGE_BOOST_MULTIPLIER if _damage_boosted else 1.0)
-		body.take_damage_percent(dmg)
+		var dmg := attack_damage_percent * (DAMAGE_BOOST_MULTIPLIER if _damage_boosted else 1.0)
+		body.take_attack_damage_percent(dmg)
 
 # ─── Skills ────────────────────────────────────────────────────
 
@@ -328,8 +349,8 @@ func _handle_skills(delta: float) -> void:
 	_update_skill_hud()
 
 func _use_heal() -> void:
-	current_hp = min(current_hp + HEAL_AMOUNT, max_hp)
-	health_bar.value = current_hp
+	health = min(health + HEAL_AMOUNT, max_hp)
+	health_bar.value = health
 	_heal_cd = HEAL_CD
 
 func _use_damage_boost() -> void:

@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 		if distance_length <= melee_range:
 			velocity = Vector2.ZERO
 			if damage_timer <= 0.0:
-				player_ref.take_damage_percent(damage_percent)
+				player_ref.take_attack_damage_percent(damage_percent)
 				damage_timer = damage_cooldown
 		else:
 			velocity = speed * direction
@@ -104,7 +104,7 @@ func take_damage(amount: int) -> void:
 	if current_hp <= 0:
 		die()
 
-func take_damage_percent(percent: float) -> void:
+func take_attack_damage_percent(percent: float) -> void:
 	take_damage(int(max_hp * percent / 20.0))
 
 
