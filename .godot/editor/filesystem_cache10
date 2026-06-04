@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1780592414
+::res://::1780596929
 default_bus_layout.tres::AudioBusLayout::6131808079374925285::1779749839::0::1::::<><><>0<>0<><>::
 README.md::TextFile::-1::1779749839::0::1::::<><><>0<>0<><>::
 ::res://assets/::1779749839
@@ -54,11 +54,11 @@ walls.png::CompressedTexture2D::2352908001977763814::1779749839::1779749875::1::
 wooden_door.png::CompressedTexture2D::597094201237822476::1779749839::1779749875::1::::<><><>0<>0<>721262147197a91f48a9467ee29ec2bd<>res://.godot/imported/wooden_door.png-c621f82ca226d20c3dff0a6de85c9c9c.ctex::
 wooden_door_b.png::CompressedTexture2D::2098727497371806930::1779749839::1779749875::1::::<><><>0<>0<>ae7dc5d26aeb4620923f2c1026275ba6<>res://.godot/imported/wooden_door_b.png-1c6e3bde4f39713368fc8d1f0bea1f21.ctex::
 ::res://entities/::1779749839
-::res://entities/character/::1779753552
-player.tscn::PackedScene::8054094985565680421::1779753552::0::1::::<><><>0<>0<><>::uid://c1wcorcbq5uyt::::res://scripts/character/player.gd<>uid://bqgdw3b3m2msj::::res://sprites/character/player/idle/slime_idle1.png<>uid://g7eh3a47oxrq::::res://sprites/character/player/attack/slime_attack1.png<>uid://ccpk0u1u14pgq::::res://sprites/character/player/attack/slime_attack2.png<>uid://6kgq6jdnori8::::res://sprites/character/player/idle/slime_idle2.png<>uid://55aoy2be4ijn::::res://sprites/character/player/idle/slime_idle3.png<>uid://bdxwntxa40xb8::::res://sprites/character/player/attack/slime_attack3.png<>uid://o3vfbpk4te0o::::res://sprites/character/player/idle/slime_idle4.png<>uid://cqnk5m37r0xtp::::res://sprites/character/player/attack/slime_attack4.png<>uid://7h36vmntka7g::::res://sprites/character/player/walk/slime_walk_right1.png<>uid://buct6yv6w6ddw::::res://sprites/character/player/death/slime_death1.png<>uid://dyx4nlbnjh2am::::res://sprites/character/player/dash/slime_dash_right1.png<>uid://cly565olahbe6::::res://sprites/character/player/dash/slime_dash_right2.png<>uid://b5hsepjon8s3h::::res://sprites/character/player/walk/slime_walk_right2.png<>uid://62gx8xohlf3d::::res://sprites/character/player/death/slime_death2.png<>uid://dycyu7ouors2s::::res://sprites/character/player/walk/slime_walk_right3.png<>uid://ctakine2spvhg::::res://sprites/character/player/death/slime_death3.png<>uid://1sb7m8kpntca::::res://sprites/character/player/dash/slime_dash_right3.png<>uid://igf1rqq7r2ca::::res://sprites/character/player/walk/slime_walk_right4.png<>uid://0xkjl6aay4tn::::res://sprites/character/player/death/slime_death4.png<>uid://dccrlvw3ikgqs::::res://sprites/character/player/dash/slime_dash_right4.png<>uid://bhjjbgvj3w7qu::::res://sprites/character/player/death/slime_death5.png<>uid://dfhbvukdpermv::::res://sprites/character/player/death/slime_death6.png<>uid://b673665bmfnat::::res://sprites/character/player/death/slime_death7.png<>uid://dtptjntsl8wbt::::res://sprites/character/player/death/slime_death8.png<>uid://ds44kfu1wot6b::::res://assets/audio/whoosh.wav
+::res://entities/character/::1780596929
+player.tscn::PackedScene::8054094985565680421::1780596929::0::1::::<><><>0<>0<><>::uid://c1wcorcbq5uyt::::res://scripts/character/player/player.gd<>uid://bqgdw3b3m2msj::::res://sprites/character/player/idle/slime_idle1.png<>uid://g7eh3a47oxrq::::res://sprites/character/player/attack/slime_attack1.png<>uid://ccpk0u1u14pgq::::res://sprites/character/player/attack/slime_attack2.png<>uid://6kgq6jdnori8::::res://sprites/character/player/idle/slime_idle2.png<>uid://55aoy2be4ijn::::res://sprites/character/player/idle/slime_idle3.png<>uid://bdxwntxa40xb8::::res://sprites/character/player/attack/slime_attack3.png<>uid://o3vfbpk4te0o::::res://sprites/character/player/idle/slime_idle4.png<>uid://cqnk5m37r0xtp::::res://sprites/character/player/attack/slime_attack4.png<>uid://7h36vmntka7g::::res://sprites/character/player/walk/slime_walk_right1.png<>uid://buct6yv6w6ddw::::res://sprites/character/player/death/slime_death1.png<>uid://dyx4nlbnjh2am::::res://sprites/character/player/dash/slime_dash_right1.png<>uid://cly565olahbe6::::res://sprites/character/player/dash/slime_dash_right2.png<>uid://b5hsepjon8s3h::::res://sprites/character/player/walk/slime_walk_right2.png<>uid://62gx8xohlf3d::::res://sprites/character/player/death/slime_death2.png<>uid://dycyu7ouors2s::::res://sprites/character/player/walk/slime_walk_right3.png<>uid://ctakine2spvhg::::res://sprites/character/player/death/slime_death3.png<>uid://1sb7m8kpntca::::res://sprites/character/player/dash/slime_dash_right3.png<>uid://igf1rqq7r2ca::::res://sprites/character/player/walk/slime_walk_right4.png<>uid://0xkjl6aay4tn::::res://sprites/character/player/death/slime_death4.png<>uid://dccrlvw3ikgqs::::res://sprites/character/player/dash/slime_dash_right4.png<>uid://bhjjbgvj3w7qu::::res://sprites/character/player/death/slime_death5.png<>uid://dfhbvukdpermv::::res://sprites/character/player/death/slime_death6.png<>uid://b673665bmfnat::::res://sprites/character/player/death/slime_death7.png<>uid://dtptjntsl8wbt::::res://sprites/character/player/death/slime_death8.png<>uid://ds44kfu1wot6b::::res://assets/audio/whoosh.wav
 ::res://entities/enemies/::1779749839
 dummy.tscn::PackedScene::4726990167451304798::1779749839::0::1::::<><><>0<>0<><>::uid://c2qvsslh3nw7i::::res://scripts/enemies/dummy.gd
-golem.tscn::PackedScene::1294009330884840828::1779749839::0::1::::<><><>0<>0<><>::uid://dxt8atchbydwx::::res://sprites/enemies/golem_idle.png<>uid://ch2otu2xqdpl7::::res://scripts/enemies/golem.gd<>uid://t8osetvlbsri::::res://sprites/enemies/golem_walk.png
+golem.tscn::PackedScene::1294009330884840828::1780596936::0::1::::<><><>0<>0<><>::uid://dxt8atchbydwx::::res://sprites/enemies/golem_idle.png<>uid://ch2otu2xqdpl7::::res://scripts/enemies/golem.gd<>uid://t8osetvlbsri::::res://sprites/enemies/golem_walk.png
 ::res://entities/other/::1779749839
 camera.tscn::PackedScene::4324007838741890200::1779749839::0::1::::<><><>0<>0<><>::uid://c3wubbf4ed1nt::::res://scripts/other/camera.gd
 rock.tscn::PackedScene::4601883711774263025::1779749839::0::1::::<><><>0<>0<><>::uid://rr00168t4ku6::::res://scripts/other/rock.gd<>uid://dtg0aj3uqxlrr::::res://sprites/other/rock.png
@@ -86,11 +86,10 @@ main_menu.gd::GDScript::5943232818270325623::1779749839::0::1::::<>Control<><>0<
 options.gd::GDScript::566285837774380429::1779749839::0::1::::<>Control<><>0<>0<><>::
 pause_menu.gd::GDScript::7137431878911125401::1779749839::0::1::::<>Control<><>0<>0<><>::
 volume_changer.gd::GDScript::3667556572395020876::1779749839::0::1::::<>HSlider<><>0<>0<><>::
-::res://scripts/character/::1779753552
-player.gd::GDScript::6643314943719141795::1779753552::0::1::::<>CharacterBody2D<><>0<>0<><>::
-::res://scripts/enemies/::1779749839
-dummy.gd::GDScript::6702278353585570792::1779749839::0::1::::<>CharacterBody2D<><>0<>0<><>::
-golem.gd::GDScript::5320786533438220170::1779749839::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://scripts/character/::1780596929
+::res://scripts/character/player/::1780596929
+player.gd::GDScript::6643314943719141795::1780593606::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://scripts/enemies/::1780592952
 ::res://scripts/other/::1779749839
 camera.gd::GDScript::6784761487060151405::1779749839::0::1::::<>Camera2D<><>0<>0<><>::
 rock.gd::GDScript::1229868748354302823::1779749839::0::1::::<>Area2D<><>0<>0<><>::

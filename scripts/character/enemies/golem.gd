@@ -1,13 +1,11 @@
-extends CharacterBody2D
+class_name Golem
+extends Character
 
 var player_ref = null
 
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 
-@export var max_hp: int = 20
 var current_hp: int
-
-var is_dead: bool = false
 
 enum GolemState {
 	idle,

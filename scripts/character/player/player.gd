@@ -1,14 +1,11 @@
-extends CharacterBody2D
+class_name Player
+extends Character
 
 const GAME_OVER_SCENE := "res://scenes/interface/game_over.tscn"
 
 @export var speed: int = 300
-@export var max_hp: int = 100
 @export var dash_speed: int = 700
 @export var dash_time: float = 0.2
-
-var health: int
-var is_dead: bool = false
 
 # Hitbox Var
 var hitbox_offset: Vector2
@@ -19,7 +16,7 @@ var move_direction: Vector2
 # Dash
 var last_dash_direction := Vector2.ZERO
 var last_dash_input_time := 0.0
-var is_dashing := false
+#var is_dashing := false
 var dash_timer := 0.0
 var dash_direction := Vector2.ZERO
 
@@ -53,9 +50,6 @@ var _heal_lock_label: Label = null
 # Attack
 @onready var attack_hit_box: Area2D = $AttackHitBox
 @onready var swing_attack: AudioStreamPlayer2D = $SwingAttack
-@export var attack_damage_percent: float = 20.0
-
-
 
 
 # ─── State Machine ─────────────────────────────────────────────────
@@ -101,33 +95,12 @@ func _physics_process(delta: float) -> void:
 
 	read_input()
 
-	#update_cooldowns(delta)
+	update_cooldowns(delta)
 
 	update_state(delta)
 
 	move_and_slide()
 
-
-func handle_dash_input():
-	if Input.is_action_just_pressed("Dash"):
-		if move_direction != Vector2.ZERO:
-			start_dash(move_direction)
-			
-func start_dash(dir: Vector2):
-	if is_dashing or _dash_cd > 0.0:
-		return
-	is_dashing = true
-	dash_timer = dash_time
-	dash_direction = dir
-
-func handle_dash(delta):
-	if is_dashing:
-		velocity = dash_direction * dash_speed
-		dash_timer -= delta
-		if dash_timer <= 0:
-			is_dashing = false
-			_dash_cd = DASH_CD
-			velocity = Vector2.ZERO
 
 ## Go To ##
 func enter_idle_state():
@@ -152,6 +125,7 @@ func enter_attack_state():
 	attack_hit_box.monitoring = true
 	current_state = PlayerState.attack
 	animation.play("attack")
+	swing_attack.play()
 	velocity = Vector2.ZERO
 	
 func enter_death_state():
@@ -161,32 +135,32 @@ func enter_death_state():
 
 	
 ## State ##
-func idle_state(_delta):
-	move(_delta)
+func idle_state(delta):
+	move(delta)
 	
 	if velocity != Vector2.ZERO:
 		enter_walk_state()
 		return
 		
-	#if Input.get_action_sterength("Dash"):
-		#go_to_dash_state()
-		#return
+	if Input.get_action_strength("Dash"):
+		enter_dash_state()
+		return
 		
 	if Input.get_action_strength("Attack"):
 		enter_attack_state()
 		return
 
 
-func walk_state(_delta) -> void:
-	move(_delta)
+func walk_state(delta) -> void:
+	move(delta)
 	
 	if velocity == Vector2.ZERO:
 		enter_idle_state()
 		return
 		
-	#if Input.get_action_strength("Dash"):
-		#go_to_dash_state()
-		#return
+	if Input.get_action_strength("Dash"):
+		enter_dash_state()
+		return
 		
 	if Input.get_action_strength("Attack"):
 		enter_attack_state()
@@ -206,8 +180,6 @@ func dash_state(delta):
 
 func attack_state(_delta) -> void:
 	update_hitbox_offset()
-	
-	swing_attack.play() # Fix: Too long
 	
 	# return to idle when animation finished
 	if animation.frame == 3:
@@ -254,8 +226,8 @@ func update_state(delta: float):
 
 
 func move(_delta: float):
-	if is_dashing:
-		return
+	#if is_dashing:
+		#return
 		
 	update_direction()
 	
@@ -271,6 +243,13 @@ func update_direction():
 	elif move_direction.x > 0:
 		animation.flip_h = false
 
+
+# Cooldowns
+func update_cooldowns(delta: float):
+
+	_dash_cd = max(_dash_cd - delta, 0.0)
+	_heal_cd = max(_heal_cd - delta, 0.0)
+	_damage_cd = max(_damage_cd - delta, 0.0)
 
 # Player Attack Hitbox
 func update_hitbox_offset() -> void:
@@ -303,9 +282,6 @@ func take_damage(amount: int) -> void:
 func take_attack_damage_percent(percent: float) -> void:
 	take_damage(int(max_hp * percent / 100.0))
 
-#func die() -> void:
-	#is_dead = true
-	#get_tree().change_scene_to_file.call_deferred(GAME_OVER_SCENE)
 
 
 # ─── Health HUD ─────────────────────────────────────────────────
