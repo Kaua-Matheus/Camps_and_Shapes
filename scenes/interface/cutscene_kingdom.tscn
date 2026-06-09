@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cw1c8osgk0go2"]
+
+[ext_resource type="Script" uid="uid://coott140uogrm" path="res://scripts/cutscene_kingdom.gd" id="1_h10fy"]
+[ext_resource type="Texture2D" uid="uid://ciheuruy0evkt" path="res://assets/images/pixel_kingdom_castle_by_misconceptionaiart_dht7lvg-fullview.jpg" id="2_nsp3v"]
+
+[node name="Cutscene" type="Control" unique_id=1201803216]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Cutscene" type="CanvasLayer" parent="." unique_id=1991189610]
+script = ExtResource("1_h10fy")
+
+[node name="Background" type="TextureRect" parent="Cutscene" unique_id=303685698]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 1788.3333
+offset_bottom = 893.6666
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_nsp3v")
+stretch_mode = 6
+
+[node name="DialogueBox" type="Panel" parent="Cutscene" unique_id=920514301]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.75
+anchor_right = 0.95
+anchor_bottom = 0.95
+offset_left = -38.4
+offset_top = -21.0
+offset_right = 37.400024
+offset_bottom = 19.0
+
+[node name="DialogueText" type="RichTextLabel" parent="Cutscene/DialogueBox" unique_id=592143699]
+layout_mode = 0
+offset_right = 768.0
+offset_bottom = 113.0
+scroll_active = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="Cutscene" unique_id=1111151813]
+
+[node name="Fade" type="ColorRect" parent="Cutscene" unique_id=1286487255]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
