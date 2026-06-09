@@ -1,30 +1,10 @@
 [gd_scene format=3 uid="uid://so3e6gikuxc3"]
 
-[ext_resource type="Texture2D" uid="uid://dxt8atchbydwx" path="res://sprites/enemies/golem_idle.png" id="1_iv3j2"]
 [ext_resource type="Script" uid="uid://ch2otu2xqdpl7" path="res://scripts/character/enemies/golem.gd" id="1_xpmmt"]
-[ext_resource type="Texture2D" uid="uid://t8osetvlbsri" path="res://sprites/enemies/golem_walk.png" id="3_xpmmt"]
+[ext_resource type="SpriteFrames" uid="uid://c16jfwxdk8grb" path="res://sprites/sprite_frame/enemies/golem/golem_sprite_frame.tres" id="2_iv3j2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpmmt"]
 size = Vector2(32, 56)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_xpmmt"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_iv3j2")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_xpmmt")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 5.0
-}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iv3j2"]
 radius = 96.0
@@ -38,8 +18,8 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_xpmmt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=771735434]
-sprite_frames = SubResource("SpriteFrames_xpmmt")
-animation = &"walk"
+sprite_frames = ExtResource("2_iv3j2")
+animation = &"idle"
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=21715889]
 collision_layer = 4

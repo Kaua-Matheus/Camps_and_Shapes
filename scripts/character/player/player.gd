@@ -3,9 +3,19 @@ extends Character
 
 const GAME_OVER_SCENE := "res://scenes/interface/game_over.tscn"
 
-@export var speed: int = 300
+# Consts
+const BASE_SPEED = 300.0
+
+@onready var absorb_component: AbsorbComponent = $AbsorbComponent
+
+@export var base_speed: float = BASE_SPEED
+@export var speed: float = BASE_SPEED
+
 @export var dash_speed: int = 700
 @export var dash_time: float = 0.2
+
+var active_abilities: Array[String] = []
+var default_frames: SpriteFrames  # salvo no _ready
 
 # Hitbox Var
 var hitbox_offset: Vector2
@@ -16,7 +26,7 @@ var move_direction: Vector2
 # Dash
 var last_dash_direction := Vector2.ZERO
 var last_dash_input_time := 0.0
-#var is_dashing := false
+
 var dash_timer := 0.0
 var dash_direction := Vector2.ZERO
 
@@ -68,6 +78,14 @@ enum PlayerState {
 var current_state: PlayerState
 
 func _ready() -> void:
+	
+	# Absorb
+	default_frames = $AnimatedSprite2D.sprite_frames
+	absorb_component.form_applied.connect(_on_form_applied)
+	absorb_component.form_expired.connect(_on_form_expired)
+	FormUnlockManager.form_unlocked.connect(_on_form_unlocked)
+	
+	
 	health = max_hp
 	health_bar.max_value = max_hp
 	health_bar.value = health
@@ -279,8 +297,8 @@ func take_damage(amount: int) -> void:
 	if health <= 0:
 		enter_death_state()
 
-func take_attack_damage_percent(percent: float) -> void:
-	take_damage(int(max_hp * percent / 100.0))
+#func take_attack_damage_percent(percent: float) -> void:
+	#take_damage(int(max_hp * percent / 100.0))
 
 
 
@@ -302,7 +320,7 @@ func attack_body_entered(body: Node2D) -> void:
 	print(body.get_groups())
 	if body.is_in_group("Enemy"):
 		var dmg := attack_damage_percent * (DAMAGE_BOOST_MULTIPLIER if _damage_boosted else 1.0)
-		body.take_attack_damage_percent(dmg)
+		body.take_damage(dmg)
 
 # ─── Skills ────────────────────────────────────────────────────
 
@@ -334,6 +352,38 @@ func _use_damage_boost() -> void:
 	_damage_boost_remaining = DAMAGE_BOOST_DURATION
 	_damage_cd = DAMAGE_CD
 	animation.modulate = Color(1.4, 0.7, 0.2)
+
+
+# ─── Absorb Context ─────────────────────────────────────────────────
+
+func try_absorb(enemy: Enemy) -> void:
+	if enemy.absorb_data:
+		absorb_component.absorb(enemy.absorb_data)
+		enemy.on_absorbed_by_player()
+
+func has_ability(ability: String) -> bool:
+	return active_abilities.has(ability)
+	
+# Entrada para absorver
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Activate"):  # tecla Enter ou Espaço
+		print("Apertada tecla de ativacao")
+		var enemy = get_parent().get_node("Goblin")  # ajusta o nome se for diferente
+		if enemy:
+			print("Goblin encontrado")
+			try_absorb(enemy)
+
+func _on_form_applied(data: AbsorbResource) -> void:
+	print("Forma absorvida: ", data.form_name)
+	# atualiza HUD, toca animação, etc.
+
+func _on_form_expired() -> void:
+	print("Forma expirou!")
+	# feedback visual de expiração
+	
+func _on_form_unlocked(data: AbsorbResource) -> void:
+	absorb_component.absorb(data)
+
 
 # ─── Skill HUD ─────────────────────────────────────────────────
 

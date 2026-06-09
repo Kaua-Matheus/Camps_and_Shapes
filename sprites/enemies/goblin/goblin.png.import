@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxt8atchbydwx"
-path="res://.godot/imported/golem_idle.png-98ac1529f9810fbfd7eba43c2700bc92.ctex"
+uid="uid://bijjsq7nn82ct"
+path="res://.godot/imported/goblin.png-1b6e86046eac60441cec84c1f2854803.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/enemies/golem_idle.png"
-dest_files=["res://.godot/imported/golem_idle.png-98ac1529f9810fbfd7eba43c2700bc92.ctex"]
+source_file="res://sprites/enemies/goblin/goblin.png"
+dest_files=["res://.godot/imported/goblin.png-1b6e86046eac60441cec84c1f2854803.ctex"]
 
 [params]
 

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bl0g8ydiut0s6"]
+
+[ext_resource type="Script" uid="uid://cs7nn5a7ulpd4" path="res://scripts/character/enemies/goblin/goblin.gd" id="1_sprwj"]
+[ext_resource type="Script" uid="uid://cbp72lpnyslsw" path="res://scripts/resources/absorb_resource.gd" id="2_6il5x"]
+[ext_resource type="SpriteFrames" uid="uid://ct37uf0p5mb5p" path="res://sprites/sprite_frame/enemies/goblin/goblin_sprite_frame.tres" id="2_sprwj"]
+
+[sub_resource type="Resource" id="Resource_6n0m8"]
+script = ExtResource("2_6il5x")
+form_name = "Goblin"
+sprite_frames = ExtResource("2_sprwj")
+metadata/_custom_type_script = "uid://cbp72lpnyslsw"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpmmt"]
+size = Vector2(32, 56)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iv3j2"]
+radius = 96.0
+
+[node name="Goblin" type="CharacterBody2D" unique_id=508143637 groups=["Enemy"]]
+collision_layer = 4
+script = ExtResource("1_sprwj")
+absorb_data = SubResource("Resource_6n0m8")
+enemy_type = "Goblin"
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=808002455]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_xpmmt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=771735434]
+sprite_frames = ExtResource("2_sprwj")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=21715889]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1270918345]
+shape = SubResource("CircleShape2D_iv3j2")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="player_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="player_body_exited"]

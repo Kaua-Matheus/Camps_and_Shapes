@@ -1,131 +1,9 @@
 [gd_scene format=3 uid="uid://dm0p1dppqlhej"]
 
 [ext_resource type="Script" uid="uid://c1wcorcbq5uyt" path="res://scripts/character/player/player.gd" id="1_1o8m5"]
-[ext_resource type="Texture2D" uid="uid://bqgdw3b3m2msj" path="res://sprites/character/player/idle/slime_idle1.png" id="2_3ekpe"]
-[ext_resource type="Texture2D" uid="uid://g7eh3a47oxrq" path="res://sprites/character/player/attack/slime_attack1.png" id="2_gcpck"]
-[ext_resource type="Texture2D" uid="uid://ccpk0u1u14pgq" path="res://sprites/character/player/attack/slime_attack2.png" id="3_0xsky"]
-[ext_resource type="Texture2D" uid="uid://6kgq6jdnori8" path="res://sprites/character/player/idle/slime_idle2.png" id="3_rlso7"]
-[ext_resource type="Texture2D" uid="uid://55aoy2be4ijn" path="res://sprites/character/player/idle/slime_idle3.png" id="4_bmyq4"]
-[ext_resource type="Texture2D" uid="uid://bdxwntxa40xb8" path="res://sprites/character/player/attack/slime_attack3.png" id="4_ri2uq"]
-[ext_resource type="Texture2D" uid="uid://o3vfbpk4te0o" path="res://sprites/character/player/idle/slime_idle4.png" id="5_5n6yr"]
-[ext_resource type="Texture2D" uid="uid://cqnk5m37r0xtp" path="res://sprites/character/player/attack/slime_attack4.png" id="5_cyjs5"]
-[ext_resource type="Texture2D" uid="uid://7h36vmntka7g" path="res://sprites/character/player/walk/slime_walk_right1.png" id="6_h7vl7"]
-[ext_resource type="Texture2D" uid="uid://buct6yv6w6ddw" path="res://sprites/character/player/death/slime_death1.png" id="6_qh313"]
-[ext_resource type="Texture2D" uid="uid://dyx4nlbnjh2am" path="res://sprites/character/player/dash/slime_dash_right1.png" id="6_v66hw"]
-[ext_resource type="Texture2D" uid="uid://cly565olahbe6" path="res://sprites/character/player/dash/slime_dash_right2.png" id="7_gh1ad"]
-[ext_resource type="Texture2D" uid="uid://b5hsepjon8s3h" path="res://sprites/character/player/walk/slime_walk_right2.png" id="7_w04y5"]
-[ext_resource type="Texture2D" uid="uid://62gx8xohlf3d" path="res://sprites/character/player/death/slime_death2.png" id="7_xtt1i"]
-[ext_resource type="Texture2D" uid="uid://dycyu7ouors2s" path="res://sprites/character/player/walk/slime_walk_right3.png" id="8_g7m1y"]
-[ext_resource type="Texture2D" uid="uid://ctakine2spvhg" path="res://sprites/character/player/death/slime_death3.png" id="8_icf7y"]
-[ext_resource type="Texture2D" uid="uid://1sb7m8kpntca" path="res://sprites/character/player/dash/slime_dash_right3.png" id="8_l5d3m"]
-[ext_resource type="Texture2D" uid="uid://igf1rqq7r2ca" path="res://sprites/character/player/walk/slime_walk_right4.png" id="9_4g463"]
-[ext_resource type="Texture2D" uid="uid://0xkjl6aay4tn" path="res://sprites/character/player/death/slime_death4.png" id="9_t53ry"]
-[ext_resource type="Texture2D" uid="uid://dccrlvw3ikgqs" path="res://sprites/character/player/dash/slime_dash_right4.png" id="9_y3i1n"]
-[ext_resource type="Texture2D" uid="uid://bhjjbgvj3w7qu" path="res://sprites/character/player/death/slime_death5.png" id="10_v66hw"]
-[ext_resource type="Texture2D" uid="uid://dfhbvukdpermv" path="res://sprites/character/player/death/slime_death6.png" id="11_gh1ad"]
-[ext_resource type="Texture2D" uid="uid://b673665bmfnat" path="res://sprites/character/player/death/slime_death7.png" id="12_l5d3m"]
-[ext_resource type="Texture2D" uid="uid://dtptjntsl8wbt" path="res://sprites/character/player/death/slime_death8.png" id="13_y3i1n"]
+[ext_resource type="SpriteFrames" uid="uid://cdx055yj07nnc" path="res://sprites/sprite_frame/character/player/player_sprite_frame.tres" id="2_3hqro"]
+[ext_resource type="Script" uid="uid://ctgldjgfh2d5o" path="res://scripts/resources/absorb_component.gd" id="4_hmpou"]
 [ext_resource type="AudioStream" uid="uid://ds44kfu1wot6b" path="res://assets/audio/whoosh.wav" id="14_0xsky"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_h7vl7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_gcpck")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_0xsky")
-}, {
-"duration": 0.5,
-"texture": ExtResource("4_ri2uq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_cyjs5")
-}],
-"loop": true,
-"name": &"attack",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_v66hw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_gh1ad")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_l5d3m")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_y3i1n")
-}],
-"loop": false,
-"name": &"dash",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_qh313")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_xtt1i")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_icf7y")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_t53ry")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_v66hw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_gh1ad")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_l5d3m")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_y3i1n")
-}],
-"loop": false,
-"name": &"death",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_3ekpe")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_rlso7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_bmyq4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_5n6yr")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_h7vl7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_w04y5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_g7m1y")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_4g463")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 4.0
-}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ekpe"]
 radius = 17.0
@@ -138,7 +16,7 @@ collision_layer = 2
 script = ExtResource("1_1o8m5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=218026251]
-sprite_frames = SubResource("SpriteFrames_h7vl7")
+sprite_frames = ExtResource("2_3hqro")
 animation = &"dash"
 autoplay = "idle"
 
@@ -168,5 +46,8 @@ offset_right = 168.0
 offset_bottom = 24.0
 value = 100.0
 show_percentage = false
+
+[node name="AbsorbComponent" type="Node" parent="." unique_id=410440761]
+script = ExtResource("4_hmpou")
 
 [connection signal="body_entered" from="AttackHitBox" to="." method="attack_body_entered"]

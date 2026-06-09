@@ -1,5 +1,5 @@
-class_name Golem
-extends Character
+#class_name Golem
+extends _Enemy
 
 var player_ref = null
 

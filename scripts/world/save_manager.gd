@@ -27,7 +27,7 @@ func save_game() -> void:
 		"player": {
 			"pos_x": player.global_position.x,
 			"pos_y": player.global_position.y,
-			"current_hp": player.current_hp
+			"health": player.health
 		},
 		"wave": {
 			"current_wave": WaveManager.current_wave,
@@ -40,7 +40,7 @@ func save_game() -> void:
 		return
 	file.store_string(JSON.stringify(data))
 	file.close()
-	print("[SaveManager] Salvo — onda %d, HP %d" % [WaveManager.current_wave, player.current_hp])
+	print("[SaveManager] Salvo — onda %d, HP %d" % [WaveManager.current_wave, player.health])
 
 func load_save() -> Dictionary:
 	if not FileAccess.file_exists(SAVE_PATH):

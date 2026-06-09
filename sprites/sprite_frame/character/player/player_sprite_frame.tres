@@ -1,0 +1,126 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cdx055yj07nnc"]
+
+[ext_resource type="Texture2D" uid="uid://g7eh3a47oxrq" path="res://sprites/character/player/attack/slime_attack1.png" id="1_ukb2y"]
+[ext_resource type="Texture2D" uid="uid://ccpk0u1u14pgq" path="res://sprites/character/player/attack/slime_attack2.png" id="2_peku6"]
+[ext_resource type="Texture2D" uid="uid://bdxwntxa40xb8" path="res://sprites/character/player/attack/slime_attack3.png" id="3_uioau"]
+[ext_resource type="Texture2D" uid="uid://cqnk5m37r0xtp" path="res://sprites/character/player/attack/slime_attack4.png" id="4_rwfof"]
+[ext_resource type="Texture2D" uid="uid://dyx4nlbnjh2am" path="res://sprites/character/player/dash/slime_dash_right1.png" id="5_s65r8"]
+[ext_resource type="Texture2D" uid="uid://cly565olahbe6" path="res://sprites/character/player/dash/slime_dash_right2.png" id="6_xmpf5"]
+[ext_resource type="Texture2D" uid="uid://1sb7m8kpntca" path="res://sprites/character/player/dash/slime_dash_right3.png" id="7_84qth"]
+[ext_resource type="Texture2D" uid="uid://dccrlvw3ikgqs" path="res://sprites/character/player/dash/slime_dash_right4.png" id="8_jjrlc"]
+[ext_resource type="Texture2D" uid="uid://buct6yv6w6ddw" path="res://sprites/character/player/death/slime_death1.png" id="9_5kskk"]
+[ext_resource type="Texture2D" uid="uid://62gx8xohlf3d" path="res://sprites/character/player/death/slime_death2.png" id="10_ijr5e"]
+[ext_resource type="Texture2D" uid="uid://ctakine2spvhg" path="res://sprites/character/player/death/slime_death3.png" id="11_3giq1"]
+[ext_resource type="Texture2D" uid="uid://0xkjl6aay4tn" path="res://sprites/character/player/death/slime_death4.png" id="12_ljdbn"]
+[ext_resource type="Texture2D" uid="uid://bhjjbgvj3w7qu" path="res://sprites/character/player/death/slime_death5.png" id="13_a568e"]
+[ext_resource type="Texture2D" uid="uid://dfhbvukdpermv" path="res://sprites/character/player/death/slime_death6.png" id="14_b00of"]
+[ext_resource type="Texture2D" uid="uid://b673665bmfnat" path="res://sprites/character/player/death/slime_death7.png" id="15_mkm7x"]
+[ext_resource type="Texture2D" uid="uid://dtptjntsl8wbt" path="res://sprites/character/player/death/slime_death8.png" id="16_5nclv"]
+[ext_resource type="Texture2D" uid="uid://bqgdw3b3m2msj" path="res://sprites/character/player/idle/slime_idle1.png" id="17_8jvx4"]
+[ext_resource type="Texture2D" uid="uid://6kgq6jdnori8" path="res://sprites/character/player/idle/slime_idle2.png" id="18_pvsrk"]
+[ext_resource type="Texture2D" uid="uid://55aoy2be4ijn" path="res://sprites/character/player/idle/slime_idle3.png" id="19_dufvk"]
+[ext_resource type="Texture2D" uid="uid://o3vfbpk4te0o" path="res://sprites/character/player/idle/slime_idle4.png" id="20_owg4r"]
+[ext_resource type="Texture2D" uid="uid://7h36vmntka7g" path="res://sprites/character/player/walk/slime_walk_right1.png" id="21_4pg2i"]
+[ext_resource type="Texture2D" uid="uid://b5hsepjon8s3h" path="res://sprites/character/player/walk/slime_walk_right2.png" id="22_kp66r"]
+[ext_resource type="Texture2D" uid="uid://dycyu7ouors2s" path="res://sprites/character/player/walk/slime_walk_right3.png" id="23_s1r0w"]
+[ext_resource type="Texture2D" uid="uid://igf1rqq7r2ca" path="res://sprites/character/player/walk/slime_walk_right4.png" id="24_kujgd"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ukb2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_peku6")
+}, {
+"duration": 0.5,
+"texture": ExtResource("3_uioau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rwfof")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_s65r8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xmpf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_84qth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jjrlc")
+}],
+"loop": false,
+"name": &"dash",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_5kskk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ijr5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_3giq1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ljdbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_a568e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_b00of")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_mkm7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5nclv")
+}],
+"loop": false,
+"name": &"death",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_8jvx4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_pvsrk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_dufvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_owg4r")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_4pg2i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_kp66r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_s1r0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_kujgd")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 4.0
+}]

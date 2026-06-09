@@ -1,0 +1,23 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://c16jfwxdk8grb"]
+
+[ext_resource type="Texture2D" uid="uid://dxt8atchbydwx" path="res://sprites/enemies/golem/golem_idle.png" id="1_rja4k"]
+[ext_resource type="Texture2D" uid="uid://t8osetvlbsri" path="res://sprites/enemies/golem/golem_walk.png" id="2_x65rr"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rja4k")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_x65rr")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
