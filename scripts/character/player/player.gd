@@ -6,6 +6,10 @@ const GAME_OVER_SCENE := "res://scenes/interface/game_over.tscn"
 # Consts
 const BASE_SPEED = 300.0
 
+# Dash Override
+var dash_cd_override: float = -1.0      # -1 = usa DASH_CD padrão
+var dash_distance_multiplier: float = 1.0
+
 var absorb_data : AbsorbResource
 
 @onready var absorb_component: AbsorbComponent = $AbsorbComponent
@@ -79,6 +83,13 @@ enum PlayerState {
 
 var current_state: PlayerState
 
+
+
+# onde você calcula o cooldown do dash:
+func _get_dash_cooldown() -> float:
+	return dash_cd_override if dash_cd_override >= 0.0 else DASH_CD
+
+
 func _ready() -> void:
 	
 	# Absorb
@@ -116,6 +127,8 @@ func _physics_process(delta: float) -> void:
 	read_input()
 
 	update_cooldowns(delta)
+	
+	_update_skill_hud()
 
 	update_state(delta)
 
@@ -138,6 +151,9 @@ func enter_dash_state():
 
 	dash_direction = move_direction
 	dash_timer = dash_time
+	
+	# Added for dash override
+	dash_direction = dash_direction * dash_distance_multiplier
 
 	animation.play("dash")
 
@@ -162,7 +178,7 @@ func idle_state(delta):
 		enter_walk_state()
 		return
 		
-	if Input.get_action_strength("Dash"):
+	if Input.get_action_strength("Dash") and _dash_cd <= 0.0:
 		enter_dash_state()
 		return
 		
@@ -178,7 +194,7 @@ func walk_state(delta) -> void:
 		enter_idle_state()
 		return
 		
-	if Input.get_action_strength("Dash"):
+	if Input.get_action_strength("Dash") and _dash_cd <= 0.0:
 		enter_dash_state()
 		return
 		
@@ -187,12 +203,10 @@ func walk_state(delta) -> void:
 
 func dash_state(delta):
 	velocity = dash_direction * dash_speed
-
 	dash_timer -= delta
-
+	
 	if dash_timer <= 0:
-		_dash_cd = DASH_CD
-
+		_dash_cd = _get_dash_cooldown()
 		if move_direction == Vector2.ZERO:
 			enter_idle_state()
 		else:
@@ -326,6 +340,7 @@ func attack_body_entered(body: Node2D) -> void:
 
 # ─── Skills ────────────────────────────────────────────────────
 
+# Need fix, player can't use heal
 func _handle_skills(delta: float) -> void:
 	_dash_cd = max(_dash_cd - delta, 0.0)
 	_heal_cd = max(_heal_cd - delta, 0.0)

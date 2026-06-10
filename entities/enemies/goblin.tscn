@@ -14,7 +14,6 @@ radius = 96.0
 collision_layer = 4
 script = ExtResource("1_sprwj")
 absorb_data = ExtResource("2_j0usu")
-enemy_type = "Goblin"
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=808002455]
 position = Vector2(0, -4)

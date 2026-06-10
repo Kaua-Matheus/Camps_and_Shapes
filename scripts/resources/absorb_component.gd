@@ -30,6 +30,10 @@ func revert() -> void:
 		return
 	_active = false
 	current_data = null
+	
+	_player.dash_cd_override = -1.0
+	_player.dash_distance_multiplier = 1.0
+	
 	_restore_defaults()
 	emit_signal("form_expired")
 
@@ -49,8 +53,13 @@ func _apply_visuals() -> void:
 
 func _apply_stats() -> void:
 	_player.speed = current_data.speed
-	# habilidades ficam num Set para checar com has()
 	_player.active_abilities = current_data.abilities.duplicate()
+	
+	if current_data.dash_cooldown_override >= 0.0:
+		_player.dash_cd_override = current_data.dash_cooldown_override
+	if current_data.dash_distance_multiplier != 1.0:
+		_player.dash_distance_multiplier = current_data.dash_distance_multiplier
+		
 	print("Velocidade agora: ", _player.speed)
 	print("Habilidades: ", _player.active_abilities)
 
