@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cods4apfhtwoa"]
+
+[ext_resource type="Texture2D" uid="uid://b6bbdbbela6wk" path="res://assets/tiles.png" id="1_khrme"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5pw27"]
+texture = ExtResource("1_khrme")
+margins = Vector2i(3, 4)
+separation = Vector2i(2, 2)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_i8adn"]
+sources/0 = SubResource("TileSetAtlasSource_5pw27")
+
+[node name="DecorationLavaTerrain" type="TileMap" unique_id=261928325]
+tile_set = SubResource("TileSet_i8adn")
+format = 2
