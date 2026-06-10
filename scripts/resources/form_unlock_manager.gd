@@ -33,8 +33,10 @@ func register_kill(enemy_type: String) -> void:
 		if config.enemy_type == enemy_type:
 			if _kill_counts[enemy_type] >= config.kills_needed:
 				print("Forma desbloqueada")
-				emit_signal("form_unlocked", config.form_to_unlock)
-				_kill_counts[enemy_type] = 0  # reseta o contador
+				
+				_kill_counts[enemy_type] = 0
+				
+				call_deferred("emit_signal", "form_unlocked", config.form_to_unlock)
 
 func get_kills(enemy_type: String) -> int:
 	return _kill_counts.get(enemy_type, 0)

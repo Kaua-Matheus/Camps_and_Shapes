@@ -6,6 +6,8 @@ const GAME_OVER_SCENE := "res://scenes/interface/game_over.tscn"
 # Consts
 const BASE_SPEED = 300.0
 
+var absorb_data : AbsorbResource
+
 @onready var absorb_component: AbsorbComponent = $AbsorbComponent
 
 @export var base_speed: float = BASE_SPEED
@@ -356,22 +358,25 @@ func _use_damage_boost() -> void:
 
 # ─── Absorb Context ─────────────────────────────────────────────────
 
-func try_absorb(enemy: Enemy) -> void:
-	if enemy.absorb_data:
-		absorb_component.absorb(enemy.absorb_data)
-		enemy.on_absorbed_by_player()
+#func try_absorb(enemy: Enemy) -> void:
+	#if enemy.absorb_data:
+		#print(enemy.absorb_data)
+		#absorb_component.absorb(enemy.absorb_data)
+		#enemy.on_absorbed_by_player()
+
 
 func has_ability(ability: String) -> bool:
 	return active_abilities.has(ability)
-	
+
+
 # Entrada para absorver
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("Activate"):  # tecla Enter ou Espaço
-		print("Apertada tecla de ativacao")
-		var enemy = get_parent().get_node("Goblin")  # ajusta o nome se for diferente
-		if enemy:
-			print("Goblin encontrado")
-			try_absorb(enemy)
+	if event.is_action_pressed("Activate"):  # Espaço
+		if absorb_data == null:
+			print("Can't absorb for now.")
+		else:
+			absorb_component.absorb(absorb_data)
+	
 
 func _on_form_applied(data: AbsorbResource) -> void:
 	print("Forma absorvida: ", data.form_name)
@@ -379,10 +384,13 @@ func _on_form_applied(data: AbsorbResource) -> void:
 
 func _on_form_expired() -> void:
 	print("Forma expirou!")
-	# feedback visual de expiração
+	enter_idle_state()
 	
+# For some reason, when absorb an enemy, the character can't move	
 func _on_form_unlocked(data: AbsorbResource) -> void:
-	absorb_component.absorb(data)
+	print("A nova forma esta desbloqueada")
+	absorb_data = data
+	#absorb_component.absorb(data)
 
 
 # ─── Skill HUD ─────────────────────────────────────────────────

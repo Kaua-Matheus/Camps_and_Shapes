@@ -10,12 +10,12 @@ signal died(enemy_type: String)
 
 ## --- Export Vars ---
 @export var absorb_data: AbsorbResource
-@export var enemy_type: String = ""  # ex: "golem", "slime"
+@export var enemy_type: String = "Goblin"  # ex: "golem", "slime"
 
 ## --- Consts ---
 
 ## --- Vars ---
-var health: int = 100
+var health: int = 20
 
 func on_absorbed_by_player() -> void:
 	# opcional: animação de morte, efeito visual, etc.
