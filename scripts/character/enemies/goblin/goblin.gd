@@ -15,7 +15,7 @@ signal died(enemy_type: String)
 ## --- Consts ---
 
 ## --- Vars ---
-var health: int = 3
+var health: int = 100
 
 func on_absorbed_by_player() -> void:
 	# opcional: animação de morte, efeito visual, etc.
@@ -29,4 +29,5 @@ func take_damage(amount: int) -> void:
 
 func die() -> void:
 	emit_signal("died", enemy_type)
+	print("O sinal foi emitido")
 	queue_free()

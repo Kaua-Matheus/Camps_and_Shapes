@@ -82,7 +82,7 @@ func walk_state(_delta):
 	if distance_length <= melee_range:
 		velocity = Vector2.ZERO
 		if damage_timer <= 0.0:
-			player_ref.take_attack_damage_percent(damage_percent)
+			player_ref.take_damage(damage_percent)
 			damage_timer = damage_cooldown
 	
 	else:

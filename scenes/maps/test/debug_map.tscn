@@ -11,4 +11,10 @@ script = ExtResource("1_xnwv2")
 position = Vector2(256, 192)
 
 [node name="Goblin" parent="." unique_id=508143637 instance=ExtResource("3_xnwv2")]
-position = Vector2(559, 195)
+position = Vector2(555, 178)
+
+[node name="Goblin2" parent="." unique_id=794898863 instance=ExtResource("3_xnwv2")]
+position = Vector2(533, 344)
+
+[node name="Goblin3" parent="." unique_id=1416721020 instance=ExtResource("3_xnwv2")]
+position = Vector2(557, 12)

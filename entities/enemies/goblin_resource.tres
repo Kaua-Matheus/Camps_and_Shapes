@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbsorbResource" format=3 uid="uid://bmid3jikqqyb1"]
+
+[ext_resource type="Script" uid="uid://cbp72lpnyslsw" path="res://scripts/resources/absorb_resource.gd" id="1_v5th1"]
+[ext_resource type="SpriteFrames" uid="uid://ct37uf0p5mb5p" path="res://sprites/sprite_frame/enemies/goblin/goblin_sprite_frame.tres" id="2_m6wlk"]
+
+[resource]
+script = ExtResource("1_v5th1")
+form_name = "Goblin"
+sprite_frames = ExtResource("2_m6wlk")
+speed = 500.0
+metadata/_custom_type_script = "uid://cbp72lpnyslsw"
