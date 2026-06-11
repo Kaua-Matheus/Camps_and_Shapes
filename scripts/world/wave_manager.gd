@@ -70,7 +70,7 @@ func _get_spawn_position() -> Vector2:
 
 func _spawn_mini_golem(pos: Vector2) -> void:
 	var mini := GOLEM_SCENE.instantiate()
-	mini.max_hp = MINI_MAX_HP
+	mini.health = MINI_MAX_HP
 	mini.damage_percent = MINI_DAMAGE
 	mini.speed = MINI_SPEED
 	mini.melee_range = MINI_MELEE_RANGE

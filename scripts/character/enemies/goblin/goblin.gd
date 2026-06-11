@@ -1,33 +1,72 @@
-class_name Enemy
-extends CharacterBody2D
-#extends Enemy
+# Goblin
+extends Enemy
 
-## --- Signals ---
-signal died(enemy_type: String)
+var player_ref: Node2D = null
+
+@export var speed: int = 100
+@export var melee_range: float = 40.0
+
+@export var damage_percent: float = 20.0
+
+var distance: Vector2
+var direction: Vector2
+var distance_length: float
+
+var damage_cooldown: float = 1.5
+var damage_timer: float = 0.0
+
+func _ready() -> void:	
+	enter_idle_state()
 
 
-## --- Consts ---
+func _physics_process(delta: float) -> void:
+	damage_timer -= delta * damage_cooldown
 
-## --- Export Vars ---
-@export var absorb_data: AbsorbResource
-@export var enemy_type: String = "Goblin"  # ex: "golem", "slime"
+	update_state(delta)
 
-## --- Consts ---
+	move_and_slide()
 
-## --- Vars ---
-var health: int = 20
 
-func on_absorbed_by_player() -> void:
-	# opcional: animação de morte, efeito visual, etc.
-	queue_free()
+func idle_state(_delta):
+	if is_instance_valid(player_ref):
+		enter_walk_state()
+		return
+	else:
+		velocity = Vector2.ZERO
+		enter_idle_state()
+		return
+	
+func walk_state(_delta):
+	distance = player_ref.global_position - global_position
+	direction = distance.normalized()
+	distance_length = distance.length()
 
-# --- Damage and Kill ---
-func take_damage(amount: int) -> void:
-	health -= amount
-	if health <= 0:
-		die()
+	if distance_length <= melee_range:
+		velocity = Vector2.ZERO
+		if damage_timer <= 0.0:
+			player_ref.take_damage(damage_percent)
+			damage_timer = damage_cooldown
+	
+	else:
+		velocity = speed * direction
 
-func die() -> void:
-	emit_signal("died", enemy_type)
-	print("O sinal foi emitido")
-	queue_free()
+
+func update_state(delta: float):
+	
+	match current_state:
+
+		EnemyState.idle:
+			idle_state(delta)
+
+		EnemyState.walk:
+			walk_state(delta)
+
+
+func player_body_entered(body: Node2D) -> void:
+	print(body.get_groups())
+	if body.is_in_group("Player"):
+		player_ref = body
+
+
+func player_body_exited(_body: Node2D) -> void:
+	pass

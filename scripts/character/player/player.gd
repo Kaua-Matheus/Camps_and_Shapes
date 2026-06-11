@@ -160,7 +160,7 @@ func enter_dash_state():
 
 func enter_attack_state():
 	attack_hit_box.monitoring = true
-	current_state = PlayerState.attack
+	current_state = PlayerState.attack	
 	animation.play("attack")
 	swing_attack.play()
 	velocity = Vector2.ZERO

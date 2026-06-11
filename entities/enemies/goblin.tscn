@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bl0g8ydiut0s6"]
 
-[ext_resource type="Script" uid="uid://cs7nn5a7ulpd4" path="res://scripts/character/enemies/goblin/goblin.gd" id="1_sprwj"]
+[ext_resource type="Script" uid="uid://bbwb12b5r0drh" path="res://scripts/character/enemies/goblin/goblin.gd" id="1_sprwj"]
 [ext_resource type="Resource" uid="uid://bmid3jikqqyb1" path="res://entities/enemies/goblin_resource.tres" id="2_j0usu"]
 [ext_resource type="SpriteFrames" uid="uid://ct37uf0p5mb5p" path="res://sprites/sprite_frame/enemies/goblin/goblin_sprite_frame.tres" id="2_sprwj"]
 
@@ -14,6 +14,7 @@ radius = 96.0
 collision_layer = 4
 script = ExtResource("1_sprwj")
 absorb_data = ExtResource("2_j0usu")
+enemy_type = "Goblin"
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=808002455]
 position = Vector2(0, -4)

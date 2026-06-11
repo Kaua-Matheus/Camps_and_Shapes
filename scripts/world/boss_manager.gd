@@ -45,7 +45,7 @@ func _spawn_boss() -> void:
 	print("[BossManager] Boss spawning!")
 
 	var boss := GOLEM_SCENE.instantiate()
-	boss.max_hp = BOSS_MAX_HP
+	boss.health = BOSS_MAX_HP
 	boss.damage_percent = BOSS_DAMAGE
 	boss.speed = BOSS_SPEED
 	boss.melee_range = BOSS_MELEE_RANGE
@@ -107,7 +107,7 @@ func _update_boss_hp_bar() -> void:
 		return
 
 	if _boss_hp_bar != null:
-		_boss_hp_bar.value = boss_ref.current_hp
+		_boss_hp_bar.value = boss_ref.health
 
 func reset() -> void:
 	boss_spawned = false

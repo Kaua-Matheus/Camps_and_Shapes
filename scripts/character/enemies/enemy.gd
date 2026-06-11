@@ -1,23 +1,61 @@
-class_name _Enemy
+class_name Enemy
 extends CharacterBody2D
+#extends Enemy
 
-@export var max_hp := 100
-@export var attack_damage_percent := 20.0
+# We can use only one enum, extended by the mother class
+## --- Declaratives ---
+enum EnemyState {
+	idle,
+	walk,
+	attack,
+	dead
+}
 
-var health := 0
-var is_dead := false
 
-func _ready():
-	health = max_hp
+## --- Signals ---
+signal died(enemy_type: String)
 
-func take_damage(amount: int):
-	if is_dead:
-		return
 
-	health = max(health - amount, 0)
+## --- Export Vars ---
+@export var absorb_data: AbsorbResource
+@export var enemy_type: String = ""  # ex: "golem", "slime"
 
+## --- OnReady Vars ---
+@onready var animation: AnimatedSprite2D = $AnimatedSprite2D
+
+### --- Inner Stats ---
+var health: int = 40
+var current_state: EnemyState
+
+
+## --- Enter In (Functions) ---
+func enter_idle_state():
+	current_state = EnemyState.idle
+	animation.play("idle")
+	
+func enter_walk_state():
+	current_state = EnemyState.walk
+	animation.play("walk")
+	
+func enter_attack_state():
+	current_state = EnemyState.attack
+	animation.play("attack")
+	velocity = Vector2.ZERO
+	
+func enter_dead_state():
+	current_state = EnemyState.dead
+	animation.play("dead")
+	velocity = Vector2.ZERO
+
+
+# --- Damage and Kill ---
+func take_damage(amount: int) -> void:
+	health -= amount
 	if health <= 0:
 		die()
 
-func die():
-	is_dead = true
+
+func die() -> void:
+	emit_signal("died", enemy_type)
+	print("%s morreu.." % [enemy_type])
+	queue_free()

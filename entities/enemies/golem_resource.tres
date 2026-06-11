@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbsorbResource" format=3 uid="uid://b1iqk3a7s2rc2"]
+
+[ext_resource type="Script" uid="uid://cbp72lpnyslsw" path="res://scripts/resources/absorb_resource.gd" id="1_k8few"]
+[ext_resource type="SpriteFrames" uid="uid://c16jfwxdk8grb" path="res://sprites/sprite_frame/enemies/golem/golem_sprite_frame.tres" id="2_fsuum"]
+
+[resource]
+script = ExtResource("1_k8few")
+form_name = "Golem"
+sprite_frames = ExtResource("2_fsuum")
+metadata/_custom_type_script = "uid://cbp72lpnyslsw"
