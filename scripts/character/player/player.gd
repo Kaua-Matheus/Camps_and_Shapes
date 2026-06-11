@@ -28,6 +28,7 @@ var hitbox_offset: Vector2
 
 # Direction Vector
 var move_direction: Vector2
+var mouse_pos: Vector2
 
 # Dash
 var last_dash_direction := Vector2.ZERO
@@ -168,6 +169,7 @@ func enter_death_state():
 	attack_hit_box.monitoring = false
 	current_state = PlayerState.dead
 	animation.play("death")
+	velocity = Vector2.ZERO
 
 	
 ## State ##
@@ -271,11 +273,14 @@ func move(_delta: float):
 func update_direction():
 	update_hitbox_offset()
 	
-	if move_direction.x < 0:
-		animation.flip_h = true
-
-	elif move_direction.x > 0:
-		animation.flip_h = false
+	mouse_pos = get_global_mouse_position()
+	animation.flip_h = mouse_pos.x < global_position.x
+	
+	# Old Move (Based in Direction)
+	#if move_direction.x < 0:
+		#animation.flip_h = true
+	#elif move_direction.x > 0:
+		#animation.flip_h = false
 
 
 # Cooldowns
@@ -287,20 +292,25 @@ func update_cooldowns(delta: float):
 
 # Player Attack Hitbox
 func update_hitbox_offset() -> void:
-	# Change the hitbox depending on player direction
 	
-	var x := hitbox_offset.x
-	var y := hitbox_offset.y
+	mouse_pos = get_global_mouse_position()
+	var direction := (mouse_pos - global_position).normalized()
+	
+	attack_hit_box.position = direction * hitbox_offset.x
+	
+	# Old Attack Hitbox (Based in Direction)
+	#var x := hitbox_offset.x
+	#var y := hitbox_offset.y
 
-	match move_direction:
-		Vector2.LEFT:
-			attack_hit_box.position = Vector2(-x, y)
-		Vector2.RIGHT:
-			attack_hit_box.position = Vector2(x, y)
-		Vector2.UP:
-			attack_hit_box.position = Vector2(y, -x)
-		Vector2.DOWN:
-			attack_hit_box.position = Vector2(-y, x)
+	#match move_direction:
+		#Vector2.LEFT:
+			#attack_hit_box.position = Vector2(-x, y)
+		#Vector2.RIGHT:
+			#attack_hit_box.position = Vector2(x, y)
+		#Vector2.UP:
+			#attack_hit_box.position = Vector2(y, -x)
+		#Vector2.DOWN:
+			#attack_hit_box.position = Vector2(-y, x)
 
 
 # ─── Player Take Damage ─────────────────────────────────────────────────
@@ -373,18 +383,10 @@ func _use_damage_boost() -> void:
 
 # ─── Absorb Context ─────────────────────────────────────────────────
 
-#func try_absorb(enemy: Enemy) -> void:
-	#if enemy.absorb_data:
-		#print(enemy.absorb_data)
-		#absorb_component.absorb(enemy.absorb_data)
-		#enemy.on_absorbed_by_player()
-
-
 func has_ability(ability: String) -> bool:
 	return active_abilities.has(ability)
 
-
-# Entrada para absorver
+# Absorb Input
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Activate"):  # Espaço
 		if absorb_data == null:

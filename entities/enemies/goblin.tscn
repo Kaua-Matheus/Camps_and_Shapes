@@ -21,7 +21,7 @@ shape = SubResource("RectangleShape2D_xpmmt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=771735434]
 sprite_frames = ExtResource("2_sprwj")
-animation = &"idle"
+animation = &"dash"
 autoplay = "idle"
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=21715889]

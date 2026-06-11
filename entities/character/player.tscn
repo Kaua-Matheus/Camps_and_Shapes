@@ -9,7 +9,8 @@
 radius = 17.0
 height = 34.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xsky"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_hmpou"]
+radius = 15.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1449680644 groups=["Player"]]
 collision_layer = 2
@@ -35,7 +36,7 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitBox" unique_id=813196229]
-shape = SubResource("RectangleShape2D_0xsky")
+shape = SubResource("CircleShape2D_hmpou")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1123456781]
 
