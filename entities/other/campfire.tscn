@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://campfire_snow_001"]
+[gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/other/campfire.gd" id="1_camp"]
+[ext_resource type="Script" uid="uid://bfmbql5rdhwjo" path="res://scripts/other/campfire.gd" id="1_camp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_warm"]
 radius = 70.0

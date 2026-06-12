@@ -152,7 +152,7 @@ position = Vector2(381, 93)
 position = Vector2(384, 192)
 limit_left = 0
 limit_top = 0
-limit_right = 2304
+limit_right = 6912
 limit_bottom = 384
 
 [node name="SnowTerrain" type="Node2D" parent="." unique_id=130613173]
