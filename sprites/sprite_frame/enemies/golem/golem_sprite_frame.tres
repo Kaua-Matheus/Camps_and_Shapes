@@ -1,17 +1,29 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://c16jfwxdk8grb"]
 
-[ext_resource type="Texture2D" uid="uid://dxt8atchbydwx" path="res://sprites/enemies/golem/golem_idle.png" id="1_rja4k"]
+[ext_resource type="Texture2D" uid="uid://cc26u5csrfnqd" path="res://sprites/enemies/golem/idle/idle1.png" id="1_scjcy"]
+[ext_resource type="Texture2D" uid="uid://d4du6a2v2k33v" path="res://sprites/enemies/golem/idle/idle2.png" id="2_ivv2a"]
 [ext_resource type="Texture2D" uid="uid://t8osetvlbsri" path="res://sprites/enemies/golem/golem_walk.png" id="2_x65rr"]
+[ext_resource type="Texture2D" uid="uid://bec5xxtm6h83v" path="res://sprites/enemies/golem/idle/idle3.png" id="3_u47la"]
+[ext_resource type="Texture2D" uid="uid://ccnbe43ulbs1x" path="res://sprites/enemies/golem/idle/idle4.png" id="4_j5777"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_rja4k")
+"texture": ExtResource("1_scjcy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ivv2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_u47la")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j5777")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,

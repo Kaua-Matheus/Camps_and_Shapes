@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://b1iqk3a7s2rc2" path="res://entities/enemies/golem_resource.tres" id="2_xpmmt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpmmt"]
-size = Vector2(32, 56)
+size = Vector2(56, 68)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iv3j2"]
 radius = 96.0
@@ -17,12 +17,15 @@ absorb_data = ExtResource("2_xpmmt")
 enemy_type = "Golem"
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=808002455]
-position = Vector2(0, 4)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_xpmmt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=771735434]
+scale = Vector2(1.1875, 1.125)
 sprite_frames = ExtResource("2_iv3j2")
 animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.101982266
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=21715889]
 collision_layer = 4
