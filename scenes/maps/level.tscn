@@ -25,12 +25,12 @@
 [ext_resource type="Texture2D" uid="uid://csreji8qs61kg" path="res://sprites/other/snow/casinha.png" id="23_cas"]
 [ext_resource type="Texture2D" uid="uid://xr1gabr5ce0v" path="res://sprites/other/snow/poste.png" id="24_post"]
 [ext_resource type="Texture2D" uid="uid://cwu0cntpwlsbo" path="res://sprites/other/snow/cerca.png" id="25_cerc"]
-[ext_resource type="Texture2D" uid="uid://c7twu6nnja2tf" path="res://sprites/other/snow/fogueira apagada.png" id="26_sfog"]
 [ext_resource type="Texture2D" uid="uid://brkt0qei8o20b" path="res://sprites/other/snow/poste de iluminacao.png" id="27_sposte"]
 [ext_resource type="Texture2D" uid="uid://bv1etfyt6ufq" path="res://sprites/other/snow/arbusto.png" id="28_sarb"]
 [ext_resource type="PackedScene" uid="uid://c5vv70r88jw3t" path="res://scenes/maps/lava_terrain.tscn" id="29_m355c"]
 [ext_resource type="PackedScene" uid="uid://cods4apfhtwoa" path="res://scenes/maps/decoration_lava_terrain.tscn" id="30_rc367"]
 [ext_resource type="PackedScene" uid="uid://b7ro8femhdnfs" path="res://scenes/maps/lava_trees.tscn" id="31_x3ked"]
+[ext_resource type="PackedScene" path="res://entities/other/campfire.tscn" id="32_campfire"]
 
 [node name="Level" type="Node2D" unique_id=2029175643]
 metadata/_edit_vertical_guides_ = [0.0, 2304.0]
@@ -225,13 +225,11 @@ texture = ExtResource("25_cerc")
 position = Vector2(3692, 301)
 texture = ExtResource("25_cerc")
 
-[node name="FogueiraApagada1" type="Sprite2D" parent="SnowTerrain/SnowDecors" unique_id=200016]
+[node name="Campfire1" parent="SnowTerrain/SnowDecors" unique_id=2140413670 instance=ExtResource("32_campfire")]
 position = Vector2(2447, 129)
-texture = ExtResource("26_sfog")
 
-[node name="FogueiraApagada2" type="Sprite2D" parent="SnowTerrain/SnowDecors" unique_id=200017]
+[node name="Campfire2" parent="SnowTerrain/SnowDecors" unique_id=1099294510 instance=ExtResource("32_campfire")]
 position = Vector2(4223, 94)
-texture = ExtResource("26_sfog")
 
 [node name="PosteIluminacao1" type="Sprite2D" parent="SnowTerrain/SnowDecors" unique_id=200018]
 position = Vector2(2799, 210)

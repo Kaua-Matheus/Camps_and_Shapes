@@ -58,6 +58,20 @@ var _skill_labels: Array = []
 var _heal_lock_overlay: ColorRect = null
 var _heal_lock_label: Label = null
 
+# ─── Freeze System ─────────────────────────────────────────────────
+const SNOW_BIOME_X := 2304.0
+const FREEZE_DELAY := 10.0       # segundos antes de começar a perder vida
+const CAMPFIRE_WARMUP := 3.0     # segundos dentro da fogueira para resetar timer
+const FREEZE_DAMAGE := 2         # dano por tick
+const FREEZE_TICK := 1.0         # intervalo entre ticks de dano
+
+var _campfire_count: int = 0     # quantas fogueiras o player está tocando
+var _freeze_timer: float = FREEZE_DELAY
+var _campfire_warmup: float = 0.0
+var _is_freezing: bool = false
+var _freeze_tick_timer: float = FREEZE_TICK
+var _freeze_label: Label = null
+
 # Animation
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -110,6 +124,7 @@ func _ready() -> void:
 	if SaveManager.is_continuing:
 		_apply_save_data()
 	_setup_skill_hud()
+	_setup_freeze_hud()
 
 func _apply_save_data() -> void:
 	var data := SaveManager.load_save()
@@ -128,7 +143,8 @@ func _physics_process(delta: float) -> void:
 	read_input()
 
 	update_cooldowns(delta)
-	
+	_update_freeze_system(delta)
+
 	_update_skill_hud()
 
 	update_state(delta)
@@ -502,3 +518,83 @@ func _update_skill_hud() -> void:
 		else:
 			overlay.size.y = 0.0
 			lbl.text = ready_texts[i]
+
+
+# ─── Freeze System ─────────────────────────────────────────────────
+
+func _setup_freeze_hud() -> void:
+	var hud: CanvasLayer = $HUD
+	var lbl := Label.new()
+	lbl.position = Vector2(8, 76)
+	lbl.size = Vector2(200, 16)
+	lbl.add_theme_color_override("font_color", Color(0.5, 0.9, 1.0))
+	lbl.add_theme_font_size_override("font_size", 9)
+	lbl.visible = false
+	hud.add_child(lbl)
+	_freeze_label = lbl
+
+func _update_freeze_system(delta: float) -> void:
+	if is_dead:
+		return
+
+	var in_snow := global_position.x >= SNOW_BIOME_X
+	if not in_snow:
+		if _is_freezing:
+			_is_freezing = false
+			if not _damage_boosted:
+				animation.modulate = Color.WHITE
+		_freeze_timer = FREEZE_DELAY
+		_campfire_warmup = 0.0
+		_freeze_tick_timer = FREEZE_TICK
+		if is_instance_valid(_freeze_label):
+			_freeze_label.visible = false
+		return
+
+	var near_fire := _campfire_count > 0
+
+	if near_fire:
+		_campfire_warmup += delta
+		if _is_freezing:
+			_is_freezing = false
+			if not _damage_boosted:
+				animation.modulate = Color.WHITE
+		if _campfire_warmup >= CAMPFIRE_WARMUP:
+			_freeze_timer = FREEZE_DELAY
+			_campfire_warmup = CAMPFIRE_WARMUP
+	else:
+		_campfire_warmup = 0.0
+		_freeze_timer -= delta
+		if _freeze_timer <= 0.0:
+			_freeze_timer = 0.0
+			_is_freezing = true
+
+	if _is_freezing:
+		animation.modulate = Color(0.6, 0.8, 1.0)
+		_freeze_tick_timer -= delta
+		if _freeze_tick_timer <= 0.0:
+			_freeze_tick_timer = FREEZE_TICK
+			take_damage(FREEZE_DAMAGE)
+	else:
+		if not _damage_boosted:
+			animation.modulate = Color.WHITE
+
+	if is_instance_valid(_freeze_label):
+		if in_snow and not near_fire and not _is_freezing and _freeze_timer < FREEZE_DELAY:
+			_freeze_label.text = "Frio: %ds" % ceili(_freeze_timer)
+			_freeze_label.visible = true
+		elif _is_freezing:
+			_freeze_label.text = "CONGELANDO!"
+			_freeze_label.visible = true
+		elif near_fire and _campfire_warmup < CAMPFIRE_WARMUP:
+			_freeze_label.text = "Aquecendo: %ds" % ceili(CAMPFIRE_WARMUP - _campfire_warmup)
+			_freeze_label.visible = true
+		else:
+			_freeze_label.visible = false
+
+func enter_campfire_range() -> void:
+	_campfire_count += 1
+
+func exit_campfire_range() -> void:
+	_campfire_count = max(_campfire_count - 1, 0)
+	if _campfire_count == 0:
+		_campfire_warmup = 0.0

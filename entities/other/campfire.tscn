@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://campfire_snow_001"]
+
+[ext_resource type="Script" path="res://scripts/other/campfire.gd" id="1_camp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_warm"]
+radius = 70.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 10.0
+
+[node name="Campfire" type="Node2D"]
+script = ExtResource("1_camp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(1.5, 1.5)
+
+[node name="WarmZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WarmZone"]
+shape = SubResource("CircleShape2D_warm")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_body")
