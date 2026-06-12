@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1781273967
+::res://::1781274229
 default_bus_layout.tres::AudioBusLayout::6131808079374925285::1778532410::0::1::::<><><>0<>0<><>::
 README.md::TextFile::-1::1778532410::0::1::::<><><>0<>0<><>::
 ::res://assets/::1781271006
@@ -139,9 +139,9 @@ goblin.tscn::PackedScene::3210531906304215167::1781269036::0::1::::<><><>0<>0<><
 goblin_resource.tres::Resource/AbsorbResource::3245434468134583260::1781269036::0::1::::<><><>0<>0<><>::uid://cbp72lpnyslsw::::res://scripts/resources/absorb_resource.gd<>uid://ct37uf0p5mb5p::::res://sprites/sprite_frame/enemies/goblin/goblin_sprite_frame.tres
 golem.tscn::PackedScene::1294009330884840828::1781269036::0::1::::<><><>0<>0<><>::uid://ch2otu2xqdpl7::::res://scripts/character/enemies/golem.gd<>uid://c16jfwxdk8grb::::res://sprites/sprite_frame/enemies/golem/golem_sprite_frame.tres<>uid://b1iqk3a7s2rc2::::res://entities/enemies/golem_resource.tres
 golem_resource.tres::Resource/AbsorbResource::4228836442270606235::1781269036::0::1::::<><><>0<>0<><>::uid://cbp72lpnyslsw::::res://scripts/resources/absorb_resource.gd<>uid://c16jfwxdk8grb::::res://sprites/sprite_frame/enemies/golem/golem_sprite_frame.tres
-::res://entities/other/::1781272889
+::res://entities/other/::1781274208
 camera.tscn::PackedScene::4324007838741890200::1778532410::0::1::::<><><>0<>0<><>::uid://c3wubbf4ed1nt::::res://scripts/other/camera.gd
-campfire.tscn::PackedScene::-1::1781272889::0::1::::<><><>0<>0<><>::uid://bfmbql5rdhwjo::::res://scripts/other/campfire.gd
+campfire.tscn::PackedScene::-1::1781274208::0::1::::<><><>0<>0<><>::uid://bfmbql5rdhwjo::::res://scripts/other/campfire.gd
 rock.tscn::PackedScene::4601883711774263025::1776121076::0::1::::<><><>0<>0<><>::uid://rr00168t4ku6::::res://scripts/other/rock.gd<>uid://dtg0aj3uqxlrr::::res://sprites/other/rock.png
 ::res://exterior tilesets/::1781025168
 Beach tiles.png::CompressedTexture2D::2281688501055898109::1752315491::1781025167::1::::<><><>0<>0<>ca126587834d8c77d86140e20f371977<>res://.godot/imported/Beach tiles.png-fd914445d3be59cf5c67871bc6ec2d3b.ctex::
