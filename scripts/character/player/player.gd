@@ -71,6 +71,8 @@ var _campfire_warmup: float = 0.0
 var _is_freezing: bool = false
 var _freeze_tick_timer: float = FREEZE_TICK
 var _freeze_label: Label = null
+var _freeze_shader: ShaderMaterial = null
+var _freeze_vignette_intensity: float = 0.0
 
 # Animation
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
@@ -524,6 +526,19 @@ func _update_skill_hud() -> void:
 
 func _setup_freeze_hud() -> void:
 	var hud: CanvasLayer = $HUD
+
+	var vignette := ColorRect.new()
+	vignette.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	vignette.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var mat := ShaderMaterial.new()
+	var shader := Shader.new()
+	shader.code = "shader_type canvas_item;\nuniform float intensity : hint_range(0.0,1.0) = 0.0;\nvoid fragment() {\n\tvec2 uv = UV - 0.5;\n\tfloat d = smoothstep(0.25, 0.75, length(uv) * 2.0);\n\tCOLOR = vec4(0.0, 0.15, 0.55, d * intensity * 0.82);\n}"
+	mat.shader = shader
+	mat.set_shader_parameter("intensity", 0.0)
+	vignette.material = mat
+	hud.add_child(vignette)
+	_freeze_shader = mat
+
 	var lbl := Label.new()
 	lbl.position = Vector2(8, 76)
 	lbl.size = Vector2(200, 16)
@@ -548,6 +563,7 @@ func _update_freeze_system(delta: float) -> void:
 		_freeze_tick_timer = FREEZE_TICK
 		if is_instance_valid(_freeze_label):
 			_freeze_label.visible = false
+		_update_vignette(0.0, delta)
 		return
 
 	var near_fire := _campfire_count > 0
@@ -574,9 +590,11 @@ func _update_freeze_system(delta: float) -> void:
 		if _freeze_tick_timer <= 0.0:
 			_freeze_tick_timer = FREEZE_TICK
 			take_damage(FREEZE_DAMAGE)
+		_update_vignette(1.0, delta)
 	else:
 		if not _damage_boosted:
 			animation.modulate = Color.WHITE
+		_update_vignette(0.0, delta)
 
 	if is_instance_valid(_freeze_label):
 		if in_snow and not near_fire and not _is_freezing and _freeze_timer < FREEZE_DELAY:
@@ -598,3 +616,9 @@ func exit_campfire_range() -> void:
 	_campfire_count = max(_campfire_count - 1, 0)
 	if _campfire_count == 0:
 		_campfire_warmup = 0.0
+
+func _update_vignette(target: float, delta: float) -> void:
+	if not is_instance_valid(_freeze_shader):
+		return
+	_freeze_vignette_intensity = move_toward(_freeze_vignette_intensity, target, delta * 1.5)
+	_freeze_shader.set_shader_parameter("intensity", _freeze_vignette_intensity)

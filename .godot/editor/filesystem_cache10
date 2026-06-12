@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1781276874
+::res://::1781277100
 default_bus_layout.tres::AudioBusLayout::6131808079374925285::1778532410::0::1::::<><><>0<>0<><>::
 README.md::TextFile::-1::1778532410::0::1::::<><><>0<>0<><>::
 ::res://assets/::1781271006
@@ -195,8 +195,8 @@ enemy.gd::GDScript::6103114754409039959::1781269036::0::1::::Enemy<>CharacterBod
 golem.gd::GDScript::5320786533438220170::1781269036::0::1::::<>Enemy<><>0<>0<><>::
 ::res://scripts/character/enemies/goblin/::1781269036
 goblin.gd::GDScript::2502134406616767661::1781269036::0::1::::<>Enemy<><>0<>0<><>::
-::res://scripts/character/player/::1781269740
-player.gd::GDScript::6643314943719141795::1781269740::0::1::::Player<>Character<><>0<>0<><>::
+::res://scripts/character/player/::1781277057
+player.gd::GDScript::6643314943719141795::1781277057::0::1::::Player<>Character<><>0<>0<><>::
 ::res://scripts/other/::1781276719
 camera.gd::GDScript::6784761487060151405::1778532410::0::1::::<>Camera2D<><>0<>0<><>::
 campfire.gd::GDScript::2762227349504921248::1781276719::0::1::::Campfire<>Node2D<><>0<>0<><>::
