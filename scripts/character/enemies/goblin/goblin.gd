@@ -40,6 +40,11 @@ func walk_state(_delta):
 	distance = player_ref.global_position - global_position
 	direction = distance.normalized()
 	distance_length = distance.length()
+	
+	if direction.x < 0:
+		animation.flip_h = true
+	elif direction.x > 0:
+		animation.flip_h = false
 
 	if distance_length <= melee_range:
 		velocity = Vector2.ZERO

@@ -280,9 +280,6 @@ func update_state(delta: float):
 
 
 func move(_delta: float):
-	#if is_dashing:
-		#return
-		
 	update_direction()
 	
 	velocity = move_direction * speed
