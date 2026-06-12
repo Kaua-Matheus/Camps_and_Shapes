@@ -156,6 +156,7 @@ limit_right = 6912
 limit_bottom = 384
 
 [node name="SnowTerrain" type="Node2D" parent="." unique_id=130613173]
+z_index = -1
 
 [node name="SnowTerrain" parent="SnowTerrain" unique_id=2104174567 instance=ExtResource("8_sdm7h")]
 position = Vector2(2304, 0)
@@ -252,6 +253,7 @@ position = Vector2(4520, 137)
 texture = ExtResource("28_sarb")
 
 [node name="LavaTerrain" type="Node2D" parent="." unique_id=610434841]
+z_index = -1
 
 [node name="LavaTerrain" parent="LavaTerrain" unique_id=339676068 instance=ExtResource("29_m355c")]
 position = Vector2(4608, 0)
