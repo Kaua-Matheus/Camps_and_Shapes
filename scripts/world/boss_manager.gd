@@ -1,12 +1,14 @@
 extends Node
 
-const GOLEM_SCENE = preload("res://entities/enemies/golem.tscn")
+const GOLEM_BOSS_SCENE = preload("res://entities/boss/mecha_stone_golem/golem_boss.tscn")
 
-const BOSS_TRIGGER_X: float = 2000.0
+const BOSS_TRIGGER_X: float = 3000.0
+const BOSS_SPAWN_X: float = 5000.0
+const BOSS_SPAWN_Y: float = 192.0
 const BOSS_MAX_HP: int = 300
 const BOSS_DAMAGE: float = 35.0
 const BOSS_SPEED: int = 80
-const BOSS_MELEE_RANGE: float = 100.0
+const BOSS_MELEE_RANGE: float = 65.0
 const BOSS_SCALE: float = 2.5
 
 var boss_spawned: bool = false
@@ -37,27 +39,35 @@ func _process(delta: float) -> void:
 		_update_boss_hp_bar()
 		return
 
-	if player_ref.global_position.x >= BOSS_TRIGGER_X:
+	if player_ref.global_position.x >= BOSS_TRIGGER_X and _is_lava_area_loaded():
 		_spawn_boss()
 
 func _spawn_boss() -> void:
 	boss_spawned = true
 	print("[BossManager] Boss spawning!")
 
-	var boss := GOLEM_SCENE.instantiate()
+	var boss := GOLEM_BOSS_SCENE.instantiate()
+	boss.max_health = BOSS_MAX_HP
 	boss.health = BOSS_MAX_HP
 	boss.damage_percent = BOSS_DAMAGE
 	boss.speed = BOSS_SPEED
 	boss.melee_range = BOSS_MELEE_RANGE
 	boss.scale = Vector2(BOSS_SCALE, BOSS_SCALE)
-	boss.modulate = Color(1.0, 0.25, 0.25)
+	boss.dash_hit_range *= BOSS_SCALE
+	boss.laser_width *= BOSS_SCALE
+	boss.laser_range *= BOSS_SCALE
+	boss.aggro_range *= BOSS_SCALE
+	
 
-	var mid_y := (WaveManager.MAP_MIN_Y + WaveManager.MAP_MAX_Y) / 2.0
 	get_tree().current_scene.add_child(boss)
-	boss.global_position = Vector2(BOSS_TRIGGER_X + 200.0, mid_y)
+	boss.global_position = Vector2(BOSS_SPAWN_X, BOSS_SPAWN_Y)
 
 	boss_ref = boss
 	_create_boss_hp_bar()
+
+func _is_lava_area_loaded() -> bool:
+	var scene := get_tree().current_scene
+	return scene != null and scene.find_child("LavaTerrain", true, false) != null
 
 func _create_boss_hp_bar() -> void:
 	_boss_canvas = CanvasLayer.new()
