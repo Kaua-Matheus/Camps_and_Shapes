@@ -1,6 +1,6 @@
 extends Node
 
-const GOLEM_SCENE = preload("res://entities/enemies/golem.tscn")
+const GOLEM_SCENE = preload("res://entities/enemies/golem/golem.tscn")
 
 const WAVE_INTERVAL: float = 12.0
 

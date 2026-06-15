@@ -2,8 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://dm0p1dppqlhej" path="res://entities/character/player.tscn" id="1_ariq3"]
 [ext_resource type="Script" uid="uid://s0txnuvomb7s" path="res://scenes/maps/test/debug_map.gd" id="1_xnwv2"]
-[ext_resource type="PackedScene" uid="uid://bl0g8ydiut0s6" path="res://entities/enemies/goblin.tscn" id="3_xnwv2"]
-[ext_resource type="PackedScene" uid="uid://so3e6gikuxc3" path="res://entities/enemies/golem.tscn" id="4_n8v2x"]
+[ext_resource type="PackedScene" uid="uid://bl0g8ydiut0s6" path="res://entities/enemies/goblin/goblin.tscn" id="3_xnwv2"]
+[ext_resource type="PackedScene" uid="uid://so3e6gikuxc3" path="res://entities/enemies/golem/golem.tscn" id="4_n8v2x"]
+[ext_resource type="PackedScene" uid="uid://cloxy28oqs51n" path="res://entities/enemies/wolf/wolf.tscn" id="5_ro017"]
 
 [node name="DebugMap" type="Node2D" unique_id=1513895053]
 script = ExtResource("1_xnwv2")
@@ -28,3 +29,9 @@ position = Vector2(88, 43)
 
 [node name="Golem3" parent="." unique_id=1418244005 instance=ExtResource("4_n8v2x")]
 position = Vector2(93, 360)
+
+[node name="Wolf" parent="." unique_id=812217524 instance=ExtResource("5_ro017")]
+position = Vector2(287, 388)
+
+[node name="Wolf2" parent="." unique_id=1216234478 instance=ExtResource("5_ro017")]
+position = Vector2(479, 387)

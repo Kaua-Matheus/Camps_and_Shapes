@@ -7,17 +7,26 @@ signal form_unlocked(data: AbsorbResource)
 var _kill_counts: Dictionary = {}  # { "golem": 3, "slime": 1 }
 
 func _ready() -> void:
+	# Goblin Config
 	var goblin_config = UnlockConfig.new()
 	goblin_config.enemy_type = "Goblin"
 	goblin_config.kills_needed = 3
-	goblin_config.form_to_unlock = load("res://entities/enemies/goblin_resource.tres")
+	goblin_config.form_to_unlock = load("res://entities/enemies/goblin/goblin_resource.tres")
 	unlock_configs.append(goblin_config)
 	
+	# Golem Config
 	var golem_config = UnlockConfig.new()
 	golem_config.enemy_type = "Golem"
 	golem_config.kills_needed = 3
-	golem_config.form_to_unlock = load("res://entities/enemies/golem_resource.tres")
+	golem_config.form_to_unlock = load("res://entities/enemies/golem/golem_resource.tres")
 	unlock_configs.append(golem_config)
+	
+	# Wolf Config
+	var wolf_config = UnlockConfig.new()
+	wolf_config.enemy_type = "Wolf"
+	wolf_config.kills_needed = 2
+	wolf_config.form_to_unlock = load("res://entities/enemies/wolf/wolf_resource.tres")
+	unlock_configs.append(wolf_config)
 	
 	for config in unlock_configs:
 		print(config.enemy_type)

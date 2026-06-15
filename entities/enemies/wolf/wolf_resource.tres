@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AbsorbResource" format=3 uid="uid://wimbep8w6dsd"]
+
+[ext_resource type="Script" uid="uid://cbp72lpnyslsw" path="res://scripts/resources/absorb_resource.gd" id="1_seu4x"]
+[ext_resource type="SpriteFrames" uid="uid://dfw6fnxd0c1ly" path="res://sprites/sprite_frame/enemies/wolf/wolf_sprite_frame.tres" id="2_vl2x5"]
+
+[resource]
+script = ExtResource("1_seu4x")
+form_name = "Wolf"
+sprite_frames = ExtResource("2_vl2x5")
+speed = 400.0
+duration = 30.0
+dash_distance_multiplier = 3.0
+metadata/_custom_type_script = "uid://cbp72lpnyslsw"

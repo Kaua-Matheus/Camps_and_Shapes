@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bl0g8ydiut0s6"]
 
 [ext_resource type="Script" uid="uid://bbwb12b5r0drh" path="res://scripts/character/enemies/goblin/goblin.gd" id="1_sprwj"]
-[ext_resource type="Resource" uid="uid://bmid3jikqqyb1" path="res://entities/enemies/goblin_resource.tres" id="2_j0usu"]
+[ext_resource type="Resource" uid="uid://bmid3jikqqyb1" path="res://entities/enemies/goblin/goblin_resource.tres" id="2_j0usu"]
 [ext_resource type="SpriteFrames" uid="uid://ct37uf0p5mb5p" path="res://sprites/sprite_frame/enemies/goblin/goblin_sprite_frame.tres" id="2_sprwj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpmmt"]
