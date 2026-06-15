@@ -23,9 +23,8 @@ shape = SubResource("RectangleShape2D_xpmmt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=771735434]
 scale = Vector2(1.1875, 1.125)
 sprite_frames = ExtResource("2_iv3j2")
-animation = &"walk"
+animation = &"dash"
 autoplay = "idle"
-frame_progress = 0.7968788
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=21715889]
 collision_layer = 4

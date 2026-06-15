@@ -6,7 +6,7 @@ var player_ref: Node2D = null
 @export var speed: int = 100
 @export var melee_range: float = 40.0
 
-@export var damage_percent: float = 20.0
+@export var damage_on_player: float = 20.0
 
 var distance: Vector2
 var direction: Vector2
@@ -41,15 +41,12 @@ func walk_state(_delta):
 	direction = distance.normalized()
 	distance_length = distance.length()
 	
-	if direction.x < 0:
-		animation.flip_h = true
-	elif direction.x > 0:
-		animation.flip_h = false
+	animation.flip_h = true if direction.x < 0 else false
 
 	if distance_length <= melee_range:
 		velocity = Vector2.ZERO
 		if damage_timer <= 0.0:
-			player_ref.take_damage(damage_percent)
+			player_ref.take_damage(damage_on_player)
 			damage_timer = damage_cooldown
 	
 	else:
