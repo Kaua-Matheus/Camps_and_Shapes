@@ -15,6 +15,10 @@ var boss_spawned: bool = false
 var boss_defeated: bool = false
 var boss_ref = null
 var player_ref: Node2D = null
+var gate_unlocks: Dictionary = {
+	"snow": false,
+	"lava": false,
+}
 
 var _boss_canvas: CanvasLayer = null
 var _boss_hp_bar: ProgressBar = null
@@ -28,6 +32,11 @@ func _process(delta: float) -> void:
 		player_ref = get_tree().get_first_node_in_group("Player")
 		if player_ref:
 			print("[BossManager] Player encontrado.")
+			if boss_defeated and player_ref.has_method("unlock_heal"):
+				player_ref.unlock_heal()
+		return
+
+	if boss_defeated:
 		return
 
 	_debug_timer += delta
@@ -113,17 +122,50 @@ func _update_boss_hp_bar() -> void:
 		_boss_hp_bar = null
 		if not boss_defeated and is_instance_valid(player_ref):
 			boss_defeated = true
+			unlock_gate("lava")
 			player_ref.unlock_heal()
 		return
 
 	if _boss_hp_bar != null:
 		_boss_hp_bar.value = boss_ref.health
 
+func is_gate_unlocked(gate_id: String) -> bool:
+	return bool(gate_unlocks.get(gate_id, false))
+
+func unlock_gate(gate_id: String) -> void:
+	if gate_id == "":
+		return
+
+	if is_gate_unlocked(gate_id):
+		return
+
+	gate_unlocks[gate_id] = true
+	print("[BossManager] Gate unlocked: %s" % gate_id)
+
+func load_progress(data: Dictionary) -> void:
+	if data.is_empty():
+		return
+
+	var saved_unlocks: Variant = data.get("gate_unlocks", {})
+	if saved_unlocks is Dictionary:
+		for gate_id in gate_unlocks.keys():
+			gate_unlocks[gate_id] = bool(saved_unlocks.get(gate_id, gate_unlocks[gate_id]))
+
+	if data.has("boss_defeated"):
+		boss_defeated = bool(data["boss_defeated"])
+
+	if boss_defeated:
+		unlock_gate("lava")
+
 func reset() -> void:
 	boss_spawned = false
 	boss_defeated = false
 	boss_ref = null
 	player_ref = null
+	gate_unlocks = {
+		"snow": false,
+		"lava": false,
+	}
 	if _boss_canvas != null and is_instance_valid(_boss_canvas):
 		_boss_canvas.queue_free()
 	_boss_canvas = null

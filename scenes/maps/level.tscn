@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dam03qkh05kp3"]
 
+[ext_resource type="Script" path="res://scripts/world/level.gd" id="1_level"]
 [ext_resource type="PackedScene" uid="uid://x6udxlrd668g" path="res://scenes/maps/base_terrain.tscn" id="1_w7c3h"]
 [ext_resource type="PackedScene" uid="uid://dy6dcwlb0up7f" path="res://scenes/maps/decoration_base_terrain.tscn" id="2_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://dm0p1dppqlhej" path="res://entities/character/player.tscn" id="2_w8frs"]
@@ -43,6 +44,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_twhdn"]
 
 [node name="Level" type="Node2D" unique_id=2029175643]
+script = ExtResource("1_level")
 metadata/_edit_vertical_guides_ = [0.0, 2304.0]
 metadata/_edit_horizontal_guides_ = [384.0]
 

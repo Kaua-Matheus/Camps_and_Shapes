@@ -32,6 +32,7 @@ func _process(delta: float) -> void:
 			var wd: Dictionary = data.get("wave", {})
 			current_wave = int(wd.get("current_wave", 0))
 			wave_timer = float(wd.get("wave_timer", 0.0))
+			BossManager.load_progress(data.get("boss", {}))
 			SaveManager.is_continuing = false
 		else:
 			current_wave = 0

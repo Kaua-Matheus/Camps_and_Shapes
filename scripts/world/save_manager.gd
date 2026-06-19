@@ -32,6 +32,10 @@ func save_game() -> void:
 		"wave": {
 			"current_wave": WaveManager.current_wave,
 			"wave_timer": WaveManager.wave_timer
+		},
+		"boss": {
+			"boss_defeated": BossManager.boss_defeated,
+			"gate_unlocks": BossManager.gate_unlocks
 		}
 	}
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
