@@ -3,6 +3,9 @@ extends CanvasLayer
 # Player Target
 var target: Node2D
 
+# Hud
+@onready var hud: CanvasLayer = $"."
+
 # Health Bar
 @onready var health_bar: ProgressBar = $HealthBar
 
@@ -17,33 +20,41 @@ var heal_unlocked: bool = false
 
 
 func _ready() -> void:
-	target = get_target()
-	if target != null:
-		health_bar.max_value = target.max_hp
-		health_bar.value = target.health
-	else:
-		pass
+	
+	# First Update Target
+	update_target()
+	
+	# Set Health Bar
+	health_bar.max_value = target.max_hp
+	health_bar.value = target.health
+	
+	# Style Components
+	_setup_style_health_bar()
+	_setup_skill_hud()
 
 
+# Update Process
 func _process(_delta: float) -> void:
-	target = get_target()
-	if target != null:
-		health_bar.value = target.health
-	else:
-		pass
+	update_target()
+	_update_skill_hud()
+	health_bar.value = target.health
 
 
-func get_target():
+# Update Target
+func update_target():
+	"""I finds the player in scene"""
+	
 	var nodes = get_tree().get_nodes_in_group("Player")
 	if nodes.size() == 0:
 		push_error("Player not found")
-		return
+		target = null
+	else:
+		target = nodes[0]
 
-	return nodes[0]
 
-
-# Health
-func _style_health_bar() -> void:
+# --- Setup Styles ---
+# Health Style Bar
+func _setup_style_health_bar() -> void:
 	var fill := StyleBoxFlat.new()
 	fill.bg_color = Color(0.8, 0.1, 0.1)
 	fill.set_corner_radius_all(3)
@@ -57,7 +68,6 @@ func _style_health_bar() -> void:
 
 # Skills
 func _setup_skill_hud() -> void:
-	var hud: CanvasLayer = $HUD
 	var colors := [Color(0.2, 0.5, 1.0, 0.9), Color(0.2, 0.78, 0.3, 0.9), Color(0.9, 0.3, 0.2, 0.9)]
 	var ready_texts := ["DASH", "HEAL", "DMG+"]
 	var key_hints := ["RMB", "[ 1 ]", "[ 2 ]"]
@@ -122,6 +132,29 @@ func _setup_skill_hud() -> void:
 			_heal_lock_label = lock_lbl
 
 
+func _setup_freeze_hud() -> void:
+	var vignette := ColorRect.new()
+	vignette.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	vignette.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var mat := ShaderMaterial.new()
+	var shader := Shader.new()
+	shader.code = "shader_type canvas_item;\nuniform float intensity : hint_range(0.0,1.0) = 0.0;\nvoid fragment() {\n\tvec2 uv = UV - 0.5;\n\tfloat d = smoothstep(0.25, 0.75, length(uv) * 2.0);\n\tCOLOR = vec4(0.0, 0.15, 0.55, d * intensity * 0.82);\n}"
+	mat.shader = shader
+	mat.set_shader_parameter("intensity", 0.0)
+	vignette.material = mat
+	hud.add_child(vignette)
+	target._freeze_shader = mat
+
+	var lbl := Label.new()
+	lbl.position = Vector2(8, 76)
+	lbl.size = Vector2(200, 16)
+	lbl.add_theme_color_override("font_color", Color(0.5, 0.9, 1.0))
+	lbl.add_theme_font_size_override("font_size", 9)
+	lbl.visible = false
+	hud.add_child(lbl)
+	target._freeze_label = lbl
+
+# --- Unlock Skills ---
 func unlock_heal() -> void:
 	heal_unlocked = true
 	if is_instance_valid(_heal_lock_overlay):
@@ -130,6 +163,7 @@ func unlock_heal() -> void:
 		_heal_lock_label.visible = false
 
 
+# --- Updates ---
 func _update_skill_hud() -> void:
 	if _skill_overlays.is_empty():
 		return

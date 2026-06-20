@@ -55,10 +55,7 @@ var _heal_cd: float = 0.0
 var _damage_cd: float = 0.0
 var _damage_boost_remaining: float = 0.0
 var _damage_boosted: bool = false
-#var _skill_overlays: Array = []
-#var _skill_labels: Array = []
-#var _heal_lock_overlay: ColorRect = null
-#var _heal_lock_label: Label = null
+
 
 # ─── Freeze System ─────────────────────────────────────────────────
 const SNOW_BIOME_X := 2304.0
@@ -119,9 +116,6 @@ func _ready() -> void:
 	
 	
 	health = max_hp
-	#health_bar.max_value = max_hp
-	#health_bar.value = health
-	#_style_health_bar()
 	hitbox_offset = attack_hit_box.position
 	enter_idle_state()
 

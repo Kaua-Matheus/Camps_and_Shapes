@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dam03qkh05kp3"]
 
-[ext_resource type="Script" path="res://scripts/world/level.gd" id="1_level"]
+[ext_resource type="Script" uid="uid://bftnjptab5va" path="res://scripts/world/level.gd" id="1_level"]
 [ext_resource type="PackedScene" uid="uid://x6udxlrd668g" path="res://scenes/maps/base_terrain.tscn" id="1_w7c3h"]
 [ext_resource type="PackedScene" uid="uid://dy6dcwlb0up7f" path="res://scenes/maps/decoration_base_terrain.tscn" id="2_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://dm0p1dppqlhej" path="res://entities/character/player.tscn" id="2_w8frs"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cglgd8ww3p4a0" path="res://sprites/other/banco virado esquerda.png" id="14_besq"]
 [ext_resource type="Texture2D" uid="uid://ntn6pjwb8j1s" path="res://sprites/other/fogueira apagada.png" id="15_fog"]
 [ext_resource type="Texture2D" uid="uid://c5qxeq3fh1y66" path="res://sprites/other/poste de iluminacao.png" id="16_poste"]
+[ext_resource type="PackedScene" uid="uid://bq3wwj5svjqph" path="res://entities/other/player_hud.tscn" id="17_a52jg"]
 [ext_resource type="Texture2D" uid="uid://be2c5epkb0s8f" path="res://sprites/other/wood.png" id="17_wood"]
 [ext_resource type="Texture2D" uid="uid://doebkqo5bvnku" path="res://sprites/other/cabana.png" id="18_cab"]
 [ext_resource type="Texture2D" uid="uid://bre73ru8lbmb7" path="res://sprites/other/snow/iglu.png" id="19_iglu"]
@@ -177,6 +178,8 @@ limit_left = 0
 limit_top = 0
 limit_right = 6912
 limit_bottom = 384
+
+[node name="HUD" parent="." unique_id=1639099936 instance=ExtResource("17_a52jg")]
 
 [node name="SnowTerrain" type="Node2D" parent="." unique_id=130613173]
 z_index = -1
