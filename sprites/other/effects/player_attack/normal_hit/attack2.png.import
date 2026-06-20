@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhws1ii02nsdj"
-path="res://.godot/imported/slime_attack4.png-df0ebad53fef11feb453d010d2cfbffd.ctex"
+uid="uid://c4gwqrvfl7r0u"
+path="res://.godot/imported/attack2.png-f7ed36d486bffd68fc04d4ad3a83bbf4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/character/player/attack/slime_attack4.png"
-dest_files=["res://.godot/imported/slime_attack4.png-df0ebad53fef11feb453d010d2cfbffd.ctex"]
+source_file="res://sprites/other/effects/player_attack/normal_hit/attack2.png"
+dest_files=["res://.godot/imported/attack2.png-f7ed36d486bffd68fc04d4ad3a83bbf4.ctex"]
 
 [params]
 

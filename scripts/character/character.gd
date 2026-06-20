@@ -1,7 +1,7 @@
 class_name Character
 extends CharacterBody2D
 
-@export var max_hp := 1000
+@export var max_hp := 100
 @export var attack_damage_percent := 20.0
 
 var health := 0

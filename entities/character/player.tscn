@@ -2,7 +2,11 @@
 
 [ext_resource type="Script" uid="uid://c1wcorcbq5uyt" path="res://scripts/character/player/player.gd" id="1_1o8m5"]
 [ext_resource type="SpriteFrames" uid="uid://cdx055yj07nnc" path="res://sprites/sprite_frame/character/player/player_sprite_frame.tres" id="2_3hqro"]
+[ext_resource type="Texture2D" uid="uid://bh5nib53lg8cr" path="res://sprites/other/effects/player_attack/aim/aim.png" id="4_5n6yr"]
+[ext_resource type="Texture2D" uid="uid://b2y33ndtril5y" path="res://sprites/other/effects/player_attack/normal_hit/attack1.png" id="4_bmyq4"]
 [ext_resource type="Script" uid="uid://ctgldjgfh2d5o" path="res://scripts/resources/absorb_component.gd" id="4_hmpou"]
+[ext_resource type="Texture2D" uid="uid://c4gwqrvfl7r0u" path="res://sprites/other/effects/player_attack/normal_hit/attack2.png" id="5_5n6yr"]
+[ext_resource type="Texture2D" uid="uid://bwsqbxog1wwiq" path="res://sprites/other/effects/player_attack/normal_hit/attack3.png" id="6_h7vl7"]
 [ext_resource type="AudioStream" uid="uid://ds44kfu1wot6b" path="res://assets/audio/whoosh.wav" id="14_0xsky"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ekpe"]
@@ -12,13 +16,38 @@ height = 34.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_hmpou"]
 radius = 15.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_cgj2m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5n6yr")
+}],
+"loop": 0,
+"name": &"aim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_bmyq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5n6yr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_h7vl7")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 10.0
+}]
+
 [node name="Player" type="CharacterBody2D" unique_id=1449680644 groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_1o8m5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=218026251]
 sprite_frames = ExtResource("2_3hqro")
-animation = &"dash"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=777931992]
@@ -38,15 +67,10 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitBox" unique_id=813196229]
 shape = SubResource("CircleShape2D_hmpou")
 
-[node name="HUD" type="CanvasLayer" parent="." unique_id=1123456781]
-
-[node name="HealthBar" type="ProgressBar" parent="HUD" unique_id=1123456782]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 168.0
-offset_bottom = 24.0
-value = 100.0
-show_percentage = false
+[node name="AttackAnimation" type="AnimatedSprite2D" parent="AttackHitBox" unique_id=491429693]
+sprite_frames = SubResource("SpriteFrames_cgj2m")
+animation = &"attack"
+autoplay = "aim"
 
 [node name="AbsorbComponent" type="Node" parent="." unique_id=410440761]
 script = ExtResource("4_hmpou")

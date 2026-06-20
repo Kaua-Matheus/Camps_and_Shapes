@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bq3wwj5svjqph"]
+
+[ext_resource type="Script" uid="uid://dv3tpacvmsxpv" path="res://scripts/other/player_hud.gd" id="1_js5ss"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1639099936]
+script = ExtResource("1_js5ss")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=273319190]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 168.0
+offset_bottom = 24.0
+value = 100.0
+show_percentage = false

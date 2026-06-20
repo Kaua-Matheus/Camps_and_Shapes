@@ -1,9 +1,9 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://cdx055yj07nnc"]
 
 [ext_resource type="Texture2D" uid="uid://g7eh3a47oxrq" path="res://sprites/character/player/attack/slime_attack1.png" id="1_ukb2y"]
-[ext_resource type="Texture2D" uid="uid://ccpk0u1u14pgq" path="res://sprites/character/player/attack/slime_attack2.png" id="2_peku6"]
-[ext_resource type="Texture2D" uid="uid://bdxwntxa40xb8" path="res://sprites/character/player/attack/slime_attack3.png" id="3_uioau"]
-[ext_resource type="Texture2D" uid="uid://cqnk5m37r0xtp" path="res://sprites/character/player/attack/slime_attack4.png" id="4_rwfof"]
+[ext_resource type="Texture2D" uid="uid://dfsr0kwduwktd" path="res://sprites/character/player/attack/slime_attack2.png" id="2_peku6"]
+[ext_resource type="Texture2D" uid="uid://bc1ndu7kaqoj3" path="res://sprites/character/player/attack/slime_attack3.png" id="3_uioau"]
+[ext_resource type="Texture2D" uid="uid://bhws1ii02nsdj" path="res://sprites/character/player/attack/slime_attack4.png" id="4_rwfof"]
 [ext_resource type="Texture2D" uid="uid://dyx4nlbnjh2am" path="res://sprites/character/player/dash/slime_dash_right1.png" id="5_s65r8"]
 [ext_resource type="Texture2D" uid="uid://cly565olahbe6" path="res://sprites/character/player/dash/slime_dash_right2.png" id="6_xmpf5"]
 [ext_resource type="Texture2D" uid="uid://1sb7m8kpntca" path="res://sprites/character/player/dash/slime_dash_right3.png" id="7_84qth"]
@@ -34,13 +34,13 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_peku6")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("3_uioau")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_rwfof")
 }],
-"loop": true,
+"loop": 1,
 "name": &"attack",
 "speed": 10.0
 }, {
@@ -57,7 +57,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("8_jjrlc")
 }],
-"loop": false,
+"loop": 0,
 "name": &"dash",
 "speed": 12.0
 }, {
@@ -86,7 +86,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("16_5nclv")
 }],
-"loop": false,
+"loop": 0,
 "name": &"death",
 "speed": 12.0
 }, {
@@ -103,7 +103,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("20_owg4r")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 4.0
 }, {
@@ -120,7 +120,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("24_kujgd")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk",
 "speed": 4.0
 }]

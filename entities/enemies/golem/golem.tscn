@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://so3e6gikuxc3"]
 
-[ext_resource type="Script" uid="uid://ch2otu2xqdpl7" path="res://scripts/character/enemies/golem.gd" id="1_xpmmt"]
+[ext_resource type="Script" uid="uid://ch2otu2xqdpl7" path="res://scripts/character/enemies/golem/golem.gd" id="1_xpmmt"]
 [ext_resource type="SpriteFrames" uid="uid://c16jfwxdk8grb" path="res://sprites/sprite_frame/enemies/golem/golem_sprite_frame.tres" id="2_iv3j2"]
 [ext_resource type="Resource" uid="uid://b1iqk3a7s2rc2" path="res://entities/enemies/golem/golem_resource.tres" id="2_xpmmt"]
 

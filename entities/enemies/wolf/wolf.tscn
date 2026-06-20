@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cloxy28oqs51n"]
 
-[ext_resource type="Script" uid="uid://ch2otu2xqdpl7" path="res://scripts/character/enemies/golem.gd" id="1_6bt76"]
+[ext_resource type="Script" uid="uid://b4hscmxi12lc" path="res://scripts/character/enemies/wolf/wolf.gd" id="1_xa5ye"]
 [ext_resource type="Resource" uid="uid://wimbep8w6dsd" path="res://entities/enemies/wolf/wolf_resource.tres" id="2_xa5ye"]
 [ext_resource type="SpriteFrames" uid="uid://dfw6fnxd0c1ly" path="res://sprites/sprite_frame/enemies/wolf/wolf_sprite_frame.tres" id="3_xa5ye"]
 
@@ -12,7 +12,7 @@ radius = 96.0
 
 [node name="Wolf" type="CharacterBody2D" unique_id=508143637 groups=["Enemy"]]
 collision_layer = 4
-script = ExtResource("1_6bt76")
+script = ExtResource("1_xa5ye")
 absorb_data = ExtResource("2_xa5ye")
 enemy_type = "Wolf"
 
