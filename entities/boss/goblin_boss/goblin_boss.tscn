@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d3f1n3dgoboss"]
+
+[ext_resource type="Script" path="res://scripts/boss/goblin_boss/goblin_boss.gd" id="1_gboss"]
+[ext_resource type="SpriteFrames" uid="uid://ct37uf0p5mb5p" path="res://sprites/sprite_frame/enemies/goblin/goblin_sprite_frame.tres" id="2_frames"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(32, 56)
+
+[node name="GoblinBoss" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 4
+script = ExtResource("1_gboss")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_hitbox")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_frames")
+autoplay = "idle"
