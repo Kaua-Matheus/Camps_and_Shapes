@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://coott140uogrm" path="res://scripts/cutscene_kingdom.gd" id="1_h10fy"]
 [ext_resource type="Texture2D" uid="uid://ciheuruy0evkt" path="res://assets/images/pixel_kingdom_castle_by_misconceptionaiart_dht7lvg-fullview.jpg" id="2_nsp3v"]
+[ext_resource type="FontFile" uid="uid://bfmp2g024dovf" path="res://assets/font/upheavtt.ttf" id="3_nsp3v"]
 
 [node name="Cutscene" type="Control" unique_id=1201803216]
 layout_mode = 3
@@ -39,6 +40,7 @@ offset_bottom = 19.0
 layout_mode = 0
 offset_right = 768.0
 offset_bottom = 113.0
+theme_override_fonts/normal_font = ExtResource("3_nsp3v")
 scroll_active = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="Cutscene" unique_id=1111151813]

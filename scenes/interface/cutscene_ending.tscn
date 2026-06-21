@@ -1,28 +1,28 @@
-[gd_scene format=3 uid="uid://byw3ghyb0k8n0"]
+[gd_scene format=3 uid="uid://do46l3hehypkm"]
 
-[ext_resource type="Script" uid="uid://daxg8ierw3l5u" path="res://scripts/cutscene_camp.gd" id="1_0ft2t"]
-[ext_resource type="Texture2D" uid="uid://khxms7dtejt3" path="res://assets/images/pixelatedcamp.jpg" id="2_0ft2t"]
-[ext_resource type="FontFile" uid="uid://bfmp2g024dovf" path="res://assets/font/upheavtt.ttf" id="3_81tl4"]
+[ext_resource type="Script" uid="uid://dueatn7abfxy" path="res://scripts/cutscene_ending.gd" id="1_33183"]
+[ext_resource type="Texture2D" uid="uid://ca00p08uvnj45" path="res://sprites/other/KingSlimeRender.png" id="2_05rrw"]
+[ext_resource type="FontFile" uid="uid://bfmp2g024dovf" path="res://assets/font/upheavtt.ttf" id="3_05rrw"]
 
 [node name="Cutscene" type="Control" unique_id=1201803216]
 layout_mode = 3
 anchors_preset = 0
 
 [node name="Cutscene" type="CanvasLayer" parent="." unique_id=1991189610]
-script = ExtResource("1_0ft2t")
+script = ExtResource("1_33183")
 
 [node name="Background" type="TextureRect" parent="Cutscene" unique_id=303685698]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = 1.0
-offset_right = 1788.3333
-offset_bottom = 893.6666
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 1836.9998
+offset_bottom = 934.33325
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_0ft2t")
+texture = ExtResource("2_05rrw")
 stretch_mode = 6
 
 [node name="DialogueBox" type="Panel" parent="Cutscene" unique_id=920514301]
@@ -40,7 +40,7 @@ offset_bottom = 19.0
 layout_mode = 0
 offset_right = 768.0
 offset_bottom = 113.0
-theme_override_fonts/normal_font = ExtResource("3_81tl4")
+theme_override_fonts/normal_font = ExtResource("3_05rrw")
 scroll_active = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="Cutscene" unique_id=1111151813]
@@ -49,7 +49,10 @@ scroll_active = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 5.0
+offset_left = -15.0
+offset_top = -12.0
+offset_right = 25.0
+offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)

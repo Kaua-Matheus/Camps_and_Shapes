@@ -133,7 +133,7 @@ func die() -> void:
 		finish_death()
 
 func finish_death() -> void:
-	queue_free()
+	get_tree().change_scene_to_file("res://scenes/interface/cutscene_ending.tscn")
 
 func _damage_player(amount: int) -> bool:
 	if not is_instance_valid(player_ref):
