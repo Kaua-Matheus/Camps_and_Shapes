@@ -6,7 +6,7 @@ func _ready() -> void:
 	
 	if config.load("user://settings.cfg") == OK:
 		value = config.get_value("audio", "music_volume", 1.0)
-	
+	 
 	var bus_index = AudioServer.get_bus_index("backgroundMusic")
 	
 	if value <= 0.0:

@@ -22,7 +22,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_5n6yr")
 }],
-"loop": false,
+"loop": 0,
 "name": &"aim",
 "speed": 5.0
 }, {
@@ -36,7 +36,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_h7vl7")
 }],
-"loop": false,
+"loop": 0,
 "name": &"attack",
 "speed": 10.0
 }]
@@ -75,4 +75,5 @@ autoplay = "aim"
 [node name="AbsorbComponent" type="Node" parent="." unique_id=410440761]
 script = ExtResource("4_hmpou")
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_slime_animation_finished"]
 [connection signal="body_entered" from="AttackHitBox" to="." method="attack_body_entered"]
