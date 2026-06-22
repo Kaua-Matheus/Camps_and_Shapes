@@ -26,7 +26,7 @@ var absorb_data: AbsorbResource
 @export var speed: float = BASE_SPEED
 @export var dash_speed: int = 700
 @export var dash_time: float = 0.2
-@export var max_hp: float = 100
+@export var max_hp: float = 200
 @export var health: float
 @export var attack_damage_percent := 20.0
 
@@ -358,6 +358,8 @@ func _update_freeze_system(delta: float) -> void:
 			if not _damage_boosted:
 				animation.modulate = Color.WHITE
 		if _campfire_warmup >= CAMPFIRE_WARMUP:
+			if health <= max_hp:
+				health += delta * 10
 			_freeze_timer = FREEZE_DELAY
 			_campfire_warmup = CAMPFIRE_WARMUP
 	else:

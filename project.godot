@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Camps And Shapes"
-run/main_scene="uid://lbh05cirib3v"
+run/main_scene="uid://ycgkwifddbp0"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
 [audio]

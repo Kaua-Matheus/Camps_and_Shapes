@@ -1,32 +1,30 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://doxsh4ne7u1xc"]
 
 [ext_resource type="Script" uid="uid://bfmbql5rdhwjo" path="res://scripts/other/campfire.gd" id="1_camp"]
-[ext_resource type="Texture2D" path="res://sprites/other/campfire_sheet.png" id="2_sheet"]
+[ext_resource type="Texture2D" uid="uid://doorywl8prxqc" path="res://sprites/other/campfire_sheet.png" id="2_sheet"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_warm"]
-radius = 70.0
+radius = 100.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_body"]
-radius = 10.0
 
-[node name="Campfire" type="Node2D"]
+[node name="Campfire" type="Node2D" unique_id=368776008]
 script = ExtResource("1_camp")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1402515181]
 position = Vector2(0, -8)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_sheet")
 hframes = 5
-frame = 0
 
-[node name="WarmZone" type="Area2D" parent="."]
+[node name="WarmZone" type="Area2D" parent="." unique_id=1758585294]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WarmZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WarmZone" unique_id=1328406582]
 shape = SubResource("CircleShape2D_warm")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1461569998]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=646577950]
 shape = SubResource("CircleShape2D_body")

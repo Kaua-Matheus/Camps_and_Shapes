@@ -39,15 +39,17 @@ func enter_attack_state():
 	
 func enter_dead_state():
 	current_state = EnemyState.dead
-	animation.play("dead")
+	animation.play("death")
 	velocity = Vector2.ZERO
 
 
 # --- Damage and Kill ---
 func take_damage(amount: int) -> void:
 	health -= amount
+	if current_state == EnemyState.dead:
+		return
 	if health <= 0:
-		die()
+		enter_dead_state()
 
 
 func die() -> void:

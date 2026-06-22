@@ -13,6 +13,7 @@ radius = 96.0
 [node name="Wolf" type="CharacterBody2D" unique_id=508143637 groups=["Enemy"]]
 collision_layer = 4
 script = ExtResource("1_xa5ye")
+speed = 200
 absorb_data = ExtResource("2_xa5ye")
 enemy_type = "Wolf"
 
@@ -22,7 +23,7 @@ shape = SubResource("RectangleShape2D_xpmmt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=771735434]
 scale = Vector2(1.1875, 1.125)
 sprite_frames = ExtResource("3_xa5ye")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=21715889]
