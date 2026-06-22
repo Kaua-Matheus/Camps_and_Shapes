@@ -69,6 +69,7 @@ var _blink_timer: float = 0.0
 
 # ── Freeze System ───────────────────────────────────────────────────
 const SNOW_BIOME_X := 2304.0
+const LAVA_BIOME_X := 4610.0
 const FREEZE_DELAY := 10.0
 const CAMPFIRE_WARMUP := 3.0
 const FREEZE_DAMAGE := 2
@@ -335,7 +336,8 @@ func _update_freeze_system(delta: float) -> void:
 	if current_state == PlayerState.dead:
 		return
 
-	var in_snow := global_position.x >= SNOW_BIOME_X
+	var in_snow: bool = true if (SNOW_BIOME_X <= global_position.x and global_position.x <= LAVA_BIOME_X) else false
+	
 	if not in_snow:
 		if _is_freezing:
 			_is_freezing = false
