@@ -12,9 +12,13 @@ const GATES := [
 var _gate_shapes: Array[CollisionShape2D] = []
 
 func _ready() -> void:
+	for enemy in get_tree().get_nodes_in_group("Enemy"):
+		print("Inimigo encontrado: ", enemy.enemy_type)
+		enemy.died.connect(FormUnlockManager.register_kill)
 	for gate_data in GATES:
 		_create_gate(gate_data)
 	_sync_gates()
+
 
 func _physics_process(_delta: float) -> void:
 	_sync_gates()
