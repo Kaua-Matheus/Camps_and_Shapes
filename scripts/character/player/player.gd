@@ -38,6 +38,7 @@ var hitbox_offset: Vector2
 
 # Direção
 var move_direction: Vector2
+var mouse_direction: Vector2
 var mouse_pos: Vector2
 
 # Dash
@@ -144,7 +145,8 @@ func enter_walk_state() -> void:
 
 func enter_dash_state() -> void:
 	current_state = PlayerState.dash
-	dash_direction = move_direction * dash_distance_multiplier
+	mouse_direction = global_position.direction_to(mouse_pos)
+	dash_direction = mouse_direction * dash_distance_multiplier
 	dash_timer = dash_time
 	_is_invincible = true
 	switch_animation_attack()

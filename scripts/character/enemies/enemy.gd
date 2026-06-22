@@ -1,15 +1,10 @@
 class_name Enemy
 extends CharacterBody2D
-#extends Enemy
 
-# We can use only one enum, extended by the mother class
+
+# Only one enum, extended by the mother class
 ## --- Declaratives ---
-enum EnemyState {
-	idle,
-	walk,
-	attack,
-	dead
-}
+enum EnemyState { idle, walk, attack, dead }
 
 
 ## --- Signals ---
