@@ -12,14 +12,24 @@ const GOBLIN_DAMAGE: float = 30.0
 const GOBLIN_SPEED: int = 90
 const GOBLIN_SCALE: float = 2.0
 
+# --- Snow Boss (fim do bioma de neve → libera passagem para lava) ---
+const SNOW_BOSS_TRIGGER_X: float = 3600.0
+const SNOW_BOSS_SPAWN_X: float = 4300.0
+const SNOW_BOSS_SPAWN_Y: float = 192.0
+const SNOW_BOSS_MAX_HP: int = 240
+const SNOW_BOSS_DAMAGE: float = 28.0
+const SNOW_BOSS_SPEED: int = 95
+const SNOW_BOSS_SCALE: float = 2.1
+
 # --- Golem Boss (bioma de lava → libera passagem para lava) ---
-const BOSS_TRIGGER_X: float = 3000.0
-const BOSS_SPAWN_X: float = 5000.0
+const BOSS_TRIGGER_X: float = 6200.0
+const BOSS_SPAWN_X: float = 6500.0
 const BOSS_SPAWN_Y: float = 192.0
 const BOSS_MAX_HP: int = 300
 const BOSS_DAMAGE: float = 35.0
 const BOSS_SPEED: int = 80
 const BOSS_MELEE_RANGE: float = 65.0
+const BOSS_AGGRO_RANGE: float = 220.0
 const BOSS_SCALE: float = 2.5
 
 # --- Goblin Boss State ---
@@ -28,6 +38,13 @@ var goblin_defeated: bool = false
 var goblin_ref = null
 var _goblin_canvas: CanvasLayer = null
 var _goblin_hp_bar: ProgressBar = null
+
+# --- Snow Boss State ---
+var snow_boss_spawned: bool = false
+var snow_boss_defeated: bool = false
+var snow_boss_ref = null
+var _snow_boss_canvas: CanvasLayer = null
+var _snow_boss_hp_bar: ProgressBar = null
 
 # --- Golem Boss State ---
 var boss_spawned: bool = false
@@ -62,6 +79,13 @@ func _process(delta: float) -> void:
 			_update_goblin_hp_bar()
 		elif player_ref.global_position.x >= GOBLIN_TRIGGER_X:
 			_spawn_goblin_boss()
+
+	# Snow boss (bioma de neve)
+	if not snow_boss_defeated:
+		if snow_boss_spawned:
+			_update_snow_boss_hp_bar()
+		elif player_ref.global_position.x >= SNOW_BOSS_TRIGGER_X:
+			_spawn_snow_boss()
 
 	# Golem boss (bioma de lava)
 	if not boss_defeated:
@@ -142,6 +166,73 @@ func _update_goblin_hp_bar() -> void:
 	if _goblin_hp_bar != null:
 		_goblin_hp_bar.value = goblin_ref.health
 
+# --- Snow Boss ---
+
+func _spawn_snow_boss() -> void:
+	snow_boss_spawned = true
+	print("[BossManager] Snow Boss spawning!")
+
+	var boss := GOBLIN_BOSS_SCENE.instantiate()
+	boss.max_health = SNOW_BOSS_MAX_HP
+	boss.health = SNOW_BOSS_MAX_HP
+	boss.damage_on_player = SNOW_BOSS_DAMAGE
+	boss.speed = SNOW_BOSS_SPEED
+	boss.scale = Vector2(SNOW_BOSS_SCALE, SNOW_BOSS_SCALE)
+
+	get_tree().current_scene.add_child(boss)
+	boss.global_position = Vector2(SNOW_BOSS_SPAWN_X, SNOW_BOSS_SPAWN_Y)
+
+	snow_boss_ref = boss
+	_create_snow_boss_hp_bar()
+
+func _create_snow_boss_hp_bar() -> void:
+	_snow_boss_canvas = CanvasLayer.new()
+	_snow_boss_canvas.layer = 10
+	get_tree().current_scene.add_child(_snow_boss_canvas)
+
+	_snow_boss_hp_bar = ProgressBar.new()
+	_snow_boss_hp_bar.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
+	_snow_boss_hp_bar.offset_left = -168.0
+	_snow_boss_hp_bar.offset_top = 8.0
+	_snow_boss_hp_bar.offset_right = -8.0
+	_snow_boss_hp_bar.offset_bottom = 24.0
+	_snow_boss_hp_bar.max_value = SNOW_BOSS_MAX_HP
+	_snow_boss_hp_bar.value = SNOW_BOSS_MAX_HP
+	_snow_boss_hp_bar.show_percentage = false
+	var fill_style := StyleBoxFlat.new()
+	fill_style.bg_color = Color(0.45, 0.75, 1.0)
+	_snow_boss_hp_bar.add_theme_stylebox_override("fill", fill_style)
+	var bg_style := StyleBoxFlat.new()
+	bg_style.bg_color = Color(0.08, 0.14, 0.22)
+	_snow_boss_hp_bar.add_theme_stylebox_override("background", bg_style)
+	_snow_boss_canvas.add_child(_snow_boss_hp_bar)
+
+	var label := Label.new()
+	label.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
+	label.offset_left = -168.0
+	label.offset_top = 8.0
+	label.offset_right = -8.0
+	label.offset_bottom = 24.0
+	label.text = "BOSS DA NEVE"
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	label.add_theme_color_override("font_color", Color(1.0, 1.0, 1.0))
+	_snow_boss_canvas.add_child(label)
+
+func _update_snow_boss_hp_bar() -> void:
+	if not is_instance_valid(snow_boss_ref):
+		if _snow_boss_canvas != null and is_instance_valid(_snow_boss_canvas):
+			_snow_boss_canvas.queue_free()
+		_snow_boss_canvas = null
+		_snow_boss_hp_bar = null
+		if not snow_boss_defeated:
+			snow_boss_defeated = true
+			unlock_gate("lava")
+		return
+
+	if _snow_boss_hp_bar != null:
+		_snow_boss_hp_bar.value = snow_boss_ref.health
+
 # --- Golem Boss (original) ---
 
 func _spawn_boss() -> void:
@@ -154,11 +245,11 @@ func _spawn_boss() -> void:
 	boss.damage_percent = BOSS_DAMAGE
 	boss.speed = BOSS_SPEED
 	boss.melee_range = BOSS_MELEE_RANGE
+	boss.aggro_range = BOSS_AGGRO_RANGE
 	boss.scale = Vector2(BOSS_SCALE, BOSS_SCALE)
 	boss.dash_hit_range *= BOSS_SCALE
 	boss.laser_width *= BOSS_SCALE
 	boss.laser_range *= BOSS_SCALE
-	boss.aggro_range *= BOSS_SCALE
 
 	get_tree().current_scene.add_child(boss)
 	boss.global_position = Vector2(BOSS_SPAWN_X, BOSS_SPAWN_Y)
@@ -212,7 +303,6 @@ func _update_boss_hp_bar() -> void:
 		_boss_hp_bar = null
 		if not boss_defeated and is_instance_valid(player_ref):
 			boss_defeated = true
-			unlock_gate("lava")
 			player_ref.unlock_heal()
 		return
 
@@ -246,26 +336,36 @@ func load_progress(data: Dictionary) -> void:
 	if data.has("boss_defeated"):
 		boss_defeated = bool(data["boss_defeated"])
 
-	if boss_defeated:
-		unlock_gate("lava")
-
 	# Inferir derrota do goblin boss pelo estado do portão de neve
 	if gate_unlocks.get("snow", false):
 		goblin_defeated = true
 		goblin_spawned = true
 
+	# Inferir derrota do boss da neve pelo estado do portão de lava
+	if gate_unlocks.get("lava", false):
+		snow_boss_defeated = true
+		snow_boss_spawned = true
+
 func reset() -> void:
 	goblin_spawned = false
 	goblin_defeated = false
 	goblin_ref = null
+	snow_boss_spawned = false
+	snow_boss_defeated = false
+	snow_boss_ref = null
 	if _goblin_canvas != null and is_instance_valid(_goblin_canvas):
 		_goblin_canvas.queue_free()
 	_goblin_canvas = null
 	_goblin_hp_bar = null
+	if _snow_boss_canvas != null and is_instance_valid(_snow_boss_canvas):
+		_snow_boss_canvas.queue_free()
+	_snow_boss_canvas = null
+	_snow_boss_hp_bar = null
 
 	boss_spawned = false
 	boss_defeated = false
 	boss_ref = null
+	_debug_timer = 0.0
 	player_ref = null
 	gate_unlocks = {
 		"snow": false,
