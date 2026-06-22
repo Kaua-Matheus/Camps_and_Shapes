@@ -8,6 +8,5 @@ script = ExtResource("1_seu4x")
 form_name = "Wolf"
 sprite_frames = ExtResource("2_vl2x5")
 speed = 400.0
-duration = 30.0
 dash_distance_multiplier = 3.0
 metadata/_custom_type_script = "uid://cbp72lpnyslsw"

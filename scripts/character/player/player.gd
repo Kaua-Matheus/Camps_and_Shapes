@@ -12,8 +12,11 @@ var dash_cd_override: float = -1.0
 var dash_distance_multiplier: float = 1.0
 
 # Absorb
-var absorb_data: AbsorbResource
 @onready var absorb_component: AbsorbComponent = $AbsorbComponent
+
+# ── Seleção de forma ────────────────────────────────────────────────
+var _unlocked_forms: Array[AbsorbResource] = []
+var _selected_form_index: int = 0
 
 # Nodes
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
@@ -45,7 +48,7 @@ var mouse_pos: Vector2
 var dash_timer := 0.0
 var dash_direction := Vector2.ZERO
 
-# ── Cooldowns (lidos pelo HUD, decrementados pelo HUD) ──────────────
+# ── Cooldowns (lidos pelo HUD, decrementados pelo HUD) ───────────────
 const DASH_CD: float = 5.0
 const HEAL_CD: float = 8.0
 const DAMAGE_CD: float = 12.0
@@ -59,7 +62,7 @@ var _damage_cd: float = 0.0
 var _damage_boost_remaining: float = 0.0
 var _damage_boosted: bool = false
 
-# ── Invencibilidade ─────────────────────────────────────────────────
+# ── Invencibilidade ──────────────────────────────────────────────────
 var _is_invincible: bool = false
 
 const IFRAME_DURATION: float = 0.8
@@ -67,7 +70,7 @@ const BLINK_INTERVAL: float = 0.08
 var _iframe_timer: float = 0.0
 var _blink_timer: float = 0.0
 
-# ── Freeze System ───────────────────────────────────────────────────
+# ── Freeze System ────────────────────────────────────────────────────
 const SNOW_BIOME_X := 2304.0
 const LAVA_BIOME_X := 4610.0
 const FREEZE_DELAY := 10.0
@@ -86,7 +89,7 @@ var _freeze_label: Label = null
 var _freeze_shader: ShaderMaterial = null
 var _freeze_vignette_intensity: float = 0.0
 
-# ── State Machine ────────────────────────────────────────────────────
+# ── State Machine ─────────────────────────────────────────────────────
 enum PlayerState { idle, walk, attack, dash, attacked, dead }
 var current_state: PlayerState
 
@@ -120,7 +123,7 @@ func _apply_save_data() -> void:
 		health = int(p["health"])
 
 
-# ── Main Process ─────────────────────────────────────────────────────
+# ── Main Process ──────────────────────────────────────────────────────
 func _physics_process(delta: float) -> void:
 	read_input()
 	_update_freeze_system(delta)
@@ -129,7 +132,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-# ── States: Enter ────────────────────────────────────────────────────
+# ── States: Enter ─────────────────────────────────────────────────────
 func enter_idle_state() -> void:
 	attack_hit_box.monitoring = false
 	current_state = PlayerState.idle
@@ -171,7 +174,7 @@ func enter_death_state() -> void:
 	velocity = Vector2.ZERO
 
 
-# ── States: Tick ─────────────────────────────────────────────────────
+# ── States: Tick ──────────────────────────────────────────────────────
 func idle_state(delta: float) -> void:
 	move(delta)
 	if velocity != Vector2.ZERO:
@@ -228,7 +231,7 @@ func update_state(delta: float) -> void:
 		PlayerState.dead:    dead_state(delta)
 
 
-# ── Movement ─────────────────────────────────────────────────────────
+# ── Movement ──────────────────────────────────────────────────────────
 func read_input() -> void:
 	move_direction = Input.get_vector("Left", "Right", "Up", "Down")
 
@@ -250,7 +253,7 @@ func update_hitbox_offset() -> void:
 	attack_hit_box.position = direction * hitbox_offset.x
 
 
-# ── Combat ───────────────────────────────────────────────────────────
+# ── Combat ────────────────────────────────────────────────────────────
 func take_damage(amount: int) -> void:
 	if current_state == PlayerState.dead:
 		return
@@ -278,7 +281,7 @@ func switch_animation_attack() -> void:
 			attack_animation.rotation = 0.0
 
 
-# ── Skills (chamadas pelo HUD) ───────────────────────────────────────
+# ── Skills (chamadas pelo HUD) ────────────────────────────────────────
 func _use_heal() -> void:
 	health = min(health + HEAL_AMOUNT, max_hp)
 	_heal_cd = HEAL_CD
@@ -295,11 +298,28 @@ func has_ability(ability: String) -> bool:
 	return active_abilities.has(ability)
 
 
-# ── Absorb ───────────────────────────────────────────────────────────
+# ── Absorb / Seleção de forma ─────────────────────────────────────────
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("Activate"):
-		if absorb_data != null:
-			absorb_component.absorb(absorb_data)
+	# Não permite trocar forma enquanto transformado
+	if absorb_component.is_transformed():
+		return
+
+	if _unlocked_forms.is_empty():
+		return
+
+	if event.is_action_pressed("SelectFormLeft"):
+		_selected_form_index = (_selected_form_index - 1 + _unlocked_forms.size()) % _unlocked_forms.size()
+		print("Forma selecionada: ", _unlocked_forms[_selected_form_index].form_name)
+
+	elif event.is_action_pressed("SelectFormRight"):
+		_selected_form_index = (_selected_form_index + 1) % _unlocked_forms.size()
+		print("Forma selecionada: ", _unlocked_forms[_selected_form_index].form_name)
+
+	elif event.is_action_pressed("Activate"):
+		if absorb_component.is_on_cooldown():
+			print("Cooldown ativo: %.1fs restantes" % absorb_component.get_form_cooldown())
+			return
+		absorb_component.absorb(_unlocked_forms[_selected_form_index])
 
 
 func _on_form_applied(data: AbsorbResource) -> void:
@@ -311,10 +331,27 @@ func _on_form_expired() -> void:
 
 
 func _on_form_unlocked(data: AbsorbResource) -> void:
-	absorb_data = data
+	_unlocked_forms = FormUnlockManager.unlocked_forms.duplicate()
+	_selected_form_index = _unlocked_forms.size() - 1
+	print("Nova forma disponível: ", data.form_name, " | Total: ", _unlocked_forms.size())
 
 
-# ── Iframes ──────────────────────────────────────────────────────────
+# Helpers para o HUD
+func get_selected_form() -> AbsorbResource:
+	if _unlocked_forms.is_empty():
+		return null
+	return _unlocked_forms[_selected_form_index]
+
+
+func get_selected_form_index() -> int:
+	return _selected_form_index
+
+
+func get_unlocked_forms_count() -> int:
+	return _unlocked_forms.size()
+
+
+# ── Iframes ───────────────────────────────────────────────────────────
 func _update_iframes(delta: float) -> void:
 	if _iframe_timer <= 0.0:
 		animation.modulate.a = 1.0
@@ -331,13 +368,13 @@ func _update_iframes(delta: float) -> void:
 		animation.modulate.a = 1.0
 
 
-# ── Freeze System ────────────────────────────────────────────────────
+# ── Freeze System ─────────────────────────────────────────────────────
 func _update_freeze_system(delta: float) -> void:
 	if current_state == PlayerState.dead:
 		return
 
-	var in_snow: bool = true if (SNOW_BIOME_X <= global_position.x and global_position.x <= LAVA_BIOME_X) else false
-	
+	var in_snow: bool = SNOW_BIOME_X <= global_position.x and global_position.x <= LAVA_BIOME_X
+
 	if not in_snow:
 		if _is_freezing:
 			_is_freezing = false
@@ -360,7 +397,7 @@ func _update_freeze_system(delta: float) -> void:
 			if not _damage_boosted:
 				animation.modulate = Color.WHITE
 		if _campfire_warmup >= CAMPFIRE_WARMUP:
-			if health <= max_hp:
+			if health < max_hp:
 				health += delta * 20
 			_freeze_timer = FREEZE_DELAY
 			_campfire_warmup = CAMPFIRE_WARMUP

@@ -8,6 +8,5 @@ script = ExtResource("1_v5th1")
 form_name = "Goblin"
 sprite_frames = ExtResource("2_m6wlk")
 speed = 500.0
-duration = 30.0
 dash_cooldown_override = 1.0
 metadata/_custom_type_script = "uid://cbp72lpnyslsw"

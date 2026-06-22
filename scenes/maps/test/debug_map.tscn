@@ -16,6 +16,9 @@ position = Vector2(367, 192)
 [node name="Goblin" parent="." unique_id=508143637 instance=ExtResource("3_xnwv2")]
 position = Vector2(671, 178)
 
+[node name="Goblin4" parent="." unique_id=1025262520 instance=ExtResource("3_xnwv2")]
+position = Vector2(473, 53)
+
 [node name="Goblin2" parent="." unique_id=794898863 instance=ExtResource("3_xnwv2")]
 position = Vector2(649, 344)
 
@@ -28,13 +31,13 @@ position = Vector2(96, 199)
 [node name="Golem2" parent="." unique_id=268293728 instance=ExtResource("4_n8v2x")]
 position = Vector2(88, 43)
 
-[node name="Golem3" parent="." unique_id=1418244005 instance=ExtResource("4_n8v2x")]
-position = Vector2(93, 360)
-
 [node name="Wolf" parent="." unique_id=812217524 instance=ExtResource("5_ro017")]
 position = Vector2(287, 388)
 
 [node name="Wolf2" parent="." unique_id=1216234478 instance=ExtResource("5_ro017")]
 position = Vector2(479, 387)
+
+[node name="Wolf3" parent="." unique_id=1502126608 instance=ExtResource("5_ro017")]
+position = Vector2(94, 405)
 
 [node name="HUD" parent="." unique_id=1639099936 instance=ExtResource("6_h7a25")]

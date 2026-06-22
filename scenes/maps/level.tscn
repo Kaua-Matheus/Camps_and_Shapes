@@ -33,8 +33,10 @@
 [ext_resource type="Texture2D" uid="uid://ckvbkpyqu6vfy" path="res://sprites/other/snow/flor.png" id="21_flor"]
 [ext_resource type="Texture2D" uid="uid://dftr10gwkm27m" path="res://sprites/other/snow/ponte.png" id="22_pont"]
 [ext_resource type="Texture2D" uid="uid://csreji8qs61kg" path="res://sprites/other/snow/casinha.png" id="23_cas"]
+[ext_resource type="PackedScene" uid="uid://cloxy28oqs51n" path="res://entities/enemies/wolf/wolf.tscn" id="24_dn1gq"]
 [ext_resource type="Texture2D" uid="uid://xr1gabr5ce0v" path="res://sprites/other/snow/poste.png" id="24_post"]
 [ext_resource type="Texture2D" uid="uid://cwu0cntpwlsbo" path="res://sprites/other/snow/cerca.png" id="25_cerc"]
+[ext_resource type="PackedScene" uid="uid://bl0g8ydiut0s6" path="res://entities/enemies/goblin/goblin.tscn" id="25_dqloa"]
 [ext_resource type="Texture2D" uid="uid://brkt0qei8o20b" path="res://sprites/other/snow/poste de iluminacao.png" id="27_sposte"]
 [ext_resource type="Texture2D" uid="uid://bv1etfyt6ufq" path="res://sprites/other/snow/arbusto.png" id="28_sarb"]
 [ext_resource type="PackedScene" uid="uid://c5vv70r88jw3t" path="res://scenes/maps/lava_terrain.tscn" id="29_m355c"]
@@ -287,17 +289,53 @@ texture = ExtResource("19_dqloa")
 [node name="Player" parent="Entities" unique_id=1449680644 instance=ExtResource("2_w8frs")]
 position = Vector2(100, 190)
 
-[node name="Golem" parent="Entities" unique_id=1402557020 instance=ExtResource("5_ppgk2")]
-position = Vector2(945, 300)
+[node name="Golem" parent="Entities" unique_id=508143637 instance=ExtResource("5_ppgk2")]
+position = Vector2(380, 83)
 
-[node name="Golem2" parent="Entities" unique_id=508143637 instance=ExtResource("5_ppgk2")]
-position = Vector2(1010, 90)
+[node name="Golem2" parent="Entities" unique_id=265111685 instance=ExtResource("5_ppgk2")]
+position = Vector2(2673, 109)
 
-[node name="Golem3" parent="Entities" unique_id=1689362957 instance=ExtResource("5_ppgk2")]
-position = Vector2(640, 276)
+[node name="Golem3" parent="Entities" unique_id=1750023205 instance=ExtResource("5_ppgk2")]
+position = Vector2(1302, 254)
 
-[node name="Golem4" parent="Entities" unique_id=2004344807 instance=ExtResource("5_ppgk2")]
-position = Vector2(778, 89)
+[node name="Golem4" parent="Entities" unique_id=684433804 instance=ExtResource("5_ppgk2")]
+position = Vector2(3084, 239)
+
+[node name="Golem5" parent="Entities" unique_id=1094692350 instance=ExtResource("5_ppgk2")]
+position = Vector2(3657, 116)
+
+[node name="Golem6" parent="Entities" unique_id=1381084433 instance=ExtResource("5_ppgk2")]
+position = Vector2(5186, 262)
+
+[node name="Wolf" parent="Entities" unique_id=1663211637 instance=ExtResource("24_dn1gq")]
+position = Vector2(625, 316)
+
+[node name="Wolf2" parent="Entities" unique_id=1663916828 instance=ExtResource("24_dn1gq")]
+position = Vector2(1126, 96)
+
+[node name="Wolf3" parent="Entities" unique_id=1975372372 instance=ExtResource("24_dn1gq")]
+position = Vector2(2833, 301)
+
+[node name="Wolf4" parent="Entities" unique_id=1610633040 instance=ExtResource("24_dn1gq")]
+position = Vector2(4960, 130)
+
+[node name="Goblin" parent="Entities" unique_id=1697577491 instance=ExtResource("25_dqloa")]
+position = Vector2(996, 101)
+
+[node name="Goblin2" parent="Entities" unique_id=2138467322 instance=ExtResource("25_dqloa")]
+position = Vector2(1193, 303)
+
+[node name="Goblin3" parent="Entities" unique_id=996845721 instance=ExtResource("25_dqloa")]
+position = Vector2(1621, 96)
+
+[node name="Goblin4" parent="Entities" unique_id=1673388832 instance=ExtResource("25_dqloa")]
+position = Vector2(2716, 309)
+
+[node name="Goblin5" parent="Entities" unique_id=1524343572 instance=ExtResource("25_dqloa")]
+position = Vector2(3587, 120)
+
+[node name="Goblin6" parent="Entities" unique_id=81759924 instance=ExtResource("25_dqloa")]
+position = Vector2(5094, 283)
 
 [node name="Camera" parent="." unique_id=708719624 instance=ExtResource("6_2r41h")]
 position = Vector2(384, 192)
