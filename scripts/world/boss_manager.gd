@@ -2,6 +2,7 @@ extends Node
 
 const GOLEM_BOSS_SCENE = preload("res://entities/boss/mecha_stone_golem/golem_boss.tscn")
 const GOBLIN_BOSS_SCENE = preload("res://entities/boss/goblin_boss/goblin_boss.tscn")
+const WOLF_BOSS_SCENE = preload("res://entities/boss/wolf_boss/wolf_boss.tscn")
 
 # --- Goblin Boss (fim do bioma de grama → libera passagem para neve) ---
 const GOBLIN_TRIGGER_X: float = 1800.0
@@ -80,7 +81,7 @@ func _process(delta: float) -> void:
 		elif player_ref.global_position.x >= GOBLIN_TRIGGER_X:
 			_spawn_goblin_boss()
 
-	# Snow boss (bioma de neve)
+	# Wolf boss (bioma de neve)
 	if not snow_boss_defeated:
 		if snow_boss_spawned:
 			_update_snow_boss_hp_bar()
@@ -172,7 +173,7 @@ func _spawn_snow_boss() -> void:
 	snow_boss_spawned = true
 	print("[BossManager] Snow Boss spawning!")
 
-	var boss := GOBLIN_BOSS_SCENE.instantiate()
+	var boss := WOLF_BOSS_SCENE.instantiate()
 	boss.max_health = SNOW_BOSS_MAX_HP
 	boss.health = SNOW_BOSS_MAX_HP
 	boss.damage_on_player = SNOW_BOSS_DAMAGE

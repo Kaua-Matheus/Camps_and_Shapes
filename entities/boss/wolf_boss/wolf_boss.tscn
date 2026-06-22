@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dorwf25gidk7v"]
+
+[ext_resource type="Script" uid="uid://cqi4bgver4xmj" path="res://scripts/boss/goblin_boss/goblin_boss.gd" id="1_jat7c"]
+[ext_resource type="SpriteFrames" uid="uid://dfw6fnxd0c1ly" path="res://sprites/sprite_frame/enemies/wolf/wolf_sprite_frame.tres" id="2_a0hsc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(62, 48)
+
+[node name="GoblinBoss" type="CharacterBody2D" unique_id=1673519668 groups=["Enemy"]]
+collision_layer = 4
+script = ExtResource("1_jat7c")
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1904466975]
+shape = SubResource("RectangleShape2D_hitbox")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1954273199]
+sprite_frames = ExtResource("2_a0hsc")
+animation = &"attack"
+autoplay = "idle"

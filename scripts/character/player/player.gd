@@ -359,7 +359,7 @@ func _update_freeze_system(delta: float) -> void:
 				animation.modulate = Color.WHITE
 		if _campfire_warmup >= CAMPFIRE_WARMUP:
 			if health <= max_hp:
-				health += delta * 10
+				health += delta * 20
 			_freeze_timer = FREEZE_DELAY
 			_campfire_warmup = CAMPFIRE_WARMUP
 	else:
