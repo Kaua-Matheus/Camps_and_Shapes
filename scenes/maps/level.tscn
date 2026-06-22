@@ -14,12 +14,20 @@
 [ext_resource type="Texture2D" uid="uid://dtg0aj3uqxlrr" path="res://sprites/other/rock.png" id="11_rock"]
 [ext_resource type="Texture2D" uid="uid://cyeqc7np4eh72" path="res://sprites/other/arbusto frutifero.png" id="12_arb"]
 [ext_resource type="Texture2D" uid="uid://clwsk2k3q7uf4" path="res://sprites/other/banco virado direita.png" id="13_bdir"]
+[ext_resource type="Script" uid="uid://c82cfarqxclgt" path="res://scripts/placa.gd" id="14_2ekcc"]
 [ext_resource type="Texture2D" uid="uid://cglgd8ww3p4a0" path="res://sprites/other/banco virado esquerda.png" id="14_besq"]
 [ext_resource type="Texture2D" uid="uid://ntn6pjwb8j1s" path="res://sprites/other/fogueira apagada.png" id="15_fog"]
+[ext_resource type="Texture2D" uid="uid://c8d0s85lj1qgb" path="res://sprites/camps/Sign and messages3.png" id="15_r5e1e"]
+[ext_resource type="Texture2D" uid="uid://dhb2ubwcuedoe" path="res://sprites/camps/forest_tent.png" id="16_gmf8j"]
 [ext_resource type="Texture2D" uid="uid://c5qxeq3fh1y66" path="res://sprites/other/poste de iluminacao.png" id="16_poste"]
+[ext_resource type="FontFile" uid="uid://bfmp2g024dovf" path="res://assets/font/upheavtt.ttf" id="16_r5e1e"]
 [ext_resource type="PackedScene" uid="uid://bq3wwj5svjqph" path="res://entities/other/player_hud.tscn" id="17_a52jg"]
+[ext_resource type="Texture2D" uid="uid://lrho7bujng73" path="res://sprites/camps/chest_label.png" id="17_gmf8j"]
+[ext_resource type="Texture2D" uid="uid://bmkxsmnj3p2rb" path="res://sprites/camps/forest_tents.png" id="17_vpm42"]
 [ext_resource type="Texture2D" uid="uid://be2c5epkb0s8f" path="res://sprites/other/wood.png" id="17_wood"]
 [ext_resource type="Texture2D" uid="uid://doebkqo5bvnku" path="res://sprites/other/cabana.png" id="18_cab"]
+[ext_resource type="Texture2D" uid="uid://t63xja1mlr5u" path="res://sprites/camps/forest_tents_left.png" id="18_dn1gq"]
+[ext_resource type="Texture2D" uid="uid://ig21vske0l7c" path="res://sprites/camps/forest_campfire.png" id="19_dqloa"]
 [ext_resource type="Texture2D" uid="uid://bre73ru8lbmb7" path="res://sprites/other/snow/iglu.png" id="19_iglu"]
 [ext_resource type="Texture2D" uid="uid://d33okyh7lyhi3" path="res://sprites/other/snow/boneco de neve.png" id="20_bone"]
 [ext_resource type="Texture2D" uid="uid://ckvbkpyqu6vfy" path="res://sprites/other/snow/flor.png" id="21_flor"]
@@ -36,13 +44,14 @@
 [ext_resource type="Texture2D" uid="uid://bl0tfs4l33sw0" path="res://sprites/camps/frost_tents.png" id="31_twhdn"]
 [ext_resource type="PackedScene" uid="uid://b7ro8femhdnfs" path="res://scenes/maps/lava_trees.tscn" id="31_x3ked"]
 [ext_resource type="Texture2D" uid="uid://cd27c6chaellw" path="res://sprites/camps/frost_tents_left.png" id="32_3o7ea"]
-[ext_resource type="PackedScene" path="res://entities/other/campfire.tscn" id="32_campfire"]
+[ext_resource type="PackedScene" uid="uid://doxsh4ne7u1xc" path="res://entities/other/campfire.tscn" id="32_campfire"]
 [ext_resource type="Texture2D" uid="uid://dcal7tvaj7xq6" path="res://sprites/camps/volcano_tent.png" id="36_a52jg"]
 [ext_resource type="Texture2D" uid="uid://drpx15m2m74ym" path="res://sprites/camps/volcano_well.png" id="37_6mbys"]
 [ext_resource type="Texture2D" uid="uid://b0ficbblikbmg" path="res://sprites/camps/volcano_tents.png" id="38_0wd3f"]
 [ext_resource type="Texture2D" uid="uid://dt7eofjwp1egs" path="res://sprites/camps/volcano_tents_left.png" id="39_lxg47"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_twhdn"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e778l"]
+size = Vector2(41, 44)
 
 [node name="Level" type="Node2D" unique_id=2029175643]
 script = ExtResource("1_level")
@@ -97,7 +106,7 @@ position = Vector2(1650, 290)
 texture = ExtResource("12_arb")
 
 [node name="Arbusto4" type="Sprite2D" parent="Terrain/Decorations" unique_id=100009]
-position = Vector2(2150, 120)
+position = Vector2(2047, 148)
 texture = ExtResource("12_arb")
 
 [node name="BancoDireita1" type="Sprite2D" parent="Terrain/Decorations" unique_id=100010]
@@ -148,12 +157,130 @@ texture = ExtResource("17_wood")
 position = Vector2(100, 81)
 texture = ExtResource("18_cab")
 
-[node name="Area2D" type="Area2D" parent="Terrain/Decorations/Cabana1" unique_id=1151579421]
-position = Vector2(90, 51)
-collision_mask = 3
+[node name="Placa" type="Node2D" parent="Terrain/Decorations" unique_id=147016953]
+position = Vector2(168, 115)
+scale = Vector2(0.67485505, 0.76)
+script = ExtResource("14_2ekcc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Decorations/Cabana1/Area2D" unique_id=445355679]
-shape = SubResource("CircleShape2D_twhdn")
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Decorations/Placa" unique_id=1260466118]
+position = Vector2(10.5, 12.5)
+scale = Vector2(2.3125, 2.5625)
+texture = ExtResource("15_r5e1e")
+
+[node name="Area2D" type="Area2D" parent="Terrain/Decorations/Placa" unique_id=654935181]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Decorations/Placa/Area2D" unique_id=353724358]
+position = Vector2(10.5, 12)
+shape = SubResource("RectangleShape2D_e778l")
+
+[node name="Label" type="Label" parent="Terrain/Decorations/Placa" unique_id=126121147]
+offset_left = -41.49038
+offset_top = -47.368423
+offset_right = 97.571815
+offset_bottom = -0.36842346
+theme_override_fonts/font = ExtResource("16_r5e1e")
+text = "Acampamento goblin adiante"
+autowrap_mode = 2
+
+[node name="Placa2" type="Node2D" parent="Terrain/Decorations" unique_id=177526582]
+position = Vector2(2027, 273)
+scale = Vector2(0.67485505, 0.76)
+script = ExtResource("14_2ekcc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Decorations/Placa2" unique_id=2109167368]
+position = Vector2(10.372674, 10.526313)
+scale = Vector2(0.39819074, 0.3450864)
+texture = ExtResource("17_gmf8j")
+
+[node name="Area2D" type="Area2D" parent="Terrain/Decorations/Placa2" unique_id=974448899]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Decorations/Placa2/Area2D" unique_id=604059891]
+position = Vector2(10.5, 12)
+shape = SubResource("RectangleShape2D_e778l")
+
+[node name="Label" type="Label" parent="Terrain/Decorations/Placa2" unique_id=490194627]
+offset_left = -41.49038
+offset_top = -92.10526
+offset_right = 97.571815
+offset_bottom = -5.1052628
+theme_override_fonts/font = ExtResource("16_r5e1e")
+text = "Dizem que o pequeno rei desapareceu na noite da queda do castelo."
+autowrap_mode = 2
+
+[node name="Placa3" type="Node2D" parent="Terrain/Decorations" unique_id=159862272]
+position = Vector2(4504, 346.99997)
+scale = Vector2(0.67485505, 0.76)
+script = ExtResource("14_2ekcc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Terrain/Decorations/Placa3" unique_id=2057207907]
+position = Vector2(10.372674, 10.526313)
+scale = Vector2(0.39819074, 0.3450864)
+texture = ExtResource("17_gmf8j")
+
+[node name="Area2D" type="Area2D" parent="Terrain/Decorations/Placa3" unique_id=1177389374]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Decorations/Placa3/Area2D" unique_id=1825788790]
+position = Vector2(10.5, 12)
+shape = SubResource("RectangleShape2D_e778l")
+
+[node name="Label" type="Label" parent="Terrain/Decorations/Placa3" unique_id=45592514]
+offset_left = -121.50756
+offset_top = -113.1579
+offset_right = 165.96167
+offset_bottom = -19.736847
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("16_r5e1e")
+text = "Há registros antigos proibidos pela coroa.
+O verdadeiro rei nunca foi humano comum. Ele dominava a arte da transformação…"
+autowrap_mode = 2
+
+[node name="Camp" type="Node2D" parent="Terrain" unique_id=1670162235]
+
+[node name="Tent" type="Sprite2D" parent="Terrain/Camp" unique_id=618478962]
+position = Vector2(2231, 53.000004)
+scale = Vector2(3.2227733, 4.1200657)
+texture = ExtResource("16_gmf8j")
+
+[node name="Tents" type="Sprite2D" parent="Terrain/Camp" unique_id=1217599606]
+position = Vector2(2111, 337)
+scale = Vector2(2.7066166, 3.2953274)
+texture = ExtResource("17_vpm42")
+
+[node name="Tents2" type="Sprite2D" parent="Terrain/Camp" unique_id=132669847]
+position = Vector2(2226, 333)
+scale = Vector2(2.7066166, 3.2953274)
+texture = ExtResource("17_vpm42")
+
+[node name="Tents3" type="Sprite2D" parent="Terrain/Camp" unique_id=610087046]
+position = Vector2(2019, 40.00003)
+scale = Vector2(2.7066166, 3.2953274)
+texture = ExtResource("17_vpm42")
+
+[node name="Tents4" type="Sprite2D" parent="Terrain/Camp" unique_id=149356596]
+position = Vector2(2219, 249.00003)
+scale = Vector2(2.7066166, 3.2953274)
+texture = ExtResource("18_dn1gq")
+
+[node name="Tents5" type="Sprite2D" parent="Terrain/Camp" unique_id=1531901211]
+position = Vector2(2163, 97.00003)
+scale = Vector2(2.7066166, 3.2953274)
+texture = ExtResource("18_dn1gq")
+
+[node name="Tents6" type="Sprite2D" parent="Terrain/Camp" unique_id=982988644]
+position = Vector2(2087, 280)
+scale = Vector2(2.7066166, 3.2953272)
+texture = ExtResource("18_dn1gq")
+
+[node name="Tents7" type="Sprite2D" parent="Terrain/Camp" unique_id=479600088]
+position = Vector2(2124.0002, 250.99998)
+scale = Vector2(2.913479, 3.2127209)
+texture = ExtResource("19_dqloa")
 
 [node name="Entities" type="Node2D" parent="." unique_id=1605117796]
 
@@ -294,7 +421,7 @@ scale = Vector2(0.6728441, 0.7104166)
 texture = ExtResource("29_rc367")
 
 [node name="Tents" type="Sprite2D" parent="SnowTerrain/Camp" unique_id=315772832]
-position = Vector2(4450, 271)
+position = Vector2(4382, 249)
 scale = Vector2(0.390625, 0.390625)
 texture = ExtResource("31_twhdn")
 
@@ -373,3 +500,10 @@ texture = ExtResource("39_lxg47")
 position = Vector2(-23.999939, 244)
 scale = Vector2(0.96898615, 0.9402984)
 texture = ExtResource("39_lxg47")
+
+[connection signal="body_entered" from="Terrain/Decorations/Placa/Area2D" to="Terrain/Decorations/Placa" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Terrain/Decorations/Placa/Area2D" to="Terrain/Decorations/Placa" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Terrain/Decorations/Placa2/Area2D" to="Terrain/Decorations/Placa2" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Terrain/Decorations/Placa2/Area2D" to="Terrain/Decorations/Placa2" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Terrain/Decorations/Placa3/Area2D" to="Terrain/Decorations/Placa3" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Terrain/Decorations/Placa3/Area2D" to="Terrain/Decorations/Placa3" method="_on_area_2d_body_exited"]
